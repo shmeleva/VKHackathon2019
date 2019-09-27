@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import MainPage from '../pages/MainPage/index';
 import LoginPage from '../pages/LoginPage/index';
+//import GoalRouter from '../routers/GoalRouter';
 import GoalPage from '../pages/GoalPage/index';
 import GoalPageNew from '../pages/GoalPageNew/index';
 import SomeComponent from '../components/SomeComponent';
