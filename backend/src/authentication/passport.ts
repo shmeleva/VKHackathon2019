@@ -2,7 +2,7 @@ import passport from "passport";
 import passportVKontakte from "passport-vkontakte";
 import _ from "lodash";
 
-import { User, UserDocument } from "../models/User";
+import { UserModel } from "../models/User";
 import { Request, Response, NextFunction } from "express";
 
 import { VKONTAKTE_ID, VKONTAKTE_SECRET } from "../utils/secrets";
@@ -14,7 +14,7 @@ passport.serializeUser<any, any>((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-    User.findById(id, (err, user) => {
+    UserModel.findById(id, (err, user) => {
         done(err, user);
     });
 });
@@ -24,18 +24,19 @@ passport.use(new VKontakteStrategy({
     clientSecret: VKONTAKTE_SECRET,
     callbackURL: "/auth/vkontakte/callback"
 }, (accessToken, _refreshToken, params, profile, done) => {
-    User.findOne({ vkontakte: profile.id }, (err, existingUser) => {
+    UserModel.findOne({ vkontakte: profile.id }, (err, existingUser) => {
         if (err) { return done(err); }
 
         if (existingUser) {
             return done(undefined, existingUser);
         }
 
-        // TODO: make functional
-        const user: UserDocument = new User();
+        console.log(profile)
+
+        const user: any = new UserModel();
         user.firstName = profile.name.givenName;
         user.lastName = profile.name.familyName;
-        user.email = profile._json.email;
+        user.email = params.email;
         user.vkontakte = profile.id;
         user.token = accessToken;
 
