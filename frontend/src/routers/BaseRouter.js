@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, withRouter, Redirect , NavLink} from 'react-router-dom';
 import MainPage from '../pages/MainPage/index';
 import LoginPage from '../pages/LoginPage/index';
 import GoalPage from '../pages/GoalPage/index';
