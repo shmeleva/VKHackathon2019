@@ -1,8 +1,11 @@
 import React from 'react';
+import './styles.scss';
 
 const MainPage = props => {
   return (
-    <div>MainPage</div>
+    <div className="MainPage">
+      MainPage
+    </div>
   )
 }
 

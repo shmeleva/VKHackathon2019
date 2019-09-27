@@ -1,9 +1,12 @@
 import React from 'react';
+import './styles.scss';
 
 const GoalPage = props => {
   console.log("-------GoalPage: ", props);
   return (
-    <div>GoalPage</div>
+    <div className="GoalPage">
+      GoalPage
+    </div>
   )
 }
 

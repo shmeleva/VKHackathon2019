@@ -1,8 +1,11 @@
 import React from 'react';
+import './styles.scss';
 
 const LoginPage = props => {
   return (
-    <div>LoginPage</div>
+    <div className="LoginPage">
+      LoginPage
+    </div>
   )
 }
 
