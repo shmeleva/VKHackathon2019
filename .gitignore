@@ -24,7 +24,4 @@ node_modules
 Thumbs.db
 
 # Built TypeScript files
-dist/**/*
-
-# yarn.lock
-yarn.lock
+backend/dist/**/*
