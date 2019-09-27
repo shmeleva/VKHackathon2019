@@ -4,7 +4,7 @@ class SomeComponent extends React.Component {
   render() {
     return (
       <div>
-        Hello!
+        Hellllo!
       </div>
     )
   }

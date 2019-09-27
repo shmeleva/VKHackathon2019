@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SomeComponent from './components/SomeComponent';
+import BaseRouter from './routers/BaseRouter';
 import './styles/styles.scss';
 
 class App extends React.Component {
@@ -9,7 +9,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <SomeComponent />
+			<BaseRouter />
     )
   }
 }
