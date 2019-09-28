@@ -77,19 +77,17 @@ app.use((req, res, next) => {
  * API routes.
  */
 
-app.get("/logout", profileController.logout);
-
 app.get("/profile", passportConfig.isAuthenticated, profileController.getProfile);
-//app.delete("/profile/delete", passportConfig.isAuthenticated, profileController.deleteProfile);
+app.post("/profile/logout", profileController.logout);
 
 app.get("/users/:userId", userController.getUserById);
 
 app.get("/goals/:goalId", goalController.getGoalById);
-app.get("/createGoal", passportConfig.isAuthenticated, goalController.postGoal); // POST /goals/create
-app.get("/goals/:goalId/check", passportConfig.isAuthenticated, goalController.postGoalCheck);  // POST /goals/:goalId/check
-app.get("/goals/:goalId/uncheck", passportConfig.isAuthenticated, goalController.postGoalUncheck);  // POST /goals/:goalId/check
-app.get("/goals/:goalId/donate", goalController.postGoalDonate); // POST /goals/:goalId/donate
-app.get("/goals/:goalId/delete", goalController.postGoalDelete); // POST /goals/:goalId/delete
+app.post("/goals/create", passportConfig.isAuthenticated, goalController.postGoal);
+app.post("/goals/:goalId/check", passportConfig.isAuthenticated, goalController.postGoalCheck);
+app.post("/goals/:goalId/uncheck", passportConfig.isAuthenticated, goalController.postGoalUncheck);
+app.post("/goals/:goalId/donate", goalController.postGoalDonate);
+app.post("/goals/:goalId/delete", goalController.postGoalDelete);
 
 /**
  * VKontakte authentication routes.

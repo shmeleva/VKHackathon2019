@@ -5,28 +5,10 @@ import "../authentication/passport";
 import { findUserById } from "../services/userService";
 
 /**
- * GET /logout
- * Log out.
- */
-export const logout = (req: any, res: any) => {
-    req.logout();
-    res.sendStatus(200);
-};
-
-/**
  * GET /profile
  */
 export const getProfile = async (req: any, res: any) => {
     const userId = req.user._id;
-
-    check(userId).isMongoId();
-
-    const errors = validationResult(req);
-
-    if (!errors.isEmpty()) {
-        req.flash("errors", errors.array());
-        return res.redirect("/contact");
-    }
 
     try {
         const user = await findUserById(userId);
@@ -44,8 +26,16 @@ export const getProfile = async (req: any, res: any) => {
 };
 
 /**
+ * POST /logout
+ * Log out.
+ */
+export const logout = (req: any, res: any) => {
+    req.logout();
+    res.sendStatus(200);
+};
+
+/**
  * DELETE /profile/delete
- * Delete an account.
  */
 export const deleteProfile = (req: any, res: any, next: NextFunction) => {
     UserModel.remove({ _id: req.user._id }, (err: any) => {
