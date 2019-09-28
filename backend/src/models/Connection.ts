@@ -1,0 +1,4 @@
+/*
+followerUserId: String,
+followingUserId: String
+*/

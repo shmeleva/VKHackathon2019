@@ -1,3 +1,15 @@
 .LoginPage {
-  color: orange;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('./Hello.jpg');
+  background-size: 100% auto;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  &__bottom {
+    background-image: url('./Hello.jpg');
+  }
 }

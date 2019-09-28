@@ -1,7 +1,8 @@
-import { User, UserDocument } from "../models/User";
+import { UserModel } from "../models/User";
 import { Request, Response, NextFunction } from "express";
 //import { check, sanitize, validationResult } from "express-validator";
 import "../authentication/passport";
+import { GoalModel } from "../models/Goal";
 
 /**
  * GET /logout
@@ -16,7 +17,21 @@ export const logout = (req: Request, res: Response) => {
  * GET /profile
  */
 export const getProfile = (req: Request, res: Response) => {
-    res.status(200).send(req.user);
+    const goal = new GoalModel();
+    goal.title = "Quit smoking...";
+    goal.user = (req.user as any)._id;
+    goal.startDate = new Date();
+    goal.endDate = new Date();
+
+    goal.save((err: Error) => {
+
+    });
+
+    GoalModel.find({ user: (req.user as any)._id }, (err: any, goals: any) => {
+        res.status(200).send(goals);
+    })
+
+    //res.status(200).send();
 };
 
 /**
@@ -24,7 +39,7 @@ export const getProfile = (req: Request, res: Response) => {
  * Update profile information.
  */
 export const updateProfile = (req: Request, res: Response, next: NextFunction) => {
-    User.findById((req.user as UserDocument)._id, (err, user: UserDocument) => {
+    UserModel.findById((req.user as any)._id, (err: any, user: any) => {
         if (err) { return next(err); }
         // TODO: Validation + type body + functional.
         user.firstName = req.body.firstName || "";
@@ -38,7 +53,7 @@ export const updateProfile = (req: Request, res: Response, next: NextFunction) =
  * Delete an account.
  */
 export const deleteProfile = (req: Request, res: Response, next: NextFunction) => {
-    User.remove({ _id: (req.user as UserDocument)._id }, (err) => {
+    UserModel.remove({ _id: (req.user as any)._id }, (err: any) => {
         if (err) { return next(err); }
         req.logout();
         res.send({ msg: "Ваш аккаунт удален." });

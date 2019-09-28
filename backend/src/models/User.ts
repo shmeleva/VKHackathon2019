@@ -1,19 +1,20 @@
-import mongoose from "mongoose";
+import { prop, Typegoose } from "@hasezoey/typegoose";
 
-export type UserDocument = mongoose.Document & {
-    firstName: string;
-    lastName: string;
-    email: string;
-    vkontakte: string;
-    token: string;
-};
+export class User extends Typegoose {
+  @prop({ required: true })
+  firstName!: string;
 
-const userSchema = new mongoose.Schema({
-    firstName: String,
-    lastName: String,
-    email: { type: String, unique: true },
-    vkontakte: { type: String, unique: true },
-    token: String
-}, { timestamps: true });
+  @prop({ required: true })
+  lastName!: string;
 
-export const User = mongoose.model<UserDocument>("User", userSchema);
+  @prop({ required: true, unique: true })
+  email!: string;
+
+  @prop({ required: true, unique: true })
+  vkontakte!: string;
+
+  @prop({ required: true })
+  token!: string;
+}
+
+export const UserModel = new User().getModelForClass(User);
