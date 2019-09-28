@@ -27,6 +27,11 @@ class MainPage extends React.Component {
     }).then(response => {
       if (!error) {
         this.setState({auth: true});
+        axios.get('http://localhost:3000/users/' + response.data.id, {
+          withCredentials: true
+        }).then(response => {
+          console.log('HELLLLLOOOOO ', response)
+        });
       }
     });
   }

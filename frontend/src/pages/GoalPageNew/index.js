@@ -75,7 +75,7 @@ class GoalPageNew extends React.Component {
     end_date.setDate(end_date.getDate() + this.state.period);
     let data = {
       title: this.state.name,
-      weekdays: [this.state.days.map((elem) => ({day: +elem}))],
+      weekdays: this.state.days.map((elem) => ({day: +elem})),
       startDate: (new Date()).withoutTime().toISOString(),
       endDate: end_date.withoutTime().toISOString()
     }
