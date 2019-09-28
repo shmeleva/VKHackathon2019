@@ -1,9 +1,40 @@
 @import 'src/styles/media-screen-breakpoints.scss';
 
-.MainPage {
-  color: purple;
-  .Wrapper {
-    padding-left: 20px;
-    padding-right: 20px;
+.WelcomePage {
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    @include MedM {
+      flex-direction: row-reverse;
+    }
+  }
+  &__title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  &__image {
+    background-image: url('./Rocket.jpg');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: auto 100%;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 20px;
+  }
+  &__create {
+    padding: 10px 40px;
+    background: #000000;
+    font-size: 18px;
+    color: #FFFFFF;
+    display: inline-block;
+    border-radius: 5px;
+    align-self: center;
+  }
+  &__suggestion-title {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
   }
 }
