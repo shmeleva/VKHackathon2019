@@ -10,26 +10,14 @@ const CalendarUnit = props => {
   )
 }
 CalendarUnit.defaultProps = {
-  day: 31,
+  day: 'ПН',
   state: 'normal'
 }
 
 const Calendar = props => {
-  const buildDays = () => {
-    let counter = new Date(props.start.getTime());
-    let calendar = [<CalendarUnit day={counter.getDate()} state={['normal', 'checked','missed', 'normal', 'normal'][counter.getDate()%5]}/>];
-    counter.setDate(counter.getDate() + 1);
-    do {
-      calendar.push(<CalendarUnit day={counter.getDate()} state={['normal', 'checked','missed', 'normal', 'normal'][counter.getDate()%5]}/>);
-      counter.setDate(counter.getDate() + 1);
-    }
-    while (counter.getDate() !== end.getDate());
-    return calendar;
-  }
-  buildDays();
   return (
     <div className="Calendar">
-      {buildDays()}
+      {['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].map((day) => <CalendarUnit day={day}/>)}
     </div>
   )
 }

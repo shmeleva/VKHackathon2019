@@ -16,12 +16,14 @@ Date.prototype.withoutTime = function () {
 class MainPage extends React.Component {
   constructor(props){
     super(props);
-    this.current_goals = [5];
     this.props = props;
     this.state = {
       auth: false,
       goals: []
     }
+    this.goals_pending = [];
+    this.goals_active = [];
+    this.goals_history = [];
   }
   componentWillMount(){
     let error = false;
@@ -42,8 +44,46 @@ class MainPage extends React.Component {
     });
   }
   sortGoals(){
-    const current_date = new Date().withoutTime();
-    debugger
+    const current_date = new Date();
+    console.log('this.state.goals: ', this.state.goals);
+    this.state.goals.forEach((goal) => {
+      let goal_date = new Date(goal.endDate);
+      if (goal_date <  current_date) {
+        this.goals_history.push(goal);
+      }
+      else if (goal.weekdays.map((weekday) => +weekday.day).indexOf(current_date.getDay()) !== -1) {
+        this.goals_pending.push(goal);
+      }
+      else {
+        this.goals_active.push(goal);
+      }
+    })
+    // this.goals_pending = this.state.goals.filter((elem) => {
+    //   return elem.weekdays.map((weekday) => +weekday.day).indexOf(current_date.getDay()) !== -1;
+    // });
+    // this.goals_active = this.state.goals.filter((elem) => {
+    //   return elem.weekdays.map((weekday) => +weekday.day).indexOf(current_date.getDay()) === -1;
+    // });
+    console.log('this.goals_pending', this.goals_pending);
+    console.log('this.goals_active', this.goals_active);
+    console.log('this.goals_history', this.goals_history);
+
+    // let start_date = new Date();
+    // start_date.setDate(start_date.getDate() - 200);
+    // let end_date = new Date();
+    // end_date.setDate(end_date.getDate() - 150);
+
+    // axios('http://localhost:3000/goals/create', {
+    //   method: 'post',
+    //   withCredentials: true,
+    //   data: {
+    //     title: 'ПРОШЛОЕ',
+    //     weekdays: [{day: 1}, {day: 4}],
+    //     startDate: new Date(new Date().setUTCHours(0, 0, 0, 0)).toISOString(),
+    //     endDate: new Date(end_date.setUTCHours(0, 0, 0, 0)).toISOString()
+    //   }
+    // }).then(response => {
+    // });
   }
 
   logOut(){
@@ -62,14 +102,17 @@ class MainPage extends React.Component {
               Цели на сегодня:
             </div>
             {
-              (this.current_goals.length > 0) && (
+              (this.goals_pending.length > 0) && (
                 <div className="MainPage__goal-list">
-                  <GoalUnit type='pending' />
-                  <GoalUnit type='pending' />
+                  {
+                    this.goals_pending.map((elem) => {
+                      return <GoalUnit key={elem.id} title={elem.title} type='pending'/>
+                    })
+                  }
                 </div>)
             }
             {
-              (this.current_goals.length === 0) && [
+              (this.goals_pending.length === 0) && [
                 <div key='image' className="MainPage__no-goals-image" />,
                 <div key='text' className="MainPage__no-goals-text">
                   На сегодня задач нет. Отдыхайте и идите гулять в парк!
@@ -81,8 +124,11 @@ class MainPage extends React.Component {
               Другие активные цели:
             </div>
             <div className="MainPage__goal-list">
-              <GoalUnit type='active' />
-              <GoalUnit type='active' />
+              {
+                this.goals_active.map((elem) => {
+                  return <GoalUnit key={elem.id} title={elem.title} type='active'/>
+                })
+              }
             </div>
           </div>
           <div className="MainPage__goal-wrapper MainPage__goal-wrapper--recommended">
@@ -99,8 +145,11 @@ class MainPage extends React.Component {
               Достигнутые:
             </div>
             <div className="MainPage__goal-list">
-              <GoalUnit type='history' />
-              <GoalUnit type='history' />
+              {
+                this.goals_history.map((elem) => {
+                  return <GoalUnit key={elem.id} title={elem.title} type='pending'/>
+                })
+              }
             </div>
           </div>
           <br />
