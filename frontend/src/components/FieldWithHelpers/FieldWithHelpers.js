@@ -6,7 +6,7 @@ const FieldWithHelpers = props => {
       <input 
         className="text-field"
         type="number" 
-        placeholder="Введите количество дней"
+        placeholder={props.placeholder}
         value={props.value || ''}
         onChange={(e)=>{
           props.handleChange(e.target.value);

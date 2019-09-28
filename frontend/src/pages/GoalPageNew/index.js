@@ -115,6 +115,7 @@ class GoalPageNew extends React.Component {
             <FieldWithHelpers
               value={this.state.period}
               handleChange={this.handlePeriodChange}
+              placeholder="Введите кол-во дней"
               helpers={
                 {
                   'Неделя': 7,

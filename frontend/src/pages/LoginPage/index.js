@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import VKButton from '../../components/VKButton/VKButton';
 import './styles.scss';
+import Header from '../../components/Header/Header';
 
 const LoginPage = props => {
   return (
@@ -15,9 +16,7 @@ const LoginPage = props => {
             <div className="LoginPage__description-unit">Просить друзей поддержать вас через донаты в фонд</div>
             <div className="LoginPage__description-unit">Просить друзей поддержать вас через донаты в фонд</div>
           </div>
-          <div className="container--flex-row-center">
-            <VKButton/>
-          </div>
+          <VKButton/>
         </div>
         <div className="LoginPage__bottom"/>
       </div>

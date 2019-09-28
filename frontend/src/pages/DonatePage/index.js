@@ -31,6 +31,7 @@ class DonatePage extends React.Component {
           <FieldWithHelpers
             value={this.state.amount}
             handleChange={this.handleAmountChange}
+            placeholder="Введите сумму"
             helpers={
               {
                 '100 ₽': 100,

@@ -84,12 +84,14 @@
   justify-content: center;
   align-items: center;
   &:last-of-type {
-    border: 2px solid $color-darkblue;
+    border: 2px solid $color-midgrey;
   }
   &--checked {
     background: $color-palegreen;
+    color: $color-white;
   }
   &--missed {
     background: $color-darkpink;
+    color: $color-white;
   }
 }

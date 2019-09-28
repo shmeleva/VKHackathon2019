@@ -1,4 +1,5 @@
 @import 'src/styles/media-screen-breakpoints.scss';
+@import 'src/styles/style-variables.scss';
 
 .LoginPage {
   width: 100vw;
@@ -6,18 +7,24 @@
   &__inner {
     display: flex;
     flex-direction: column;
+    padding-top: 30px !important;
     @include MedM {
       flex-direction: row-reverse;
+
     }
   }
   &__title {
     font-size: 24px;
     font-weight: bold;
-    text-align: center;
+    font-family: $font-heading;
+    color: $color-darkblue;
     margin-bottom: 20px;
   }
   &__description-title {
     margin-bottom: 10px;
+  }
+  &__description-list {
+    max-width: 500px;
   }
   &__description-unit {
     margin-bottom: 5px;
@@ -39,7 +46,8 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-left: 20px;
+      padding-left: 40px;
+      width: 50%;
     }
   }
   &__bottom {
@@ -56,6 +64,6 @@
   }
   .VKButton {
     margin-top: 20px;
-    align-self: center;
+    align-self: start;
   }
 }
