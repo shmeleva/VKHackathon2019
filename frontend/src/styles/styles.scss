@@ -29,6 +29,7 @@ a {
 
 .field-label {
   display: block;
+  margin-top: 20px;
   margin-bottom: 5px;
   color: $color-darkgrey;
 }
@@ -42,6 +43,24 @@ a {
   font-size: 16px;
   border: 2px solid $color-midgrey;
   border-radius: $size-radius; 
+}
+
+.text-field__helper {
+  margin-right: 5px;
+  margin-bottom: 5px;
+  padding: 3px 5px 4px;
+  box-sizing: border-box;
+  display: inline-block;
+  border: 2px solid $color-lightpink;
+  border-radius: $size-radius; 
+  font-size: 14px;
+  color: $color-darkgrey;
+  cursor: pointer;
+  &--active {
+    color: $color-white;
+    background-color: $color-pink;
+    border-color: $color-pink;
+  }
 }
 
 .primary-button {
