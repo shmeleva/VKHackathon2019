@@ -18,7 +18,7 @@ const Calendar = props => {
   let currentDay = ((new Date()).getDay() + 6) % 7;
   return (
     <div className="Calendar">
-      {['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].map((day, i) => <CalendarUnit day={day} state={currentDay < i ? 'disabled' : 'normal'} />)}
+      {['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].map((day, i) => <CalendarUnit key={i} day={day} state={currentDay < i ? 'disabled' : 'normal'}/>)}
     </div>
   )
 }

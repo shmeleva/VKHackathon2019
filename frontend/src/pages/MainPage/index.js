@@ -20,10 +20,16 @@ class MainPage extends React.Component {
     this.props = props;
     this.state = {
       auth: false,
+      pending: true,
       goals: []
     }
   }
+<<<<<<< HEAD
   componentWillMount() {
+=======
+  componentWillMount(){
+    this.setState({pending: true});
+>>>>>>> fix some visual bugs
     let error = false;
     axios.get('http://localhost:3000/profile', {
       withCredentials: true
@@ -36,7 +42,8 @@ class MainPage extends React.Component {
         axios.get('http://localhost:3000/users/' + response.data.id, {
           withCredentials: true
         }).then(response2 => {
-          this.setState({ goals: response2.data.goals });
+          this.setState({goals: response2.data.goals});
+          this.setState({pending: false});
         });
       }
     });
@@ -67,8 +74,8 @@ class MainPage extends React.Component {
       withCredentials: true
     }).then(response => console.log(response));
   }
-  render() {
-    return this.state.auth ? (
+  render(){
+    return this.state.auth && !this.state.pending ? (
       <div className="MainPage">
         {this.sortGoals()}
         <Header />

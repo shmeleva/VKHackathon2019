@@ -20,7 +20,6 @@ class GoalPageNew extends React.Component {
     this.createGoal = this.createGoal.bind(this);
   }
   componentWillMount(){
-    console.log('MOUNT MOUNT');
     let error = false;
     axios.get('http://localhost:3000/profile', {
       withCredentials: true
@@ -58,12 +57,9 @@ class GoalPageNew extends React.Component {
     this.setState((prevState) => ({
       days
     }));
-    console.log(days);
-    
   }
 
   createGoal() {
-    console.log('CREATEGOAL');
     let error = false;
     let end_date = new Date();
     end_date.setDate(end_date.getDate() + this.state.period);
