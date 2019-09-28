@@ -9,13 +9,19 @@ const GoalPageNew = props => {
     <div className="GoalPageNew">
       <Header pageName="Создание цели"/>
       <div className="GoalPageNew__inner page-content">
-        GoalPageNew
+        <label className="field-label">Цель</label>
+        <input 
+          className="text-field" 
+          type="text" 
+          placeholder="Пройти 10 000 шагов">
+        </input>
+        <label className="field-label">Срок</label>
+        <label className="field-label">Периодичность</label>
         <br/>
-        <Link to={"/main"}>
+        <Link className="primary-button primary-button--bright" to={"/main"}>
           Отменить
         </Link>
-        <br/>
-        <Link to={"/goal/100"}>
+        <Link className="primary-button" to={"/goal/100"}>
           Создать
         </Link>
       </div>
