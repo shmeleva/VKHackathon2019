@@ -43,6 +43,12 @@
     align-items: center;
     margin-top: 10px;
   }
+  &__links-share {
+    line-height: 1;
+  }
+  &__heart-icon {
+    opacity: 0.5;
+  }
   &__check {
     position: absolute;
     width: 100%;

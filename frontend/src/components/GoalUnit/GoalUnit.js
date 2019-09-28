@@ -69,9 +69,9 @@ const GoalUnit = props => {
       <div className="GoalUnit__links-share">
         Поделиться с друзьями
       </div>
-      <div className="GoalUnit__links-donate">
-        Пожертвовать
-      </div>
+      <Link className="GoalUnit__links-donate" to={"/donate/100"}>
+        <span className="GoalUnit__heart-icon">❤</span>&nbsp;Пожертвовать
+      </Link>
       </div>
       {
         props.type === 'pending' && (<div className="GoalUnit__check">
