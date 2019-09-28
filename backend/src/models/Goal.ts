@@ -1,51 +1,33 @@
-import { prop, Typegoose, Ref, arrayProp } from "@hasezoey/typegoose";
-import { User } from "./User";
-
-export class Weekday extends Typegoose {
-    @prop({ required: true })
-    day!: number;
-}
-
-export class Check extends Typegoose {
-    @prop({ required: true })
-    date!: Date;
-}
-
-export class Donation extends Typegoose {
-    @prop({ required: true })
-    date: Date;
-
-    @prop({ required: true })
-    amount: number;
-}
+import { prop, Typegoose, Ref, arrayProp, instanceMethod } from "@hasezoey/typegoose";
+import shortid = require("shortid");
 
 export class Goal extends Typegoose {
+    @prop({ default: shortid.generate })
+    public _id!: string;
+
     @prop({ required: true })
-    title!: string;
+    public title!: string;
 
     @prop()
-    description?: string;
-
-    @prop({ required: true, ref: User })
-    user!: Ref<User>;
+    public description?: string;
 
     @prop({ required: true })
-    startDate!: Date;
+    public userId!: string;
 
     @prop({ required: true })
-    endDate!: Date;
+    public startDate!: Date;
 
-    @prop()
-    timesAWeek?: number;
+    @prop({ required: true })
+    public endDate!: Date;
 
-    @arrayProp({ itemsRef: Weekday })
-    weekdays?: Ref<Weekday>[];
+    @arrayProp({ items: Number })
+    public weekdays!: number[]
 
-    @arrayProp({ itemsRef: Check })
-    checks?: Ref<Check>[];
+    @arrayProp({ items: Date })
+    public checks!: Date[]
 
-    @arrayProp({ itemsRef: Donation })
-    donations?: Ref<Donation>[];
+    @arrayProp({ items: Number })
+    public donations!: number[]
 }
 
 export const GoalModel = new Goal().getModelForClass(Goal);

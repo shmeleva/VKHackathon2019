@@ -15,12 +15,15 @@ const MongoStore = mongo(session);
  */
 
 import * as profileController from "./controllers/profile";
+import * as userController from "./controllers/user";
+import * as goalController from "./controllers/goal";
 
 /**
  * Passport configuration.
  */
 
 import * as passportConfig from "./authentication/passport";
+import { UserModel } from "./models/User";
 
 /**
  * Create Express server.
@@ -36,9 +39,11 @@ const mongoUrl = MONGODB_URI;
 mongoose.Promise = bluebird;
 
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useCreateIndex: true }).then(
-    () => { },
+    () => {
+        //mongoose.connection.db.dropDatabase(function (err, result) { });
+    },
 ).catch(err => {
-    console.error("MongoDB connection error. Please make sure MongoDB is running. " + err);
+    //console.error("MongoDB connection error. Please make sure MongoDB is running. " + err);
     process.exit(1);
 });
 
@@ -68,14 +73,23 @@ app.use((req, res, next) => {
     res.locals.user = req.user;
     next();
 });
-
 /**
  * API routes.
  */
+
 app.get("/logout", profileController.logout);
+
 app.get("/profile", passportConfig.isAuthenticated, profileController.getProfile);
-app.put("/profile/update", passportConfig.isAuthenticated, profileController.updateProfile);
-app.delete("/profile/delete", passportConfig.isAuthenticated, profileController.deleteProfile);
+//app.delete("/profile/delete", passportConfig.isAuthenticated, profileController.deleteProfile);
+
+app.get("/users/:userId", userController.getUserById);
+
+app.get("/goals/:goalId", goalController.getGoalById);
+app.get("/createGoal", passportConfig.isAuthenticated, goalController.postGoal); // POST /goals/create
+app.get("/goals/:goalId/check", passportConfig.isAuthenticated, goalController.postGoalCheck);  // POST /goals/:goalId/check
+app.get("/goals/:goalId/uncheck", passportConfig.isAuthenticated, goalController.postGoalUncheck);  // POST /goals/:goalId/check
+app.get("/goals/:goalId/donate", goalController.postGoalDonate); // POST /goals/:goalId/donate
+app.get("/goals/:goalId/delete", goalController.postGoalDelete); // POST /goals/:goalId/delete
 
 /**
  * VKontakte authentication routes.

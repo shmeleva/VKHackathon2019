@@ -31,8 +31,6 @@ passport.use(new VKontakteStrategy({
             return done(undefined, existingUser);
         }
 
-        console.log(profile)
-
         const user: any = new UserModel();
         user.firstName = profile.name.givenName;
         user.lastName = profile.name.familyName;
