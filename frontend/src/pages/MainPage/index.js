@@ -31,8 +31,8 @@ class MainPage extends React.Component {
     axios.get('http://localhost:3000/profile', {
       withCredentials: true
     }).catch(error => {
-      this.props.history.push("/login");
       error = true;
+      this.props.history.push("/login");
     }).then(response => {
       if (!error) {
         this.setState({auth: true});
@@ -47,45 +47,19 @@ class MainPage extends React.Component {
   sortGoals(){
     const current_date = new Date();
     const current_day = ((new Date()).getDay() + 6) % 7;
-    console.log('this.state.goals: ', this.state.goals);
     this.state.goals.forEach((goal) => {
       let goal_date = new Date(goal.endDate);
       if (goal_date <  current_date) {
         this.goals_history.push(goal);
       }
-      else if (goal.weekdays.map((weekday) => +weekday.day).indexOf(current_day !== -1)) {
+      else if (goal.weekdays.map((weekday) => +weekday.day).indexOf(current_day) !== -1) {
         this.goals_pending.push(goal);
       }
       else {
         this.goals_active.push(goal);
       }
     })
-    // this.goals_pending = this.state.goals.filter((elem) => {
-    //   return elem.weekdays.map((weekday) => +weekday.day).indexOf(current_date.getDay()) !== -1;
-    // });
-    // this.goals_active = this.state.goals.filter((elem) => {
-    //   return elem.weekdays.map((weekday) => +weekday.day).indexOf(current_date.getDay()) === -1;
-    // });
-    console.log('this.goals_pending', this.goals_pending);
-    console.log('this.goals_active', this.goals_active);
-    console.log('this.goals_history', this.goals_history);
-
-    // let start_date = new Date();
-    // start_date.setDate(start_date.getDate() - 200);
-    // let end_date = new Date();
-    // end_date.setDate(end_date.getDate() - 150);
-
-    // axios('http://localhost:3000/goals/create', {
-    //   method: 'post',
-    //   withCredentials: true,
-    //   data: {
-    //     title: 'ПРОШЛОЕ',
-    //     weekdays: [{day: 1}, {day: 4}],
-    //     startDate: new Date(new Date().setUTCHours(0, 0, 0, 0)).toISOString(),
-    //     endDate: new Date(end_date.setUTCHours(0, 0, 0, 0)).toISOString()
-    //   }
-    // }).then(response => {
-    // });
+    console.log('---GOALS: ', this.state.goals);
   }
 
   logOut(){
@@ -149,7 +123,7 @@ class MainPage extends React.Component {
             <div className="MainPage__goal-list">
               {
                 this.goals_history.map((elem) => {
-                  return <GoalUnit key={elem.id} title={elem.title} type='pending'/>
+                  return <GoalUnit key={elem.id} title={elem.title} type='history'/>
                 })
               }
             </div>

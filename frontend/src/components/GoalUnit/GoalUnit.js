@@ -57,7 +57,9 @@ const GoalUnit = props => {
           {props.donations}
         </span>
       </div>
-      <Calendar/>
+      {
+        props.type !== 'history' &&  <Calendar/>
+      }
       <div className="GoalUnit__links">
       <div className="GoalUnit__links-share">
         Поделиться с друзьями
