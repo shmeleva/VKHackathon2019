@@ -18,10 +18,10 @@ const Calendar = props => {
   console.log(props);
   const buildDays = () => {
     let counter = new Date(props.start.getTime());
-    let calendar = [<CalendarUnit day={counter.getDate()} state={['normal', 'checked','normal', 'normal', 'missed'][counter.getDate()%5]}/>];
+    let calendar = [<CalendarUnit day={counter.getDate()} state={['normal', 'checked','missed', 'normal', 'normal'][counter.getDate()%5]}/>];
     counter.setDate(counter.getDate() + 1);
     do {
-      calendar.push(<CalendarUnit day={counter.getDate()} state={['normal', 'checked','normal', 'normal', 'missed'][counter.getDate()%5]}/>);
+      calendar.push(<CalendarUnit day={counter.getDate()} state={['normal', 'checked','missed', 'normal', 'normal'][counter.getDate()%5]}/>);
       counter.setDate(counter.getDate() + 1);
     }
     while (counter.getDate() !== end.getDate());
@@ -36,7 +36,7 @@ const Calendar = props => {
 }
 let start = new Date();
 let end = new Date(); 
-end.setDate(end.getDate() + 14);
+end.setDate(end.getDate() + 7);
 Calendar.defaultProps = {
   start: start,
   end: end

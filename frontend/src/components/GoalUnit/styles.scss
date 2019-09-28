@@ -66,13 +66,20 @@
 
 .CalendarUnit {
   width: 32px;
-  line-height: 32px;
+  height: 32px;
   color: $color-darkgrey;
   text-align: center;
   font-size: 16px;
   background: rgba(0, 0, 0, 0.08);
   border-radius: 5px;
   margin: 2px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:last-of-type {
+    border: 2px solid $color-darkblue;
+  }
   &--checked {
     background: $color-palegreen;
   }
