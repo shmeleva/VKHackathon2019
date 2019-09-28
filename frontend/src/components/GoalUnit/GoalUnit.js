@@ -2,18 +2,82 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles.scss';
 
-const GoalUnit = props => {
+const CalendarUnit = props => {
   return (
-    <div className="GoalRecommended">
-      <div className="GoalRecommended__title">
+    <div className={`CalendarUnit CalendarUnit--${props.state}`}>
+      {props.day}
+    </div>
+  )
+}
+CalendarUnit.defaultProps = {
+  day: 31,
+  state: 'normal'
+}
+
+const Calendar = props => {
+  console.log(props);
+  const buildDays = () => {
+    let counter = new Date(props.start.getTime());
+    let calendar = [<CalendarUnit day={counter.getDate()} state={['normal', 'checked','normal', 'normal', 'missed'][counter.getDate()%5]}/>];
+    counter.setDate(counter.getDate() + 1);
+    do {
+      calendar.push(<CalendarUnit day={counter.getDate()} state={['normal', 'checked','normal', 'normal', 'missed'][counter.getDate()%5]}/>);
+      counter.setDate(counter.getDate() + 1);
+    }
+    while (counter.getDate() !== end.getDate());
+    return calendar;
+  }
+  buildDays();
+  return (
+    <div className="Calendar">
+      {buildDays()}
+    </div>
+  )
+}
+let start = new Date();
+let end = new Date(); 
+end.setDate(end.getDate() + 14);
+Calendar.defaultProps = {
+  start: start,
+  end: end
+}
+
+
+
+
+
+const GoalUnit = props => {
+  var date = new Date();
+  return (
+    <div className={`GoalUnit GoalUnit--${props.type}`}>
+      <div className="GoalUnit__title">
          {props.title}
       </div>
-      <div className="GoalRecommended__description">
-       {props.description}
+      <div className="GoalUnit__more-link">
+         Подробнее >
       </div>
-      <Link to={"/goal/100"} className="GoalRecommended__button">
-        Добавить цель
-      </Link>
+      <div className="GoalUnit__info">
+        <span className="GoalUnit__info-timer">
+          {props.timer}
+        </span>
+        <span className="GoalUnit__info-donations">
+          {props.donations}
+        </span>
+      </div>
+      <Calendar/>
+      <div className="GoalUnit__links">
+      <div className="GoalUnit__links-share">
+        Поделиться с друзьями
+      </div>
+      <div className="GoalUnit__links-donate">
+        Пожертвовать
+      </div>
+      </div>
+      {
+        props.type === 'pending' && (<div className="GoalUnit__check">
+            Отметиться
+          </div>)
+      }
     </div>
   )
 }
@@ -22,5 +86,7 @@ export default GoalUnit;
 
 GoalUnit.defaultProps = {
   title: 'День без сладкого',
-  description: 'Быстрые углеводы не приносят пользы, но способствуют увеличению веса.'
+  timer: '24/60 дней',
+  donations: '5000 руб. пожертвовали',
+  type: 'active'
 }
