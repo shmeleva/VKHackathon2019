@@ -10,17 +10,6 @@ import axios from "axios";
 import DonatePage from '../pages/DonatePage';
 
 class BaseRouter extends React.Component {
-	// let auth = true;
-	// const checkAuth = () => {
-	// 	axios.get('http://localhost:3000/profile', {
-	// 		withCredentials: true
-	// 	}).catch(error => {
-	// 		auth = false;
-	// 	}).then(response => {
-	// 		console.log("Auth? ", auth);
-	// 	});
-	// }
-	// checkAuth();
 	render() {
 		return (
 			<BrowserRouter>
