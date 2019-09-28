@@ -1,0 +1,9 @@
+@import 'src/styles/media-screen-breakpoints.scss';
+
+.MainPage {
+  color: purple;
+  .Wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

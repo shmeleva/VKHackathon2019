@@ -24,6 +24,9 @@ const LoginPage = props => {
       <Link to={"/main"}>
         На главную
       </Link>
+      <Link to={"/welcome"}>
+        На онбординг
+      </Link>
     </div>
   )
 }
