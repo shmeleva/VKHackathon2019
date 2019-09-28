@@ -3,10 +3,8 @@
 .GoalPageNew {
   margin-bottom: 30px;
 
-  &__image {
-    max-width: 140px;
-    margin: 0 auto 20px;
-    display: block;
+  .image--centered {
+    max-width: 120px;
   }
 
   &__days {

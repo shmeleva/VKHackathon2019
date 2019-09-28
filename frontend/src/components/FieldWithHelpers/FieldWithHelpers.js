@@ -5,7 +5,7 @@ const FieldWithHelpers = props => {
     <div className="FielsWithHelpers">
       <input 
         className="text-field"
-        type="text" 
+        type="number" 
         placeholder="Введите количество дней"
         value={props.value || ''}
         onChange={(e)=>{
