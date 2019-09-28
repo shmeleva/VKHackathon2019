@@ -26,50 +26,47 @@ export type CompleteGoalResponse = BasicGoalResponse & {
   user: BasicUserResponse
 };
 
+export const findGoalById = async (goalId: string): Promise<CompleteGoalResponse> => {
+  const goalDocument = await GoalModel.findById(goalId);
 
-export const findAllGoalsByUserId = async (userId: string): Promise<BasicGoalResponse[]> => {
-  const goalDocs = await GoalModel.find({ userId });
-
-  const goals: BasicGoalResponse[] = goalDocs.map(goalDoc => ({
-    id: goalDoc._id,
-    title: goalDoc.title,
-    description: goalDoc.description,
-    startDate: goalDoc.startDate,
-    endDate: goalDoc.endDate,
-    weekdays: goalDoc.weekdays.map(day => ({ day })),
-    checks: goalDoc.checks.map(date => ({ date })),
-    donations: goalDoc.donations.map(amount => ({ amount }))
-  }));
-  return goals;
-};
-
-export const findSingleGoalById = async (goalId: string): Promise<CompleteGoalResponse> => {
-  const goalDoc = await GoalModel.findById(goalId);
-
-  if (goalDoc === null) {
+  if (goalDocument === null) {
     return null
   }
 
-  const { userId } = goalDoc;
+  const { userId } = goalDocument;
   const user = await findUserById(userId);
 
   if (user === null) {
     return null
   }
 
-  const userGoalResponse: CompleteGoalResponse = {
-    id: goalDoc._id,
-    title: goalDoc.title,
-    description: goalDoc.description,
-    startDate: goalDoc.startDate,
-    endDate: goalDoc.endDate,
-    weekdays: goalDoc.weekdays.map(day => ({ day })),
-    checks: goalDoc.checks.map(date => ({ date })),
-    donations: goalDoc.donations.map(amount => ({ amount })),
+  return {
+    id: goalDocument._id,
+    title: goalDocument.title,
+    description: goalDocument.description,
+    startDate: goalDocument.startDate,
+    endDate: goalDocument.endDate,
+    weekdays: goalDocument.weekdays.map(day => ({ day })),
+    checks: goalDocument.checks.map(date => ({ date })),
+    donations: goalDocument.donations.map(amount => ({ amount })),
     user
   };
-  return userGoalResponse;
-}
+};
+
+export const findGoalsByUserId = async (userId: string): Promise<BasicGoalResponse[]> => {
+  const goalDocuments = await GoalModel.find({ userId });
+
+  return goalDocuments.map(goalDocument => ({
+    id: goalDocument._id,
+    title: goalDocument.title,
+    description: goalDocument.description,
+    startDate: goalDocument.startDate,
+    endDate: goalDocument.endDate,
+    weekdays: goalDocument.weekdays.map(day => ({ day })),
+    checks: goalDocument.checks.map(date => ({ date })),
+    donations: goalDocument.donations.map(amount => ({ amount }))
+  }));
+};
 
 export const createGoal = async (userId: string, createGoalRequest: CreateGoalRequest): Promise<string> => {
   const goalModel = new GoalModel();

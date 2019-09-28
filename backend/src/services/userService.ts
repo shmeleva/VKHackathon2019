@@ -1,13 +1,5 @@
 import { UserModel } from "../models/User";
-import { BasicGoalResponse, findAllGoalsByUserId } from "./goalService";
-
-export type CreateUserRequest = {
-  firstName: string,
-  lastName: string,
-  vkontakte: string,
-  email: string,
-  token: string,
-};
+import { BasicGoalResponse, findGoalsByUserId } from "./goalService";
 
 export type BasicUserResponse = {
   id: string,
@@ -20,47 +12,31 @@ export type CompleteUserResponse = BasicUserResponse & {
 };
 
 export const findUserById = async (userId: string): Promise<BasicUserResponse> => {
-  const user = await UserModel.findById(userId);
+  const userDocument = await UserModel.findById(userId);
 
-  if (user === null) {
+  if (userDocument === null) {
     return null
   }
 
-  const { firstName, lastName } = user
-  const userResponse: BasicUserResponse = {
+  const { firstName, lastName } = userDocument
+  return {
     id: userId,
     firstName,
     lastName
   };
-  return userResponse;
 };
 
-export const findUserByVkontakteId = async (userVkontakteId: string): Promise<BasicUserResponse> => {
-  const user = await UserModel.findOne({ vkontakte: userVkontakteId });
+export const findUserWithGoalsById = async (userId: string): Promise<CompleteUserResponse> => {
+  const user = await findUserById(userId);
 
-  if (user === null) {
+  if (user == null) {
     return null
   }
 
-  const userResponse: BasicUserResponse = {
-    id: user._id,
-    ...user
-  };
-  return userResponse;
-};
+  const goals = await findGoalsByUserId(userId);
 
-export const findUserWithGoals = async (userId: string): Promise<CompleteUserResponse> => {
-  const userResponse = await findUserById(userId);
-
-  if (userResponse == null) {
-    return null
-  }
-
-  const goals = await findAllGoalsByUserId(userId);
-
-  const userWithGoalsResponse: CompleteUserResponse = {
-    ...userResponse,
+  return {
+    ...user,
     goals
-  };
-  return userWithGoalsResponse;
+  }
 };

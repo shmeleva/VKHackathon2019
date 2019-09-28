@@ -1,11 +1,11 @@
 import express = require("express");
 import { check, sanitize, validationResult } from "express-validator";
-import { findSingleGoalById, CreateGoalRequest, createGoal } from "../services/goalService";
+import { findGoalById, CreateGoalRequest, createGoal } from "../services/goalService";
 
 export const getGoalById = async (req: any, res: any) => {
   const goalId = req.params["goalId"];
   try {
-    const goal = await findSingleGoalById(goalId);
+    const goal = await findGoalById(goalId);
 
     if (goal === null) {
       res.sendStatus(404);

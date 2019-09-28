@@ -1,10 +1,10 @@
 import express = require("express");
-import { findUserWithGoals } from "../services/userService";
+import { findUserWithGoalsById } from "../services/userService";
 
 export const getUserById = async (req: express.Request, res: express.Response) => {
   const userId = req.params["userId"];
   try {
-    const user = await findUserWithGoals(userId);
+    const user = await findUserWithGoalsById(userId);
 
     if (user === null) {
       res.sendStatus(404);
