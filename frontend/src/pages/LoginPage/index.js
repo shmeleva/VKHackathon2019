@@ -10,9 +10,9 @@ const LoginPage = props => {
         <div className="LoginPage__title">Добро пожаловать в ОРБИ.Привычки</div>
         <div className="LoginPage__description">В этом приложении можно:</div>
         <ul>
-        <li>Создавать достижимые конкретные цели для выработки привычек</li>
-        <li>Просить друзей поддержать вас через донаты в фонд</li>
-        <li>Просить друзей поддержать вас через донаты в фонд</li>
+          <li>Создавать достижимые конкретные цели для выработки привычек</li>
+          <li>Просить друзей поддержать вас через донаты в фонд</li>
+          <li>Просить друзей поддержать вас через донаты в фонд</li>
         </ul>
         <br/>
         <div className="container--flex-row-center">
@@ -22,6 +22,7 @@ const LoginPage = props => {
         <Link to={"/main"}>
           На главную
         </Link>
+        <div className="LoginPage__bottom"/>
       </div>
     </div>
   )

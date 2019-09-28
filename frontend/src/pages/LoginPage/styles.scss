@@ -1,7 +1,7 @@
 .LoginPage {
   width: 100vw;
   height: 100vh;
-  background-image: url('./Hello.jpg');
+  //background-image: url('./Hello.jpg');
   background-size: 100% auto;
   background-position: bottom center;
   background-repeat: no-repeat;
@@ -11,5 +11,10 @@
   }
   &__bottom {
     background-image: url('./Hello.jpg');
+    width: 100%;
+    max-width: 500px;
+    background-size: 100% auto;
+    height: calc(100vw * 0.66);
+    max-height: 400px;
   }
 }
