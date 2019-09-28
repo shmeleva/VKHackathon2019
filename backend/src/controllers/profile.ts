@@ -44,19 +44,6 @@ export const getProfile = async (req: any, res: any) => {
 };
 
 /**
- * PUT /profile/update
- * Update profile information.
- */
-export const updateProfile = (req: any, res: any, next: NextFunction) => {
-    UserModel.findOne({ _id: req.user._id }, (err: any, user: any) => {
-        if (err) { return next(err); }
-        user.firstName = req.body.firstName || "";
-        user.lastName = req.body.lastName || "";
-        user.save(() => res.send({ msg: "Профиль успешно обновлен." }));
-    });
-};
-
-/**
  * DELETE /profile/delete
  * Delete an account.
  */

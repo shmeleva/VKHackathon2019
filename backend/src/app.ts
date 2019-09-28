@@ -80,8 +80,7 @@ app.use((req, res, next) => {
 app.get("/logout", profileController.logout);
 
 app.get("/profile", passportConfig.isAuthenticated, profileController.getProfile);
-app.put("/profile/update", passportConfig.isAuthenticated, profileController.updateProfile);
-app.delete("/profile/delete", passportConfig.isAuthenticated, profileController.deleteProfile);
+//app.delete("/profile/delete", passportConfig.isAuthenticated, profileController.deleteProfile);
 
 app.get("/users/:userId", userController.getUserById);
 
