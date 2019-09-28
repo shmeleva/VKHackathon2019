@@ -20,6 +20,11 @@ a {
   padding: 16px;
 }
 
+.page-content--form-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 .container {
   &--flex-row-center {
     display: flex;

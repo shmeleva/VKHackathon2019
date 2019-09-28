@@ -23,7 +23,7 @@ class DonatePage extends React.Component {
     return (
       <div className="DonatePage">
       <Header pageName="Пожертвование"/>
-        <div className="DonatePage__inner page-content">
+        <div className="DonatePage__inner page-content page-content--form-wrapper">
           <label className="field-label">Сумма пожертвования</label>
           <FieldWithHelpers
             value={this.state.amount}
@@ -38,6 +38,7 @@ class DonatePage extends React.Component {
               }
             }
           />
+          <br/>
           <Link 
           to={"/goal/100"}
           className={"primary-button "+(!this.state.amount && "primary-button--disabled")}>

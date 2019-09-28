@@ -100,7 +100,7 @@ class GoalPageNew extends React.Component {
     return this.state.auth ? (
       <div className="GoalPageNew">
         <Header pageName="Создание цели"/>
-        <div className="GoalPageNew__inner page-content">
+        <div className="GoalPageNew__inner page-content page-content--form-wrapper">
           <img className="GoalPageNew__image" src={image}/>
 
           <form className="GoalPageNew__form">
