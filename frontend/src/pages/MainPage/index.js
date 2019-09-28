@@ -22,9 +22,6 @@ class MainPage extends React.Component {
       auth: false,
       goals: []
     }
-    this.goals_pending = [];
-    this.goals_active = [];
-    this.goals_history = [];
   }
   componentWillMount() {
     let error = false;
@@ -44,7 +41,10 @@ class MainPage extends React.Component {
       }
     });
   }
-  sortGoals() {
+  sortGoals(){
+    this.goals_pending = [];
+    this.goals_active = [];
+    this.goals_history = [];
     const current_date = new Date();
     const current_day = ((new Date()).getDay() + 6) % 7;
     this.state.goals.forEach((goal) => {
