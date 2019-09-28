@@ -6,6 +6,7 @@ import GoalsList from '../../components/GoalsList/GoalsList';
 import GoalRecommended from '../../components/GoalRecommended/GoalRecommended';
 import GoalUnit from '../../components/GoalUnit/GoalUnit';
 import axios from "axios";
+import image from './no-goals-today.jpg';
 
 Date.prototype.withoutTime = function () {
   var d = new Date(this);
@@ -114,7 +115,7 @@ class MainPage extends React.Component {
             }
             {
               (this.goals_pending.length === 0) && [
-                <div key='image' className="MainPage__no-goals-image" />,
+                <img src={image} className="MainPage__no-goals-image image--centered" />,
                 <div key='text' className="MainPage__no-goals-text">
                   На сегодня задач нет. Отдыхайте и идите гулять в парк!
                 </div>]
