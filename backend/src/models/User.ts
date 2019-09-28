@@ -12,9 +12,6 @@ export class User extends Typegoose {
   public lastName!: string;
 
   @prop({ required: true, unique: true })
-  public email!: string;
-
-  @prop({ required: true, unique: true })
   public vkontakte!: string;
 
   @prop({ required: true })

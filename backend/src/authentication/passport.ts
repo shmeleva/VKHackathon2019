@@ -23,7 +23,7 @@ passport.use(new VKontakteStrategy({
     clientID: VKONTAKTE_ID,
     clientSecret: VKONTAKTE_SECRET,
     callbackURL: "/auth/vkontakte/callback"
-}, (accessToken, _refreshToken, params, profile, done) => {
+}, (accessToken, _refreshToken, _params, profile, done) => {
     UserModel.findOne({ vkontakte: profile.id }, (err, existingUser) => {
         if (err) { return done(err); }
 
@@ -34,7 +34,6 @@ passport.use(new VKontakteStrategy({
         const user: any = new UserModel();
         user.firstName = profile.name.givenName;
         user.lastName = profile.name.familyName;
-        user.email = params.email;
         user.vkontakte = profile.id;
         user.token = accessToken;
 
