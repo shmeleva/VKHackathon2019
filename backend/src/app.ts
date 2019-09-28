@@ -6,7 +6,7 @@ import mongo from "connect-mongo";
 import mongoose from "mongoose";
 import passport from "passport";
 import bluebird from "bluebird";
-import { MONGODB_URI, SESSION_SECRET } from "./utils/secrets";
+import { MONGODB_URI, SESSION_SECRET, FRONTEND_URI } from "./utils/secrets";
 
 const MongoStore = mongo(session);
 
@@ -72,7 +72,7 @@ app.use(lusca.xframe("SAMEORIGIN"));
 app.use(lusca.xssProtection(true));
 
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:8080");
+    res.header("Access-Control-Allow-Origin", FRONTEND_URI);
     res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
     res.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
     res.header("Access-Control-Allow-Credentials", "true");
@@ -103,8 +103,11 @@ app.post("/goals/:goalId/delete", goalController.postGoalDelete);
  * VKontakte authentication routes.
  */
 app.get("/auth/vkontakte", passport.authenticate("vkontakte", { scope: ["email", "public_profile"] }));
-app.get("/auth/vkontakte/callback", passport.authenticate("vkontakte", { failureRedirect: "/login" }), (_req, res) => {
-    res.sendStatus(200);
+app.get("/auth/vkontakte/callback", passport.authenticate("vkontakte", { failureRedirect: `${FRONTEND_URI}/login` }), function (req: any, res: any) {
+    if (req.user || req.session.user) {
+        return res.redirect(`${FRONTEND_URI}/main`);
+    }
+    return res.redirect(`${FRONTEND_URI}/login`);
 });
 
 export default app;

@@ -42,3 +42,9 @@ if (!VKONTAKTE_SECRET) {
     process.exit(1);
 }
 
+export const FRONTEND_URI = process.env["FRONTEND_URI"];
+
+if (!FRONTEND_URI) {
+    console.error("Set FRONTEND_URI environment variable.");
+    process.exit(1);
+}
