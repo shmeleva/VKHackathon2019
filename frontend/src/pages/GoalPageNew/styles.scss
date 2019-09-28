@@ -4,4 +4,10 @@
     margin: 0 auto;
     max-width: 600px;
   }
+
+  &__image {
+    max-width: 140px;
+    margin: 0 auto 20px;
+    display: block;
+  }
 }

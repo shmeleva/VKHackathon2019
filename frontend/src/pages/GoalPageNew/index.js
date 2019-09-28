@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles.scss';
 import Header from '../../components/Header/Header';
+import image from './girl.jpg';
 
 const GoalPageNew = props => {
   console.log("-------GoalPageNew: ", props);
@@ -9,6 +10,7 @@ const GoalPageNew = props => {
     <div className="GoalPageNew">
       <Header pageName="Создание цели"/>
       <div className="GoalPageNew__inner page-content">
+        <img className="GoalPageNew__image" src={image}/>
         <label className="field-label">Цель</label>
         <input 
           className="text-field" 
