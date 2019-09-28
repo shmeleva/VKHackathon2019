@@ -6,16 +6,29 @@ import WelcomePage from '../pages/WelcomePage/index';
 import GoalPage from '../pages/GoalPage/index';
 import GoalPageNew from '../pages/GoalPageNew/index';
 import SomeComponent from '../components/SomeComponent';
+import axios from "axios";
 
 const BaseRouter = props => {
+	let auth;
+	const checkAuth = () => {
+		axios.get('http://localhost:3000/profile', {
+			withCredentials: true
+		}).catch(error => auth = false).then(response => {
+			auth = true;
+			console.log(auth);
+		});
+	}
+	checkAuth();
+
   return (
 		<BrowserRouter>
 			<Switch>
-				<Route path="/main" component={MainPage} />
 				<Route path="/login" exact component={LoginPage} />
+				<Route path="/goal/:id" component={GoalPage} />
+
+				<Route path="/main" component={MainPage} />
 				<Route path="/welcome" component={WelcomePage} />
 				<Route path="/goal/new" component={GoalPageNew} />
-				<Route path="/goal/:id" component={GoalPage} />
 				{/* DEFAULT REDIRECT */}
 				<Route render={() => <Redirect to="/main" />} />
 			</Switch>

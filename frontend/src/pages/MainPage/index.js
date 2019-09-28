@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, withRouter} from 'react-router-dom';
 import './styles.scss';
 import Header from '../../components/Header/Header';
 import GoalsList from '../../components/GoalsList/GoalsList';
@@ -9,10 +9,24 @@ import axios from "axios";
 
 const MainPage = props => {
   const current_goals = [5];
+  let info;
+  console.log(props)
 
   axios.get('http://localhost:3000/profile', {
     withCredentials: true
-  }).then(response => console.log(response));
+  }).catch(error => props.history.push("/login")).then(response => {
+    info = response
+  });
+
+  // axios.get('http://localhost:3000/users/urum5toe', {
+  //   withCredentials: true
+  // }).then(response => console.log(response));
+
+  const logOut = () => {
+    axios.get('http://localhost:3000/profile/logout', {
+      withCredentials: true
+    }).then(response => console.log(response));
+  }
 
   return (
     <div className="MainPage">
@@ -71,7 +85,7 @@ const MainPage = props => {
           <GoalsList />
         </div>
         <br />
-        <Link to={"/login"}>
+        <Link to={"/login"} onClick={logOut}>
           Выйти
         </Link>
         <br />
@@ -80,7 +94,7 @@ const MainPage = props => {
         </Link>
       </div>
     </div>
-  )
+  ) 
 }
 
-export default MainPage;
+export default withRouter(MainPage);

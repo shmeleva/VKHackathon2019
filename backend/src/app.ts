@@ -88,7 +88,7 @@ app.use((req, res, next) => {
  */
 
 app.get("/profile", passportConfig.isAuthenticated, profileController.getProfile);
-app.post("/profile/logout", profileController.logout);
+app.get("/profile/logout", profileController.logout);
 
 app.get("/users/:userId", userController.getUserById);
 
