@@ -9,16 +9,40 @@ class GoalPageNew extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      period: null
+      name: null,
+      period: null,
+      days: [],
+      daysNames: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
     };
     this.handlePeriodChange = this.handlePeriodChange.bind(this);
   }
 
-  handlePeriodChange(value) {
+  handleNameChange(value) {
     this.setState(() => ({
+      name: value
+    }));    
+  }
+
+  handlePeriodChange(value) {
+    this.setState((prevState) => ({
       period: value
     }));
-  };
+  }
+
+  handleDaysChange(checkbox) {
+    const days = this.state.days;
+    if (checkbox.checked) {
+      days.push(checkbox.value);
+    } else {
+      const index = this.state.days.indexOf(checkbox.value);
+      if (index != -1) {
+        days.splice(index, 1);
+      }
+    }
+    this.setState((prevState) => ({
+      days
+    }));
+  }
 
   render() {
     return (
@@ -30,9 +54,13 @@ class GoalPageNew extends React.Component {
           <form className="GoalPageNew__form">
 
             <label className="field-label">Цель</label>
-            <input className="text-field"
-                  type="text" 
-                  placeholder="Пройти 10 000 шагов">
+            <input 
+              className="text-field"
+              type="text" 
+              placeholder="Пройти 10 000 шагов"
+              key="newGoalName"
+              onChange={(e)=> this.handleNameChange(e.target.value)}
+            >
             </input>
 
             <label className="field-label">Срок</label>
@@ -51,8 +79,27 @@ class GoalPageNew extends React.Component {
             />
 
             <label className="field-label">Периодичность</label>
+            <div className="GoalPageNew__days">
+            {this.state.daysNames.map((name, index) => (
+              <label 
+                className="GoalPageNew__day"
+                key={index}
+              >
+                <input 
+                  type="checkbox" 
+                  value={index}
+                  onChange={(e)=>{this.handleDaysChange(e.target)}}
+                />
+                <span className="text-field__helper">{name}</span>
+              </label>
+            ))}
+            </div>
 
-            <Link className="primary-button" to={"/goal/100"}>
+            <br/>
+
+            <Link 
+            to={"/goal/100"}
+            className={"primary-button "+(!(this.state.name && this.state.period && this.state.days.length > 0) && "primary-button--disabled")}>
               Создать
             </Link>
             <Link className="primary-button primary-button--bright" to={"/main"}>

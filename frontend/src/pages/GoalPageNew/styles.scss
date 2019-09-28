@@ -1,4 +1,7 @@
+@import 'src/styles/style-variables.scss';
+
 .GoalPageNew {
+  margin-bottom: 30px;
   
   &__inner {
     margin: 0 auto;
@@ -9,5 +12,30 @@
     max-width: 140px;
     margin: 0 auto 20px;
     display: block;
+  }
+
+  &__days {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__day {
+    width: calc(100%/7 - 4px);
+  }
+
+  &__day input {
+    display: none;
+  }
+
+  &__day .text-field__helper {
+    width: 100%;
+    text-align: center;
+  }
+
+  input:checked + .text-field__helper {
+    background-color: $color-pink;
+    border-color: $color-pink;
+    color: $color-white;
   }
 }

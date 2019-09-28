@@ -81,4 +81,9 @@ a {
     background-color: transparent;
     color: $color-darkblue;
   }
+
+  &--disabled {
+    pointer-events: none;
+    opacity: 0.6;
+  }
 }
