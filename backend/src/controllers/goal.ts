@@ -1,6 +1,6 @@
 import express = require("express");
 import { check, sanitize, validationResult } from "express-validator";
-import { findGoalById, CreateGoalRequest, createGoal } from "../services/goalService";
+import { findGoalById, CreateGoalRequest, createGoalForUser, toggleGoalCheck, donateToGoal } from "../services/goalService";
 
 export const getGoalById = async (req: any, res: any) => {
   const goalId = req.params["goalId"];
@@ -31,7 +31,7 @@ export const postGoal = async (req: any, res: any) => {
   };
 
   try {
-    const goal = await createGoal(userId, createGoalRequest);
+    const goal = await createGoalForUser(userId, createGoalRequest);
     console.log(goal)
     res.status(200).send(goal)
   }
@@ -44,7 +44,8 @@ export const postGoalCheck = async (req: any, res: any) => {
   const userId = req.user._id;
   const goalId = req.params["goalId"];
   try {
-
+    await toggleGoalCheck(userId, goalId, new Date("2019-09-28T12:00:20.743Z"))
+    res.status(200).send()
   }
   catch (error) {
     res.status(500).send({ error })
@@ -54,7 +55,8 @@ export const postGoalCheck = async (req: any, res: any) => {
 export const postGoalDonate = async (req: any, res: any) => {
   const goalId = req.params["goalId"];
   try {
-
+    await donateToGoal(goalId, 400)
+    res.status(200).send()
   }
   catch (error) {
     res.status(500).send({ error })

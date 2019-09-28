@@ -89,9 +89,9 @@ app.delete("/profile/delete", passportConfig.isAuthenticated, profileController.
 app.get("/users/:userId", userController.getUserById);
 
 app.get("/goals/:goalId", goalController.getGoalById);
-app.get("/createGoal", passportConfig.isAuthenticated, goalController.postGoal); // TODO: post!
-app.post("/goals/:goalId/check", passportConfig.isAuthenticated, goalController.postGoalCheck);
-app.post("/goals/:goalId/donate", goalController.postGoalDonate);
+app.get("/createGoal", passportConfig.isAuthenticated, goalController.postGoal); // POST /goals/create
+app.get("/goals/:goalId/check", passportConfig.isAuthenticated, goalController.postGoalCheck);  // POST /goals/:goalId/check
+app.get("/goals/:goalId/donate", goalController.postGoalDonate); // POST /goals/:goalId/donate
 app.delete("/goals/:goalId/delete", goalController.deleteGoal);
 
 /**

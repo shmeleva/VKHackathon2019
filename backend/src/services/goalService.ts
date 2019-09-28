@@ -1,6 +1,6 @@
-import { GoalModel } from "../models/Goal";
+import { GoalModel, Goal } from "../models/Goal";
 import { BasicUserResponse, findUserById } from "./userService";
-import { ObjectId } from "mongodb";
+import { InstanceType } from "@hasezoey/typegoose";
 
 export type CreateGoalRequest = {
   title: string,
@@ -26,6 +26,19 @@ export type CompleteGoalResponse = BasicGoalResponse & {
   user: BasicUserResponse
 };
 
+const fromDocument = (goalDocument: InstanceType<Goal>): BasicGoalResponse => {
+  return {
+    id: goalDocument._id,
+    title: goalDocument.title,
+    description: goalDocument.description,
+    startDate: goalDocument.startDate,
+    endDate: goalDocument.endDate,
+    weekdays: goalDocument.weekdays.map(day => ({ day })),
+    checks: goalDocument.checks.map(date => ({ date })),
+    donations: goalDocument.donations.map(amount => ({ amount }))
+  }
+};
+
 export const findGoalById = async (goalId: string): Promise<CompleteGoalResponse> => {
   const goalDocument = await GoalModel.findById(goalId);
 
@@ -41,56 +54,45 @@ export const findGoalById = async (goalId: string): Promise<CompleteGoalResponse
   }
 
   return {
-    id: goalDocument._id,
-    title: goalDocument.title,
-    description: goalDocument.description,
-    startDate: goalDocument.startDate,
-    endDate: goalDocument.endDate,
-    weekdays: goalDocument.weekdays.map(day => ({ day })),
-    checks: goalDocument.checks.map(date => ({ date })),
-    donations: goalDocument.donations.map(amount => ({ amount })),
+    ...fromDocument(goalDocument),
     user
   };
 };
 
 export const findGoalsByUserId = async (userId: string): Promise<BasicGoalResponse[]> => {
   const goalDocuments = await GoalModel.find({ userId });
-
-  return goalDocuments.map(goalDocument => ({
-    id: goalDocument._id,
-    title: goalDocument.title,
-    description: goalDocument.description,
-    startDate: goalDocument.startDate,
-    endDate: goalDocument.endDate,
-    weekdays: goalDocument.weekdays.map(day => ({ day })),
-    checks: goalDocument.checks.map(date => ({ date })),
-    donations: goalDocument.donations.map(amount => ({ amount }))
-  }));
+  return goalDocuments.map(d => fromDocument(d));
 };
 
-export const createGoal = async (userId: string, createGoalRequest: CreateGoalRequest): Promise<string> => {
-  const goalModel = new GoalModel();
-  goalModel.title = createGoalRequest.title;
-  goalModel.description = createGoalRequest.description;
-  goalModel.userId = userId;
-  goalModel.startDate = createGoalRequest.startDate;
-  goalModel.endDate = createGoalRequest.endDate;
-  goalModel.weekdays = createGoalRequest.weekdays.map(x => x.day);
-  goalModel.checks = [];
-  goalModel.donations = [];
+export const createGoalForUser = async (userId: string, request: CreateGoalRequest): Promise<string> => {
+  const {
+    title,
+    description,
+    startDate,
+    endDate,
+    weekdays
+  } = request;
 
-  const goalDoc = await goalModel.save();
-  return goalDoc._id;
-}
+  const goalModel = new GoalModel();
+  goalModel.userId = userId;
+  goalModel.title = title;
+  goalModel.description = description;
+  goalModel.startDate = startDate;
+  goalModel.endDate = endDate;
+  goalModel.weekdays = weekdays.map(x => x.day);
+
+  const goalWithId = await goalModel.save();
+  return goalWithId._id;
+};
 
 export const toggleGoalCheck = async (userId: string, goalId: string, check: Date): Promise<void> => {
+  //const goalDocument = 
+};
 
-}
-
-export const donateToGoal = async (userId: string, goalId: string, amount: number): Promise<void> => {
-
-}
+export const donateToGoal = async (goalId: string, amount: number): Promise<void> => {
+  await GoalModel.findOneAndUpdate({ _id: goalId }, { "$push": { "donations": amount } });
+};
 
 export const deleteGoal = async (userId: string, goalId: string): Promise<void> => {
-
-}
+  await GoalModel.deleteOne({ _id: goalId, userId });
+};
