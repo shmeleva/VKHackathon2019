@@ -23,6 +23,7 @@ class MainPage extends React.Component {
       pending: true,
       goals: []
     }
+    this.logOut = this.logOut.bind(this);
   }
   componentWillMount(){
     this.setState({pending: true});
@@ -68,7 +69,9 @@ class MainPage extends React.Component {
   logOut() {
     axios.get('http://localhost:3000/profile/logout', {
       withCredentials: true
-    }).then(response => console.log(response));
+    }).then(response => {
+      this.props.history.push("/login");
+    });
   }
   render(){
     return this.state.auth && !this.state.pending ? (
@@ -138,9 +141,9 @@ class MainPage extends React.Component {
             <GoalsList />
           </div>
           <br />
-          <Link to={"/login"} onClick={this.logOut}>
+          <div onClick={this.logOut}>
             Выйти
-          </Link>
+          </div>
           <br />
           <Link to={"/goal/new"}>
             Новая цель

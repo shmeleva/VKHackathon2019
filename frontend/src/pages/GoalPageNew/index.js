@@ -24,6 +24,7 @@ class GoalPageNew extends React.Component {
     axios.get('http://localhost:3000/profile', {
       withCredentials: true
     }).catch(error => {
+      this.props.history.push("/login");
       error = true;
     }).then(response => {
       if (!error) {
