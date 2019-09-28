@@ -1,12 +1,9 @@
-@import "src/styles/style-variables.scss";
-
-.GoalRecommended {
+.GoalUnit {
   padding: 10px;
   margin-bottom: 16px;
   box-shadow: 0px 2px 10px #cccccc;
   max-width: 350px;
   margin: 5px;
-  border-radius: 5px;
   &__title {
     font-size: 20px;
   }

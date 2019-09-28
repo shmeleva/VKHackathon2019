@@ -20,15 +20,18 @@
     margin-bottom: 10px;
   }
   &__description-unit {
+    margin-bottom: 5px;
     &::before {
       content: '';
-      height: 5px;
-      width: 5px;
-      background: #000000;
+      height: 6px;
+      width: 6px;
+      background: #ef7088;
       display: inline-block;
       border-radius: 50%;
       vertical-align: middle;
-      margin-right: 5px;
+      margin-right: 6px;
+      position: relative;
+      top: -2px;
     }
   }
   &__group-text {
@@ -46,7 +49,7 @@
     width: 100%;
     max-width: 500px;
     background-size: 100% auto;
-    height: calc(100vw * 0.66);
+    height: calc(100vw * 0.75);
     max-height: 400px;
     align-self: center;
     margin-top: 10px;
