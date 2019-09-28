@@ -7,23 +7,23 @@ const LoginPage = props => {
   return (
     <div className="LoginPage">
       <div className="LoginPage__inner page-content">
-        <div className="LoginPage__title">Добро пожаловать в ОРБИ.Привычки</div>
-        <div className="LoginPage__description">В этом приложении можно:</div>
-        <ul>
-          <li>Создавать достижимые конкретные цели для выработки привычек</li>
-          <li>Просить друзей поддержать вас через донаты в фонд</li>
-          <li>Просить друзей поддержать вас через донаты в фонд</li>
-        </ul>
-        <br/>
-        <div className="container--flex-row-center">
-          <VKButton/>
+        <div className="LoginPage__group-text">
+          <div className="LoginPage__title">Добро пожаловать <br/>в ОРБИ.Привычки</div>
+          <div className="LoginPage__description-title">В этом приложении можно:</div>
+          <div className="LoginPage__description-list">
+            <div className="LoginPage__description-unit">Создавать достижимые конкретные цели для выработки привычек</div>
+            <div className="LoginPage__description-unit">Просить друзей поддержать вас через донаты в фонд</div>
+            <div className="LoginPage__description-unit">Просить друзей поддержать вас через донаты в фонд</div>
+          </div>
+          <div className="container--flex-row-center">
+            <VKButton/>
+          </div>
         </div>
-        <br/>
-        <Link to={"/main"}>
-          На главную
-        </Link>
         <div className="LoginPage__bottom"/>
       </div>
+      <Link to={"/main"}>
+        На главную
+      </Link>
     </div>
   )
 }

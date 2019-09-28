@@ -6,20 +6,56 @@
   //background-image: url('./Hello.jpg');
   background-size: 100% auto;
   background-position: bottom center;
-  background-repeat: no-repeat;
   &__title {
     font-size: 24px;
     font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  &__description-title {
+    margin-bottom: 10px;
+  }
+  &__description-unit {
+    &::before {
+      content: '';
+      height: 5px;
+      width: 5px;
+      background: #000000;
+      display: inline-block;
+      border-radius: 50%;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+  }
+  &__group-text {
+    @include MedM {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 20px;
+    }
   }
   &__bottom {
     background-image: url('./Hello.jpg');
+    background-repeat: no-repeat;
+    background-position: bottom center;
     width: 100%;
     max-width: 500px;
     background-size: 100% auto;
     height: calc(100vw * 0.66);
     max-height: 400px;
+    align-self: center;
+    margin-top: 10px;
   }
-	@include MedL {
-    color: blue;
-	}
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    @include MedM {
+      flex-direction: row-reverse;
+    }
+  }
+  .VKButton {
+    margin-top: 20px;
+    align-self: center;
+  }
 }
