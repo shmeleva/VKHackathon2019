@@ -4,6 +4,13 @@ import './styles.scss';
 import Header from '../../components/Header/Header';
 import image from './girl.jpg';
 import FieldWithHelpers from '../../components/FieldWithHelpers/FieldWithHelpers';
+import axios from "axios";
+
+Date.prototype.withoutTime = function () {
+  var d = new Date(this);
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
 
 class GoalPageNew extends React.Component {
   constructor(props) {
@@ -12,9 +19,26 @@ class GoalPageNew extends React.Component {
       name: null,
       period: null,
       days: [],
-      daysNames: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
+      daysNames: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+      auth: false
     };
     this.handlePeriodChange = this.handlePeriodChange.bind(this);
+    this.createGoal = this.createGoal.bind(this);
+  }
+  componentWillMount(){
+    console.log('MOUNT MOUNT');
+    let error = false;
+    axios.get('http://localhost:3000/profile', {
+      withCredentials: true
+    }).catch(error => {
+      this.props.history.push("/login");
+      error = true;
+    }).then(response => {
+      if (!error) {
+        console.log(response);
+        this.setState({auth: true, user_id: response.data.id});
+      }
+    });
   }
 
   handleNameChange(value) {
@@ -44,8 +68,36 @@ class GoalPageNew extends React.Component {
     }));
   }
 
+  createGoal() {
+    console.log('CREATEGOAL');
+    let error = false;
+    let end_date = new Date();
+    end_date.setDate(end_date.getDate() + this.state.period);
+    let data = {
+      title: this.state.name,
+      weekdays: [this.state.days.map((elem) => ({day: +elem}))],
+      startDate: (new Date()).withoutTime().toISOString(),
+      endDate: end_date.withoutTime().toISOString()
+    }
+    console.log(data);
+    console.log(this.state.user_id);
+    axios('http://localhost:3000/goals/create', {
+      method: 'post',
+      withCredentials: true,
+      data: data
+    }).catch(error => {
+      error = true;
+      console.log('ERRRRRROR');
+    }).then(response => {
+      console.log('then');
+      if (!error) {
+        console.log('NOOOOOORM');
+      }
+    });
+  }
+
   render() {
-    return (
+    return this.state.auth ? (
       <div className="GoalPageNew">
         <Header pageName="Создание цели"/>
         <div className="GoalPageNew__inner page-content">
@@ -97,11 +149,11 @@ class GoalPageNew extends React.Component {
 
             <br/>
 
-            <Link 
-            to={"/goal/100"}
-            className={"primary-button "+(!(this.state.name && this.state.period && this.state.days.length > 0) && "primary-button--disabled")}>
+            <div 
+              onClick={this.createGoal}
+              className={"primary-button "+(!(this.state.name && this.state.period && this.state.days.length > 0) && "primary-button--disabled")}>
               Создать
-            </Link>
+            </div>
             <Link className="primary-button primary-button--bright" to={"/main"}>
               Отменить
             </Link>
@@ -110,7 +162,7 @@ class GoalPageNew extends React.Component {
 
         </div>
       </div>
-    )
+    ) : null;
   }
 }
 

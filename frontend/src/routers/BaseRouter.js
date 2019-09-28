@@ -28,11 +28,11 @@ class BaseRouter extends React.Component {
 			<BrowserRouter>
 				<Switch>
 					<Route path="/login" exact component={LoginPage} />
+					<Route path="/goal/new" component={GoalPageNew} />
 					<Route path="/goal/:id" component={GoalPage} />
 	
 					<Route path="/main" component={MainPage} />
 					<Route path="/welcome" component={WelcomePage} />
-					<Route path="/goal/new" component={GoalPageNew} />
 					{/* DEFAULT REDIRECT */}
 					<Route render={() => <Redirect to="/main" />} />
 				</Switch>
