@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './styles.scss';
 import Header from '../../components/Header/Header';
 import image from './girl.jpg';
@@ -25,11 +25,9 @@ class GoalPageNew extends React.Component {
     axios.get('http://localhost:3000/profile', {
       withCredentials: true
     }).catch(error => {
-      this.props.history.push("/login");
       error = true;
     }).then(response => {
       if (!error) {
-        console.log(response);
         this.setState({auth: true, user_id: response.data.id});
       }
     });
@@ -75,19 +73,15 @@ class GoalPageNew extends React.Component {
       startDate: new Date(new Date().setUTCHours(0, 0, 0, 0)).toISOString(),
       endDate: new Date(end_date.setUTCHours(0, 0, 0, 0)).toISOString()
     }
-    console.log(data);
-    console.log(this.state.user_id);
     axios('http://localhost:3000/goals/create', {
       method: 'post',
       withCredentials: true,
       data: data
     }).catch(error => {
       error = true;
-      console.log('ERRRRRROR');
     }).then(response => {
-      console.log('then');
       if (!error) {
-        console.log('NOOOOOORM');
+        this.props.history.push("/main");
       }
     });
   }
@@ -163,4 +157,4 @@ class GoalPageNew extends React.Component {
   }
 }
 
-export default GoalPageNew;
+export default withRouter(GoalPageNew);
