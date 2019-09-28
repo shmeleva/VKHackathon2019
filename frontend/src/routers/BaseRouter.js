@@ -8,33 +8,35 @@ import GoalPageNew from '../pages/GoalPageNew/index';
 import SomeComponent from '../components/SomeComponent';
 import axios from "axios";
 
-const BaseRouter = props => {
-	let auth;
-	const checkAuth = () => {
-		axios.get('http://localhost:3000/profile', {
-			withCredentials: true
-		}).catch(error => auth = false).then(response => {
-			auth = true;
-			console.log(auth);
-		});
+class BaseRouter extends React.Component {
+	// let auth = true;
+	// const checkAuth = () => {
+	// 	axios.get('http://localhost:3000/profile', {
+	// 		withCredentials: true
+	// 	}).catch(error => {
+	// 		auth = false;
+	// 	}).then(response => {
+	// 		console.log("Auth? ", auth);
+	// 	});
+	// }
+	// checkAuth();
+
+	render() {
+		return (
+			<BrowserRouter>
+				<Switch>
+					<Route path="/login" exact component={LoginPage} />
+					<Route path="/goal/:id" component={GoalPage} />
+	
+					<Route path="/main" component={MainPage} />
+					<Route path="/welcome" component={WelcomePage} />
+					<Route path="/goal/new" component={GoalPageNew} />
+					{/* DEFAULT REDIRECT */}
+					<Route render={() => <Redirect to="/main" />} />
+				</Switch>
+			</BrowserRouter>
+		);
 	}
-	checkAuth();
-
-  return (
-		<BrowserRouter>
-			<Switch>
-				<Route path="/login" exact component={LoginPage} />
-				<Route path="/goal/:id" component={GoalPage} />
-
-				<Route path="/main" component={MainPage} />
-				<Route path="/welcome" component={WelcomePage} />
-				<Route path="/goal/new" component={GoalPageNew} />
-				{/* DEFAULT REDIRECT */}
-				<Route render={() => <Redirect to="/main" />} />
-			</Switch>
-		</BrowserRouter>
-
-  );
 }
 
 export default BaseRouter;
