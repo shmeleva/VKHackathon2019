@@ -7,6 +7,7 @@ import GoalRecommended from '../../components/GoalRecommended/GoalRecommended';
 import GoalUnit from '../../components/GoalUnit/GoalUnit';
 import axios from "axios";
 import image from './no-goals-today.jpg';
+import CongratModal from '../../components/CongratModal/CongratModal';
 
 Date.prototype.withoutTime = function () {
   var d = new Date(this);
@@ -76,6 +77,7 @@ class MainPage extends React.Component {
   render(){
     return this.state.auth && !this.state.pending ? (
       <div className="MainPage">
+        <CongratModal/>
         {this.sortGoals()}
         <Header />
         <div className="MainPage__inner page-content">

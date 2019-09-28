@@ -1,0 +1,60 @@
+@import 'src/styles/style-variables.scss';
+
+.CongratModal {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: initial;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  transition: all 0.3s;
+  &>div {
+    width: 80%;
+    max-width: 500px;
+    min-height: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: $size-radius;
+    box-sizing: border-box;
+    background: #ffffff;
+    color: $color-darkgrey;
+    text-align: center;
+  }
+  &__image {
+    width: 15%;
+    display: block;
+    margin: 0 auto 10px;
+  }
+  &__share-button {
+    display: inline-block;
+    background-color: $color-pink; 
+    color: $color-white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: $size-radius; 
+    box-sizing: border-box;
+    margin-top: 10px;
+  }
+  &__close {
+    color: #aaa;
+    line-height: 50px;
+    font-size: 80%;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    top: 0;
+    width: 70px;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+      color: black;
+    }
+  }
+}
