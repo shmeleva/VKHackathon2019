@@ -7,16 +7,18 @@ const GoalPageNew = props => {
   console.log("-------GoalPageNew: ", props);
   return (
     <div className="GoalPageNew">
-      <Header/>
-      GoalPageNew
-      <br/>
-      <Link to={"/main"}>
-        Отменить
-      </Link>
-      <br/>
-      <Link to={"/goal/100"}>
-        Создать
-      </Link>
+      <div className="GoalPageNew__inner page-content">
+        <Header/>
+        GoalPageNew
+        <br/>
+        <Link to={"/main"}>
+          Отменить
+        </Link>
+        <br/>
+        <Link to={"/goal/100"}>
+          Создать
+        </Link>
+      </div>
     </div>
   )
 }

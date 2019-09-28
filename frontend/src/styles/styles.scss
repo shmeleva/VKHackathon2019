@@ -17,7 +17,7 @@ $size-radius: 5px;
 }
 
 body {
-    background-color: $color-lightpink;
+  //background-color: $color-lightpink;
 }
 
 a {
@@ -25,5 +25,12 @@ a {
   color: inherit;
   cursor: pointer;
   //font-size: 20px;
+}
+
+.page-content {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+  padding: 30px;
 }
 

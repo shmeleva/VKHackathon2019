@@ -7,21 +7,23 @@ import GoalsList from '../../components/GoalsList/GoalsList';
 const MainPage = props => {
   return (
     <div className="MainPage">
-      <Header/>
-      <br/>
-      MainPage
-      <br/><br/>
-      <div className="Wrapper">
-        <GoalsList/>
+      <div className="MainPage__inner page-content">
+        <Header/>
+        <br/>
+        MainPage
+        <br/><br/>
+        <div className="Wrapper">
+          <GoalsList/>
+        </div>
+        <br/>
+        <Link to={"/login"}>
+          Выйти
+        </Link>
+        <br/>
+        <Link to={"/goal/new"}>
+          Новая цель
+        </Link>
       </div>
-      <br/>
-      <Link to={"/login"}>
-        Выйти
-      </Link>
-      <br/>
-      <Link to={"/goal/new"}>
-        Новая цель
-      </Link>
     </div>
   )
 }

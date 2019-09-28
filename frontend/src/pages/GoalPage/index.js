@@ -6,15 +6,17 @@ const GoalPage = props => {
   console.log("-------GoalPage: ", props);
   return (
     <div className="GoalPage">
-      GoalPage
-      <br/>
-      <Link to={"/main"}>
-        На главную
-      </Link>
-      <br/>
-      <Link to={"/main"}>
-        Удалить
-      </Link>
+      <div className="GoalPage__inner page-content">
+        GoalPage
+        <br/>
+        <Link to={"/main"}>
+          На главную
+        </Link>
+        <br/>
+        <Link to={"/main"}>
+          Удалить
+        </Link>
+      </div>
     </div>
   )
 }
