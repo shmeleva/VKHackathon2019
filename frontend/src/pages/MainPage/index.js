@@ -24,12 +24,8 @@ class MainPage extends React.Component {
       goals: []
     }
   }
-<<<<<<< HEAD
-  componentWillMount() {
-=======
   componentWillMount(){
     this.setState({pending: true});
->>>>>>> fix some visual bugs
     let error = false;
     axios.get('http://localhost:3000/profile', {
       withCredentials: true
