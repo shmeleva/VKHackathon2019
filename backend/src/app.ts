@@ -97,7 +97,7 @@ app.post("/goals/create", passportConfig.isAuthenticated, goalController.postGoa
 app.post("/goals/:goalId/check", passportConfig.isAuthenticated, goalController.postGoalCheck);
 app.post("/goals/:goalId/uncheck", passportConfig.isAuthenticated, goalController.postGoalUncheck);
 app.post("/goals/:goalId/donate", goalController.postGoalDonate);
-app.post("/goals/:goalId/delete", goalController.postGoalDelete);
+app.post("/goals/:goalId/delete", passportConfig.isAuthenticated, goalController.postGoalDelete);
 
 /**
  * VKontakte authentication routes.
