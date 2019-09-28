@@ -5,7 +5,7 @@ export interface BasicUserResponse {
     id: string;
     firstName: string;
     lastName: string;
-}
+};
 
 export type CompleteUserResponse = BasicUserResponse & {
     goals: BasicGoalResponse[];
