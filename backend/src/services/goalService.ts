@@ -73,6 +73,8 @@ export const createUserGoal = async (userId: string, request: CreateGoalRequest)
         weekdays
     } = request;
 
+    console.log(request);
+
     const goalModel = new GoalModel();
 
     try {
@@ -83,9 +85,12 @@ export const createUserGoal = async (userId: string, request: CreateGoalRequest)
         goalModel.endDate = endDate;
         goalModel.weekdays = weekdays.map(x => x.day);
 
+        console.log(goalModel);
+
         await goalModel.validate();
     }
-    catch {
+    catch(err) {
+        console.log(err);
         return null;
     }
 

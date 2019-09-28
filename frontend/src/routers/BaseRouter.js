@@ -21,7 +21,6 @@ class BaseRouter extends React.Component {
 	// 	});
 	// }
 	// checkAuth();
-
 	render() {
 		return (
 			<BrowserRouter>
