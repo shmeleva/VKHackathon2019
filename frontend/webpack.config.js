@@ -14,6 +14,9 @@ module.exports = {
       exclude: /node_modules/
     }, {
       test: /\.scss$/,
+      include: [
+        path.resolve(__dirname),
+      ],
       use: [
         'style-loader',
         'css-loader',
