@@ -16,36 +16,46 @@ const MainPage = props => {
             Цели на сегодня:
           </div>
           {
-            (current_goals.length > 0) && [<GoalRecommended />, <GoalRecommended />]
+            (current_goals.length > 0) && (
+              <div className="MainPage__goal-list">
+                <GoalRecommended />
+                <GoalRecommended />
+              </div>)
           }
           {
             (current_goals.length === 0) && [
+              <div key='image' className="MainPage__no-goals-image"/>,
               <div key='text' className="MainPage__no-goals-text">
                 На сегодня задач нет. Отдыхайте и идите гулять в парк!
-              </div>,
-              <div key='image' className="MainPage__no-goals-image"/>]
+              </div>]
           }
         </div>
         <div className="MainPage__goal-wrapper MainPage__goal-wrapper--active">
           <div className="MainPage__goal-wrapper-title">
             Другие активные цели:
           </div>
-          <GoalRecommended />
-          <GoalRecommended />
+          <div className="MainPage__goal-list">
+            <GoalRecommended />
+            <GoalRecommended />
+          </div>
         </div>
         <div className="MainPage__goal-wrapper MainPage__goal-wrapper--recommended">
           <div className="MainPage__goal-wrapper-title">
             Попробуйте такие цели:
           </div>
-          <GoalRecommended />
-          <GoalRecommended />
+          <div className="MainPage__goal-list">
+            <GoalRecommended />
+            <GoalRecommended />
+          </div>
         </div>
-        <div className="MainPage__goal-list MainPage__goal-wrapper--history">
+        <div className="MainPage__goal-wrapper MainPage__goal-wrapper--history">
           <div className="MainPage__goal-wrapper-title">
             Достигнутые:
           </div>
-          <GoalRecommended />
-          <GoalRecommended />
+          <div className="MainPage__goal-list">
+            <GoalRecommended />
+            <GoalRecommended />
+          </div>
         </div>
         <br/>
         MainPage

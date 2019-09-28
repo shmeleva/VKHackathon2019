@@ -13,7 +13,7 @@ const WelcomePage = props => {
           Создайте свою первую цель!
         </div>
         <div className="WelcomePage__image"/>
-        <Link to={"/goal/100"} className="WelcomePage__create">
+        <Link to={"/goal/new"} className="WelcomePage__create">
           Создать цель
         </Link>
         <div className="WelcomePage__suggestion-title">
