@@ -66,6 +66,8 @@ class GoalPageNew extends React.Component {
     this.setState((prevState) => ({
       days
     }));
+    console.log(days);
+    
   }
 
   createGoal() {
@@ -101,7 +103,7 @@ class GoalPageNew extends React.Component {
       <div className="GoalPageNew">
         <Header pageName="Создание цели"/>
         <div className="GoalPageNew__inner page-content page-content--form-wrapper">
-          <img className="GoalPageNew__image" src={image}/>
+          <img className="image--centered" src={image}/>
 
           <form className="GoalPageNew__form">
 

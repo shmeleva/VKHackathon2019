@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header/Header'
 import './styles.scss';
+import image from './donate-img.jpg';
 import FieldWithHelpers from '../../components/FieldWithHelpers/FieldWithHelpers';
 
 class DonatePage extends React.Component {
@@ -24,6 +25,8 @@ class DonatePage extends React.Component {
       <div className="DonatePage">
       <Header pageName="Пожертвование"/>
         <div className="DonatePage__inner page-content page-content--form-wrapper">
+          <img className="image--centered" src={image}/>
+          
           <label className="field-label">Сумма пожертвования</label>
           <FieldWithHelpers
             value={this.state.amount}
