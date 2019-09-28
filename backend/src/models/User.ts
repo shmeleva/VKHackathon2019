@@ -1,6 +1,10 @@
 import { prop, Typegoose } from "@hasezoey/typegoose";
+import shortid = require("shortid");
 
 export class User extends Typegoose {
+  @prop({ default: shortid.generate })
+  _id!: string;
+
   @prop({ required: true })
   firstName!: string;
 
@@ -17,4 +21,4 @@ export class User extends Typegoose {
   token!: string;
 }
 
-export const UserModel = new User().getModelForClass(User);
+export const UserModel = new User().getModelForClass(User, { schemaOptions: { timestamps: true } });

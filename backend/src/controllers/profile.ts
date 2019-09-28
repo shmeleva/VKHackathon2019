@@ -1,14 +1,14 @@
 import { UserModel } from "../models/User";
-import { Request, Response, NextFunction } from "express";
-//import { check, sanitize, validationResult } from "express-validator";
+import { NextFunction } from "express";
+import { check, sanitize, validationResult } from "express-validator";
 import "../authentication/passport";
-import { GoalModel } from "../models/Goal";
+import { findUserById } from "../services/userService";
 
 /**
  * GET /logout
  * Log out.
  */
-export const logout = (req: Request, res: Response) => {
+export const logout = (req: any, res: any) => {
     req.logout();
     res.sendStatus(200);
 };
@@ -16,32 +16,40 @@ export const logout = (req: Request, res: Response) => {
 /**
  * GET /profile
  */
-export const getProfile = (req: Request, res: Response) => {
-    const goal = new GoalModel();
-    goal.title = "Quit smoking...";
-    goal.user = (req.user as any)._id;
-    goal.startDate = new Date();
-    goal.endDate = new Date();
+export const getProfile = async (req: any, res: any) => {
+    const userId = req.user._id;
 
-    goal.save((err: Error) => {
+    check(userId).isMongoId();
 
-    });
+    const errors = validationResult(req);
 
-    GoalModel.find({ user: (req.user as any)._id }, (err: any, goals: any) => {
-        res.status(200).send(goals);
-    })
+    if (!errors.isEmpty()) {
+        req.flash("errors", errors.array());
+        return res.redirect("/contact");
+    }
 
-    //res.status(200).send();
+    try {
+        const user = await findUserById(userId);
+
+        if (user === null) {
+            res.status(404).send();
+        }
+        else {
+            res.status(200).send(user)
+        }
+    }
+    catch (error) {
+        res.status(500).send(error);
+    }
 };
 
 /**
  * PUT /profile/update
  * Update profile information.
  */
-export const updateProfile = (req: Request, res: Response, next: NextFunction) => {
-    UserModel.findById((req.user as any)._id, (err: any, user: any) => {
+export const updateProfile = (req: any, res: any, next: NextFunction) => {
+    UserModel.findOne({ _id: req.user._id }, (err: any, user: any) => {
         if (err) { return next(err); }
-        // TODO: Validation + type body + functional.
         user.firstName = req.body.firstName || "";
         user.lastName = req.body.lastName || "";
         user.save(() => res.send({ msg: "Профиль успешно обновлен." }));
@@ -52,8 +60,8 @@ export const updateProfile = (req: Request, res: Response, next: NextFunction) =
  * DELETE /profile/delete
  * Delete an account.
  */
-export const deleteProfile = (req: Request, res: Response, next: NextFunction) => {
-    UserModel.remove({ _id: (req.user as any)._id }, (err: any) => {
+export const deleteProfile = (req: any, res: any, next: NextFunction) => {
+    UserModel.remove({ _id: req.user._id }, (err: any) => {
         if (err) { return next(err); }
         req.logout();
         res.send({ msg: "Ваш аккаунт удален." });
