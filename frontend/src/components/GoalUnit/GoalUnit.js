@@ -15,7 +15,6 @@ CalendarUnit.defaultProps = {
 }
 
 const Calendar = props => {
-  console.log(props);
   const buildDays = () => {
     let counter = new Date(props.start.getTime());
     let calendar = [<CalendarUnit day={counter.getDate()} state={['normal', 'checked','missed', 'normal', 'normal'][counter.getDate()%5]}/>];

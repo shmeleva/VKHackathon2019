@@ -7,17 +7,23 @@ import GoalRecommended from '../../components/GoalRecommended/GoalRecommended';
 import GoalUnit from '../../components/GoalUnit/GoalUnit';
 import axios from "axios";
 
+Date.prototype.withoutTime = function () {
+  var d = new Date(this);
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+
 class MainPage extends React.Component {
   constructor(props){
     super(props);
     this.current_goals = [5];
     this.props = props;
     this.state = {
-      auth: false
+      auth: false,
+      goals: []
     }
   }
   componentWillMount(){
-    console.log('MOUNT MOUNT');
     let error = false;
     axios.get('http://localhost:3000/profile', {
       withCredentials: true
@@ -29,22 +35,16 @@ class MainPage extends React.Component {
         this.setState({auth: true});
         axios.get('http://localhost:3000/users/' + response.data.id, {
           withCredentials: true
-        }).then(response => {
-          console.log('HELLLLLOOOOO ', response)
+        }).then(response2 => {
+          this.setState({goals: response2.data.goals});
         });
       }
     });
   }
-
-  // axios.get('http://localhost:3000/profile', {
-  //   withCredentials: true
-  // }).catch(error => props.history.push("/login")).then(response => {
-  //   info = response
-  // });
-
-  // axios.get('http://localhost:3000/users/urum5toe', {
-  //   withCredentials: true
-  // }).then(response => console.log(response));
+  sortGoals(){
+    const current_date = new Date().withoutTime();
+    debugger
+  }
 
   logOut(){
     axios.get('http://localhost:3000/profile/logout', {
@@ -54,6 +54,7 @@ class MainPage extends React.Component {
   render(){
     return this.state.auth ? (
       <div className="MainPage">
+        {this.sortGoals()}
         <Header />
         <div className="MainPage__inner page-content">
           <div className="MainPage__goal-wrapper MainPage__goal-wrapper--pending">

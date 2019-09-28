@@ -6,12 +6,6 @@ import image from './girl.jpg';
 import FieldWithHelpers from '../../components/FieldWithHelpers/FieldWithHelpers';
 import axios from "axios";
 
-Date.prototype.withoutTime = function () {
-  var d = new Date(this);
-  d.setHours(0, 0, 0, 0);
-  return d;
-}
-
 class GoalPageNew extends React.Component {
   constructor(props) {
     super(props);
@@ -78,8 +72,8 @@ class GoalPageNew extends React.Component {
     let data = {
       title: this.state.name,
       weekdays: this.state.days.map((elem) => ({day: +elem})),
-      startDate: (new Date()).withoutTime().toISOString(),
-      endDate: end_date.withoutTime().toISOString()
+      startDate: new Date(new Date().setUTCHours(0, 0, 0, 0)).toISOString(),
+      endDate: new Date(end_date.setUTCHours(0, 0, 0, 0)).toISOString()
     }
     console.log(data);
     console.log(this.state.user_id);
