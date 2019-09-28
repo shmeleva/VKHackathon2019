@@ -6,13 +6,13 @@ const GoalRecommended = props => {
   return (
     <div className="GoalRecommended">
       <div className="GoalRecommended__title">
-         {props.title}
+        {props.title}
       </div>
       <div className="GoalRecommended__description">
-       {props.description}
+        {props.description}
       </div>
       <Link to={"/goal/new"} className="GoalRecommended__button">
-        Добавить цель
+        Добавить себе
       </Link>
     </div>
   )

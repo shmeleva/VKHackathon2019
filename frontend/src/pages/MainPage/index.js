@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect, withRouter} from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 import './styles.scss';
 import Header from '../../components/Header/Header';
 import GoalsList from '../../components/GoalsList/GoalsList';
@@ -15,7 +15,7 @@ Date.prototype.withoutTime = function () {
 }
 
 class MainPage extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.props = props;
     this.state = {
@@ -26,7 +26,7 @@ class MainPage extends React.Component {
     this.goals_active = [];
     this.goals_history = [];
   }
-  componentWillMount(){
+  componentWillMount() {
     let error = false;
     axios.get('http://localhost:3000/profile', {
       withCredentials: true
@@ -35,22 +35,22 @@ class MainPage extends React.Component {
       error = true;
     }).then(response => {
       if (!error) {
-        this.setState({auth: true});
+        this.setState({ auth: true });
         axios.get('http://localhost:3000/users/' + response.data.id, {
           withCredentials: true
         }).then(response2 => {
-          this.setState({goals: response2.data.goals});
+          this.setState({ goals: response2.data.goals });
         });
       }
     });
   }
-  sortGoals(){
+  sortGoals() {
     const current_date = new Date();
     const current_day = ((new Date()).getDay() + 6) % 7;
     console.log('this.state.goals: ', this.state.goals);
     this.state.goals.forEach((goal) => {
       let goal_date = new Date(goal.endDate);
-      if (goal_date <  current_date) {
+      if (goal_date < current_date) {
         this.goals_history.push(goal);
       }
       else if (goal.weekdays.map((weekday) => +weekday.day).indexOf(current_day !== -1)) {
@@ -88,12 +88,12 @@ class MainPage extends React.Component {
     // });
   }
 
-  logOut(){
+  logOut() {
     axios.get('http://localhost:3000/profile/logout', {
       withCredentials: true
     }).then(response => console.log(response));
   }
-  render(){
+  render() {
     return this.state.auth ? (
       <div className="MainPage">
         {this.sortGoals()}
@@ -101,14 +101,14 @@ class MainPage extends React.Component {
         <div className="MainPage__inner page-content">
           <div className="MainPage__goal-wrapper MainPage__goal-wrapper--pending">
             <div className="MainPage__goal-wrapper-title">
-              Цели на сегодня:
+              Сегодняшние
             </div>
             {
               (this.goals_pending.length > 0) && (
                 <div className="MainPage__goal-list">
                   {
                     this.goals_pending.map((elem) => {
-                      return <GoalUnit key={elem.id} title={elem.title} type='pending'/>
+                      return <GoalUnit key={elem.id} title={elem.title} type='pending' />
                     })
                   }
                 </div>)
@@ -123,19 +123,19 @@ class MainPage extends React.Component {
           </div>
           <div className="MainPage__goal-wrapper MainPage__goal-wrapper--active">
             <div className="MainPage__goal-wrapper-title">
-              Другие активные цели:
+              Активные
             </div>
             <div className="MainPage__goal-list">
               {
                 this.goals_active.map((elem) => {
-                  return <GoalUnit key={elem.id} title={elem.title} type='active'/>
+                  return <GoalUnit key={elem.id} title={elem.title} type='active' />
                 })
               }
             </div>
           </div>
           <div className="MainPage__goal-wrapper MainPage__goal-wrapper--recommended">
             <div className="MainPage__goal-wrapper-title">
-              Попробуйте такие цели:
+              Рекомендуемые
             </div>
             <div className="MainPage__goal-list">
               <GoalRecommended />
@@ -144,12 +144,12 @@ class MainPage extends React.Component {
           </div>
           <div className="MainPage__goal-wrapper MainPage__goal-wrapper--history">
             <div className="MainPage__goal-wrapper-title">
-              Достигнутые:
+              Достигнутые 🎉
             </div>
             <div className="MainPage__goal-list">
               {
                 this.goals_history.map((elem) => {
-                  return <GoalUnit key={elem.id} title={elem.title} type='pending'/>
+                  return <GoalUnit key={elem.id} title={elem.title} type='pending' />
                 })
               }
             </div>
