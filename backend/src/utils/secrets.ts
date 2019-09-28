@@ -5,7 +5,7 @@ if (fs.existsSync(".env")) {
     dotenv.config({ path: ".env" });
 } else {
     console.error("Create .env file.");
-    process.exit(1);
+    //process.exit(1);
 }
 export const ENVIRONMENT = process.env.NODE_ENV;
 const isProduction = ENVIRONMENT === "production";
