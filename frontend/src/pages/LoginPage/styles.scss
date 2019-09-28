@@ -1,3 +1,61 @@
+@import 'src/styles/media-screen-breakpoints.scss';
+
 .LoginPage {
-  color: orange;
+  width: 100vw;
+  height: 100vh;
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    @include MedM {
+      flex-direction: row-reverse;
+    }
+  }
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  &__description-title {
+    margin-bottom: 10px;
+  }
+  &__description-unit {
+    margin-bottom: 5px;
+    &::before {
+      content: '';
+      height: 6px;
+      width: 6px;
+      background: #ef7088;
+      display: inline-block;
+      border-radius: 50%;
+      vertical-align: middle;
+      margin-right: 6px;
+      position: relative;
+      top: -2px;
+    }
+  }
+  &__group-text {
+    @include MedM {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 20px;
+    }
+  }
+  &__bottom {
+    background-image: url('./Hello.jpg');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    width: 100%;
+    max-width: 500px;
+    background-size: 100% auto;
+    height: calc(100vw * 0.75);
+    max-height: 400px;
+    align-self: center;
+    margin-top: 10px;
+  }
+  .VKButton {
+    margin-top: 20px;
+    align-self: center;
+  }
 }

@@ -1,0 +1,13 @@
+@import "src/styles/style-variables.scss";
+
+.GoalsList {
+    max-width: 700px;
+    margin: 0 auto;
+    .GoalItem {
+        margin-bottom: 5px;
+        padding: 10px 20px;
+        background-color: $color-white;
+        border-radius: $size-radius;
+        color: $color-darkgrey;
+    }
+}

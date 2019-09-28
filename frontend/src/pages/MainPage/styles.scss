@@ -1,3 +1,43 @@
+@import 'src/styles/media-screen-breakpoints.scss';
+
 .MainPage {
-  color: purple;
+  &__inner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    @include MedM {
+    }
+  }
+  &__goal-wrapper {
+    margin-bottom: 40px;
+  }
+  &__goal-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__goal-wrapper-title {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  &__no-goals-text {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin-top: 20px;
+  }
+  &__no-goals-image {
+    background-image: url('./no_goals.jpg');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: auto 100%;
+    width: 100%;
+    min-height: 200px;
+    max-height: 300px;
+    margin-bottom: 20px;
+    height: calc(200px + (100vw - 320px)*0.5);
+  }
+  .GoalRecommended {
+    margin-bottom: 10px;
+  }
 }

@@ -1,7 +1,84 @@
-a {
-  //text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-  font-size: 20px;
+@import 'src/styles/style-variables.scss';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu:700&display=swap&subset=cyrillic');
+
+* {
+    font-family: $font-text;
+    margin: 0;
+    padding: 0;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  //font-size: 20px;
+}
+
+.page-content {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 16px;
+}
+
+.container {
+  &--flex-row-center {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.field-label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  color: $color-darkgrey;
+}
+
+.text-field {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 10px; 
+  padding: 10px 16px;
+  box-sizing: border-box;
+  font-size: 16px;
+  border: 2px solid $color-midgrey;
+  border-radius: $size-radius; 
+}
+
+.text-field__helper {
+  margin-right: 5px;
+  margin-bottom: 5px;
+  padding: 3px 5px 4px;
+  box-sizing: border-box;
+  display: inline-block;
+  border: 2px solid $color-lightpink;
+  border-radius: $size-radius; 
+  font-size: 14px;
+  color: $color-darkgrey;
+  cursor: pointer;
+  &--active {
+    color: $color-white;
+    background-color: $color-pink;
+    border-color: $color-pink;
+  }
+}
+
+.primary-button {
+  display: block;
+  text-align: center;
+  margin-bottom: 10px; 
+  padding: 10px 16px;
+  box-sizing: border-box;
+  border-radius: $size-radius; 
+  background-color: $color-green;
+  border: 2px solid $color-green;
+  color: $color-white;
+  font-weight: 600;
+
+  &--bright {
+    border: 2px solid $color-darkblue;
+    box-sizing: border-box;
+    background-color: transparent;
+    color: $color-darkblue;
+  }
+}

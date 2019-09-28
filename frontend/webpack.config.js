@@ -14,11 +14,25 @@ module.exports = {
       exclude: /node_modules/
     }, {
       test: /\.scss$/,
+      include: [
+        path.resolve(__dirname),
+      ],
       use: [
         'style-loader',
         'css-loader',
         'sass-loader'
       ]
+    },
+    {
+      test: /\.(png|jpg|gif)$/i,
+      use: [
+        {
+          loader: 'url-loader',
+          options: {
+            limit: 8192,
+          },
+        },
+      ],
     }]
   },
   devServer: {
