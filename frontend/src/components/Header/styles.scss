@@ -1,0 +1,12 @@
+@import "../../styles/styles.scss";
+
+.Header {
+  background-color: $color-darkblue;
+  padding: 10px 20px;
+  text-align: center;
+  &__logo {
+    text-decoration: none;
+    color: $color-white;  
+    font-family: $font-heading;
+  }
+}
