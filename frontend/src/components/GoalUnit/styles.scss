@@ -52,16 +52,16 @@
   &__check {
     position: absolute;
     width: 100%;
-    background: $color-darkblue;
+    background: $color-green;
     color: $color-white;
     bottom: 0px;
     left: 0px;;
-    line-height: 60px;
+    line-height: 44px;
     border-radius: 0 0 5px 5px;
     text-align: center;
   }
   &--pending {
-    padding: 10px 10px 80px;
+    padding: 10px 10px 60px;
   }
 }
 
