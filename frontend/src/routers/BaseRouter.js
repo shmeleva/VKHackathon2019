@@ -22,7 +22,6 @@ class BaseRouter extends React.Component {
 	// }
 	// checkAuth();
 
-<<<<<<< HEAD
 	render() {
 		return (
 			<BrowserRouter>
@@ -30,6 +29,7 @@ class BaseRouter extends React.Component {
 					<Route path="/login" exact component={LoginPage} />
 					<Route path="/goal/new" component={GoalPageNew} />
 					<Route path="/goal/:id" component={GoalPage} />
+					<Route path="/donate/:id" component={DonatePage} />
 	
 					<Route path="/main" component={MainPage} />
 					<Route path="/welcome" component={WelcomePage} />
@@ -39,18 +39,6 @@ class BaseRouter extends React.Component {
 			</BrowserRouter>
 		);
 	}
-=======
-				<Route path="/main" component={MainPage} />
-				<Route path="/welcome" component={WelcomePage} />
-				<Route path="/goal/new" component={GoalPageNew} />
-				<Route path="/donate/:id" component={DonatePage} />
-				{/* DEFAULT REDIRECT */}
-				<Route render={() => <Redirect to="/main" />} />
-			</Switch>
-		</BrowserRouter>
-
-  );
->>>>>>> merge
 }
 
 export default BaseRouter;
