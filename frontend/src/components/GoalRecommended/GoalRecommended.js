@@ -11,7 +11,7 @@ const GoalRecommended = props => {
       <div className="GoalRecommended__description">
        {props.description}
       </div>
-      <Link to={"/goal/100"} className="GoalRecommended__button">
+      <Link to={"/goal/new"} className="GoalRecommended__button">
         Добавить цель
       </Link>
     </div>

@@ -11,8 +11,8 @@ const MainPage = props => {
     <div className="MainPage">
     <Header/>
       <div className="MainPage__inner page-content">
-        <div className="MainPage__goal-list MainPage__goal-list--pending">
-          <div className="MainPage__goal-list-title">
+        <div className="MainPage__goal-wrapper MainPage__goal-wrapper--pending">
+          <div className="MainPage__goal-wrapper-title">
             Цели на сегодня:
           </div>
           {
@@ -26,22 +26,22 @@ const MainPage = props => {
               <div key='image' className="MainPage__no-goals-image"/>]
           }
         </div>
-        <div className="MainPage__goal-list MainPage__goal-list--active">
-          <div className="MainPage__goal-list-title">
+        <div className="MainPage__goal-wrapper MainPage__goal-wrapper--active">
+          <div className="MainPage__goal-wrapper-title">
             Другие активные цели:
           </div>
           <GoalRecommended />
           <GoalRecommended />
         </div>
-        <div className="MainPage__goal-list MainPage__goal-list--recommended">
-          <div className="MainPage__goal-list-title">
+        <div className="MainPage__goal-wrapper MainPage__goal-wrapper--recommended">
+          <div className="MainPage__goal-wrapper-title">
             Попробуйте такие цели:
           </div>
           <GoalRecommended />
           <GoalRecommended />
         </div>
-        <div className="MainPage__goal-list MainPage__goal-list--history">
-          <div className="MainPage__goal-list-title">
+        <div className="MainPage__goal-list MainPage__goal-wrapper--history">
+          <div className="MainPage__goal-wrapper-title">
             Достигнутые:
           </div>
           <GoalRecommended />
