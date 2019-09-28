@@ -15,7 +15,9 @@ const LoginPage = props => {
         <li>Просить друзей поддержать вас через донаты в фонд</li>
         </ul>
         <br/>
-        <VKButton/>
+        <div className="container--flex-row-center">
+          <VKButton/>
+        </div>
         <br/>
         <Link to={"/main"}>
           На главную
