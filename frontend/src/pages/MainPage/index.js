@@ -7,8 +7,8 @@ import GoalsList from '../../components/GoalsList/GoalsList';
 const MainPage = props => {
   return (
     <div className="MainPage">
+    <Header/>
       <div className="MainPage__inner page-content">
-        <Header/>
         <br/>
         MainPage
         <br/><br/>

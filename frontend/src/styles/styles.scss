@@ -1,14 +1,5 @@
+@import 'src/styles/style-variables.scss';
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu:700&display=swap&subset=cyrillic');
-
-$color-darkblue: #051D4D;
-$color-lightpink: #FFEDEE;
-$color-white: #fff;
-$color-darkgrey: #333;
-
-$font-heading: 'Ubuntu', sans-serif;
-$font-text: 'Open Sans', sans-serif;
-
-$size-radius: 5px;
 
 * {
     font-family: $font-text;

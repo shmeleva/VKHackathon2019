@@ -7,8 +7,8 @@ const GoalPageNew = props => {
   console.log("-------GoalPageNew: ", props);
   return (
     <div className="GoalPageNew">
+      <Header pageName="Создание цели"/>
       <div className="GoalPageNew__inner page-content">
-        <Header/>
         GoalPageNew
         <br/>
         <Link to={"/main"}>

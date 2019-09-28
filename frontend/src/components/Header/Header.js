@@ -5,9 +5,19 @@ import './styles.scss';
 const Header = props => {
   return (
     <div className="Header">
-      <Link className="Header__logo" to={"/main"}>
+      <div className="Header__inner">
+        <Link className="Header__logo" to={"/main"}>
         ОРБИ.Привычки
-      </Link>
+        </Link>
+      </div>
+      {props.pageName && 
+        <div className="Header__breadcrumbs">
+          <Link className="Header__back-button" to={"/main"}>
+          ← Назад
+          </Link>
+          {props.pageName}
+        </div>
+      }
     </div>
   )
 }
