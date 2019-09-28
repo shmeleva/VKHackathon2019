@@ -1,6 +1,7 @@
 import express = require("express");
 import { check, sanitize, validationResult } from "express-validator";
 import { findUserGoalById, CreateGoalRequest, createUserGoal, checkUserGoal, donateToUserGoal, deleteUserGoal, uncheckUserGoal } from "../services/goalService";
+import { dateWithoutHours } from "../utils/dates";
 
 export const getGoalById = async (req: any, res: any) => {
     const goalId = req.params["goalId"];
@@ -66,7 +67,7 @@ export const postGoalCheck = async (req: any, res: any) => {
     }
 
     try {
-        const goal = await checkUserGoal(userId, goalId, new Date(req.body.date));
+        const goal = await checkUserGoal(userId, goalId, dateWithoutHours(req.body.date));
         if (goal === null) {
             res.status(404).send();
         }
@@ -93,7 +94,7 @@ export const postGoalUncheck = async (req: any, res: any) => {
     }
 
     try {
-        const goal = await uncheckUserGoal(userId, goalId, new Date(req.body.date));
+        const goal = await uncheckUserGoal(userId, goalId, dateWithoutHours(req.body.date));
         if (goal === null) {
             res.status(404).send();
         }
