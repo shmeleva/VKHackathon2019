@@ -4,9 +4,10 @@ import './styles.scss';
 import Header from '../../components/Header/Header';
 import GoalsList from '../../components/GoalsList/GoalsList';
 import GoalRecommended from '../../components/GoalRecommended/GoalRecommended';
+import GoalUnit from '../../components/GoalUnit/GoalUnit';
 
 const MainPage = props => {
-  const current_goals = [];
+  const current_goals = [5];
   return (
     <div className="MainPage">
     <Header/>
@@ -18,8 +19,8 @@ const MainPage = props => {
           {
             (current_goals.length > 0) && (
               <div className="MainPage__goal-list">
-                <GoalRecommended />
-                <GoalRecommended />
+                <GoalUnit type='pending'/>
+                <GoalUnit type='pending'/>
               </div>)
           }
           {
@@ -35,8 +36,8 @@ const MainPage = props => {
             Другие активные цели:
           </div>
           <div className="MainPage__goal-list">
-            <GoalRecommended />
-            <GoalRecommended />
+          <GoalUnit type='active'/>
+          <GoalUnit type='active'/>
           </div>
         </div>
         <div className="MainPage__goal-wrapper MainPage__goal-wrapper--recommended">
@@ -53,8 +54,8 @@ const MainPage = props => {
             Достигнутые:
           </div>
           <div className="MainPage__goal-list">
-            <GoalRecommended />
-            <GoalRecommended />
+            <GoalUnit type='history'/>
+            <GoalUnit type='history'/>
           </div>
         </div>
         <br/>
