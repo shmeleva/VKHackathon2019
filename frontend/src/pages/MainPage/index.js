@@ -45,13 +45,14 @@ class MainPage extends React.Component {
   }
   sortGoals(){
     const current_date = new Date();
+    const current_day = ((new Date()).getDay() + 6) % 7;
     console.log('this.state.goals: ', this.state.goals);
     this.state.goals.forEach((goal) => {
       let goal_date = new Date(goal.endDate);
       if (goal_date <  current_date) {
         this.goals_history.push(goal);
       }
-      else if (goal.weekdays.map((weekday) => +weekday.day).indexOf(current_date.getDay()) !== -1) {
+      else if (goal.weekdays.map((weekday) => +weekday.day).indexOf(current_day !== -1)) {
         this.goals_pending.push(goal);
       }
       else {

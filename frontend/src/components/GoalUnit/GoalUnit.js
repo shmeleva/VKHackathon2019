@@ -15,9 +15,10 @@ CalendarUnit.defaultProps = {
 }
 
 const Calendar = props => {
+  let currentDay = ((new Date()).getDay() + 6) % 7;
   return (
     <div className="Calendar">
-      {['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].map((day) => <CalendarUnit day={day}/>)}
+      {['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].map((day, i) => <CalendarUnit day={day} state={currentDay < i ? 'disabled' : 'normal'}/>)}
     </div>
   )
 }
