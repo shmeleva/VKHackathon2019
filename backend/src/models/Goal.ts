@@ -3,31 +3,31 @@ import shortid = require("shortid");
 
 export class Goal extends Typegoose {
     @prop({ default: shortid.generate })
-    _id!: string;
+    public _id!: string;
 
     @prop({ required: true })
-    title!: string;
+    public title!: string;
 
     @prop()
-    description?: string;
+    public description?: string;
 
     @prop({ required: true })
-    userId!: string;
+    public userId!: string;
 
     @prop({ required: true })
-    startDate!: Date;
+    public startDate!: Date;
 
     @prop({ required: true })
-    endDate!: Date;
+    public endDate!: Date;
 
     @arrayProp({ items: Number })
-    weekdays!: number[]
+    public weekdays!: number[]
 
     @arrayProp({ items: Date })
-    checks!: Date[]
+    public checks!: Date[]
 
     @arrayProp({ items: Number })
-    donations!: number[]
+    public donations!: number[]
 }
 
 export const GoalModel = new Goal().getModelForClass(Goal);

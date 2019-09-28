@@ -35,7 +35,7 @@ export const getProfile = async (req: any, res: any) => {
             res.status(404).send();
         }
         else {
-            res.status(200).send(user)
+            res.status(200).send(user);
         }
     }
     catch (error) {

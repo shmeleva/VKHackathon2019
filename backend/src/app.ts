@@ -73,9 +73,6 @@ app.use((req, res, next) => {
     res.locals.user = req.user;
     next();
 });
-
-UserModel.find({}, (err, res) => console.log(res))
-
 /**
  * API routes.
  */
@@ -91,8 +88,9 @@ app.get("/users/:userId", userController.getUserById);
 app.get("/goals/:goalId", goalController.getGoalById);
 app.get("/createGoal", passportConfig.isAuthenticated, goalController.postGoal); // POST /goals/create
 app.get("/goals/:goalId/check", passportConfig.isAuthenticated, goalController.postGoalCheck);  // POST /goals/:goalId/check
+app.get("/goals/:goalId/uncheck", passportConfig.isAuthenticated, goalController.postGoalUncheck);  // POST /goals/:goalId/check
 app.get("/goals/:goalId/donate", goalController.postGoalDonate); // POST /goals/:goalId/donate
-app.delete("/goals/:goalId/delete", goalController.deleteGoal);
+app.get("/goals/:goalId/delete", goalController.postGoalDelete); // POST /goals/:goalId/delete
 
 /**
  * VKontakte authentication routes.

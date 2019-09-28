@@ -3,22 +3,22 @@ import shortid = require("shortid");
 
 export class User extends Typegoose {
   @prop({ default: shortid.generate })
-  _id!: string;
+    public _id!: string;
 
   @prop({ required: true })
-  firstName!: string;
+  public firstName!: string;
 
   @prop({ required: true })
-  lastName!: string;
+  public lastName!: string;
 
   @prop({ required: true, unique: true })
-  email!: string;
+  public email!: string;
 
   @prop({ required: true, unique: true })
-  vkontakte!: string;
+  public vkontakte!: string;
 
   @prop({ required: true })
-  token!: string;
+  public token!: string;
 }
 
 export const UserModel = new User().getModelForClass(User, { schemaOptions: { timestamps: true } });
