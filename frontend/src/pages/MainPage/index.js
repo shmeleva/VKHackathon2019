@@ -5,12 +5,18 @@ import Header from '../../components/Header/Header';
 import GoalsList from '../../components/GoalsList/GoalsList';
 import GoalRecommended from '../../components/GoalRecommended/GoalRecommended';
 import GoalUnit from '../../components/GoalUnit/GoalUnit';
+import axios from "axios";
 
 const MainPage = props => {
   const current_goals = [5];
+
+  axios.get('http://localhost:3000/profile', {
+    withCredentials: true
+  }).then(response => console.log(response));
+
   return (
     <div className="MainPage">
-    <Header/>
+      <Header />
       <div className="MainPage__inner page-content">
         <div className="MainPage__goal-wrapper MainPage__goal-wrapper--pending">
           <div className="MainPage__goal-wrapper-title">
@@ -19,13 +25,13 @@ const MainPage = props => {
           {
             (current_goals.length > 0) && (
               <div className="MainPage__goal-list">
-                <GoalUnit type='pending'/>
-                <GoalUnit type='pending'/>
+                <GoalUnit type='pending' />
+                <GoalUnit type='pending' />
               </div>)
           }
           {
             (current_goals.length === 0) && [
-              <div key='image' className="MainPage__no-goals-image"/>,
+              <div key='image' className="MainPage__no-goals-image" />,
               <div key='text' className="MainPage__no-goals-text">
                 На сегодня задач нет. Отдыхайте и идите гулять в парк!
               </div>]
@@ -36,8 +42,8 @@ const MainPage = props => {
             Другие активные цели:
           </div>
           <div className="MainPage__goal-list">
-          <GoalUnit type='active'/>
-          <GoalUnit type='active'/>
+            <GoalUnit type='active' />
+            <GoalUnit type='active' />
           </div>
         </div>
         <div className="MainPage__goal-wrapper MainPage__goal-wrapper--recommended">
@@ -54,21 +60,21 @@ const MainPage = props => {
             Достигнутые:
           </div>
           <div className="MainPage__goal-list">
-            <GoalUnit type='history'/>
-            <GoalUnit type='history'/>
+            <GoalUnit type='history' />
+            <GoalUnit type='history' />
           </div>
         </div>
-        <br/>
+        <br />
         MainPage
-        <br/><br/>
+        <br /><br />
         <div className="Wrapper">
-          <GoalsList/>
+          <GoalsList />
         </div>
-        <br/>
+        <br />
         <Link to={"/login"}>
           Выйти
         </Link>
-        <br/>
+        <br />
         <Link to={"/goal/new"}>
           Новая цель
         </Link>
