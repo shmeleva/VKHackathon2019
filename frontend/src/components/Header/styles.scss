@@ -21,11 +21,11 @@
     background-color: $color-lightpink;
     color: $color-darkblue;
     text-align: center;
+    font-size: 14px;
   }
 
   &__back-button {
     position: absolute;
     left: 10px;
-    font-size: 14px;
   }
 }
