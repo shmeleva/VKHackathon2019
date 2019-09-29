@@ -2496,7 +2496,7 @@ Object.defineProperty(exports, "__esModule", {
 var axios_url_local = 'http://localhost:3000';
 var axios_url_herokuapp = 'https://orbi-habits-api.herokuapp.com';
 
-var axios_url = axios_url_local;
+var axios_url = axios_url_herokuapp;
 
 exports.axios_url = axios_url;
 
