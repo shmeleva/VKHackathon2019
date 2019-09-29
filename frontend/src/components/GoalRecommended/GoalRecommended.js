@@ -1,17 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles.scss';
+import {recommended_goals} from '../../js-variables';
+
+
 
 const GoalRecommended = props => {
   return (
     <div className="GoalRecommended">
       <div className="GoalRecommended__title">
-        {props.title}
+        {recommended_goals[props.id].title}
       </div>
       <div className="GoalRecommended__description">
-        {props.description}
+        {recommended_goals[props.id].description}
       </div>
-      <Link to={"/goal/new"} className="GoalRecommended__button">
+      <Link to={"/goal/new/" + props.id} className="GoalRecommended__button">
         Добавить себе
       </Link>
     </div>
@@ -21,6 +24,5 @@ const GoalRecommended = props => {
 export default GoalRecommended;
 
 GoalRecommended.defaultProps = {
-  title: 'День без сладкого',
-  description: 'Быстрые углеводы не приносят пользы, но способствуют увеличению веса.'
+  id: 'no_sugar',
 }

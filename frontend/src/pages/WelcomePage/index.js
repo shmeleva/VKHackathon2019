@@ -20,8 +20,8 @@ const WelcomePage = props => {
           или выберите из готовых:
         </div>
         <div className="WelcomePage__suggestion-list">
-          <GoalRecommended />
-          <GoalRecommended />
+          <GoalRecommended id='no_sugar'/>
+          <GoalRecommended id='no_smoking'/>
         </div>
 
       </div>
