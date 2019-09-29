@@ -6,17 +6,30 @@ import image from './girl.jpg';
 import FieldWithHelpers from '../../components/FieldWithHelpers/FieldWithHelpers';
 import axios from "axios";
 import {axios_url} from '../../js-variables';
+import {recommended_goals} from '../../js-variables';
 
 class GoalPageNew extends React.Component {
   constructor(props) {
+    console.log(recommended_goals[props.match.params.recommended]);
     super(props);
-    this.state = {
-      name: null,
-      period: null,
-      days: [],
-      daysNames: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
-      auth: false
-    };
+    if (props.match.params.recommended && recommended_goals[props.match.params.recommended]){
+      this.state = {
+        name: recommended_goals[props.match.params.recommended].title,
+        period: recommended_goals[props.match.params.recommended].period,
+        days: [],
+        daysNames: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+        auth: false
+      };
+    }
+    else {
+      this.state = {
+        name: null,
+        period: null,
+        days: [],
+        daysNames: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+        auth: false
+      };
+    }
     this.handlePeriodChange = this.handlePeriodChange.bind(this);
     this.createGoal = this.createGoal.bind(this);
   }
@@ -99,6 +112,7 @@ class GoalPageNew extends React.Component {
               type="text"
               placeholder="Например, 10 000 шагов в день"
               key="newGoalName"
+              value={this.state.name ? this.state.name : ''}
               onChange={(e) => this.handleNameChange(e.target.value)}
             >
             </input>

@@ -78,7 +78,6 @@ class MainPage extends React.Component {
   render() {
     return this.state.auth && !this.state.pending ? (
       <div className="MainPage">
-        <CongratModal />
         {this.sortGoals()}
         <Header />
         <div className="MainPage__inner page-content">
@@ -121,8 +120,8 @@ class MainPage extends React.Component {
               Рекомендуемые
             </div>
             <div className="MainPage__goal-list">
-              <GoalRecommended />
-              <GoalRecommended />
+              <GoalRecommended id='no_sugar'/>
+              <GoalRecommended id='no_smoking'/>
             </div>
           </div>
           <div className="MainPage__goal-wrapper MainPage__goal-wrapper--history">
@@ -137,13 +136,6 @@ class MainPage extends React.Component {
               }
             </div>
           </div>
-          <br />
-          MainPage
-          <br /><br />
-          <div className="Wrapper">
-            <GoalsList />
-          </div>
-          <br />
           <div onClick={this.logOut}>
             Выйти
           </div>

@@ -2398,6 +2398,37 @@ exports.default = Header;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var axios_url_local = 'http://localhost:3000';
+var axios_url_herokuapp = 'https://orbi-habits-api.herokuapp.com';
+
+var axios_url = axios_url_local;
+
+var recommended_goals = {
+  no_sugar: {
+    title: 'День без сладкого',
+    description: 'Быстрые углеводы не приносят пользы, но способствуют увеличению веса.',
+    'period': 30
+  },
+  no_smoking: {
+    title: 'День без курения',
+    description: 'Курение негавтивно влияет на легкие и сердечно сосудистую систему',
+    'period': 30
+  }
+};
+
+exports.axios_url = axios_url;
+exports.recommended_goals = recommended_goals;
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2418,7 +2449,7 @@ module.exports = emptyObject;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2478,27 +2509,10 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(102);
-
-/***/ }),
 /* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var axios_url_local = 'http://localhost:3000';
-var axios_url_herokuapp = 'https://orbi-habits-api.herokuapp.com';
-
-var axios_url = axios_url_herokuapp;
-
-exports.axios_url = axios_url;
+module.exports = __webpack_require__(102);
 
 /***/ }),
 /* 17 */
@@ -4007,6 +4021,8 @@ var _reactRouterDom = __webpack_require__(6);
 
 __webpack_require__(97);
 
+var _jsVariables = __webpack_require__(13);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var GoalRecommended = function GoalRecommended(props) {
@@ -4016,16 +4032,16 @@ var GoalRecommended = function GoalRecommended(props) {
     _react2.default.createElement(
       'div',
       { className: 'GoalRecommended__title' },
-      props.title
+      _jsVariables.recommended_goals[props.id].title
     ),
     _react2.default.createElement(
       'div',
       { className: 'GoalRecommended__description' },
-      props.description
+      _jsVariables.recommended_goals[props.id].description
     ),
     _react2.default.createElement(
       _reactRouterDom.Link,
-      { to: "/goal/new", className: 'GoalRecommended__button' },
+      { to: "/goal/new/" + props.id, className: 'GoalRecommended__button' },
       '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0441\u0435\u0431\u0435'
     )
   );
@@ -4035,8 +4051,7 @@ exports.default = GoalRecommended;
 
 
 GoalRecommended.defaultProps = {
-  title: 'День без сладкого',
-  description: 'Быстрые углеводы не приносят пользы, но способствуют увеличению веса.'
+  id: 'no_sugar'
 };
 
 /***/ }),
@@ -4660,7 +4675,7 @@ _reactDom2.default.render(_react2.default.createElement(App, null), document.get
  This source code is licensed under the MIT license found in the
  LICENSE file in the root directory of this source tree.
 */
-var f=__webpack_require__(11),p=__webpack_require__(13);__webpack_require__(14);var r=__webpack_require__(9);
+var f=__webpack_require__(11),p=__webpack_require__(14);__webpack_require__(15);var r=__webpack_require__(9);
 function t(a){for(var b=arguments.length-1,d="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,e=0;e<b;e++)d+="\x26args[]\x3d"+encodeURIComponent(arguments[e+1]);b=Error(d+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}
 var u={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};function v(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}v.prototype.isReactComponent={};v.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?t("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};v.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};
 function w(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}function x(){}x.prototype=v.prototype;var y=w.prototype=new x;y.constructor=w;f(y,v.prototype);y.isPureReactComponent=!0;function z(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}var A=z.prototype=new x;A.constructor=z;f(A,v.prototype);A.unstable_isAsyncReactComponent=!0;A.render=function(){return this.props.children};
@@ -4699,8 +4714,8 @@ if (process.env.NODE_ENV !== "production") {
 
 var objectAssign$1 = __webpack_require__(11);
 var require$$0 = __webpack_require__(23);
-var emptyObject = __webpack_require__(13);
-var invariant = __webpack_require__(14);
+var emptyObject = __webpack_require__(14);
+var invariant = __webpack_require__(15);
 var emptyFunction = __webpack_require__(9);
 var checkPropTypes = __webpack_require__(17);
 
@@ -6443,7 +6458,7 @@ if (process.env.NODE_ENV === 'production') {
  LICENSE file in the root directory of this source tree.
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(0);__webpack_require__(14);var l=__webpack_require__(19),n=__webpack_require__(11),ba=__webpack_require__(24),ca=__webpack_require__(9),da=__webpack_require__(13),ea=__webpack_require__(25),fa=__webpack_require__(26),ha=__webpack_require__(27),ia=__webpack_require__(28);
+var aa=__webpack_require__(0);__webpack_require__(15);var l=__webpack_require__(19),n=__webpack_require__(11),ba=__webpack_require__(24),ca=__webpack_require__(9),da=__webpack_require__(14),ea=__webpack_require__(25),fa=__webpack_require__(26),ha=__webpack_require__(27),ia=__webpack_require__(28);
 function w(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:w("227");
 function ja(a){switch(a){case "svg":return"http://www.w3.org/2000/svg";case "math":return"http://www.w3.org/1998/Math/MathML";default:return"http://www.w3.org/1999/xhtml"}}
 var ka={Namespaces:{html:"http://www.w3.org/1999/xhtml",mathml:"http://www.w3.org/1998/Math/MathML",svg:"http://www.w3.org/2000/svg"},getIntrinsicNamespace:ja,getChildNamespace:function(a,b){return null==a||"http://www.w3.org/1999/xhtml"===a?ja(b):"http://www.w3.org/2000/svg"===a&&"foreignObject"===b?"http://www.w3.org/1999/xhtml":a}},la=null,oa={};
@@ -6769,7 +6784,7 @@ if (process.env.NODE_ENV !== "production") {
 'use strict';
 
 var react = __webpack_require__(0);
-var invariant = __webpack_require__(14);
+var invariant = __webpack_require__(15);
 var ExecutionEnvironment = __webpack_require__(19);
 var _assign = __webpack_require__(11);
 var EventListener = __webpack_require__(24);
@@ -6779,7 +6794,7 @@ var emptyFunction = __webpack_require__(9);
 var camelizeStyleName = __webpack_require__(55);
 var performanceNow = __webpack_require__(57);
 var propTypes = __webpack_require__(2);
-var emptyObject = __webpack_require__(13);
+var emptyObject = __webpack_require__(14);
 var checkPropTypes = __webpack_require__(17);
 var shallowEqual = __webpack_require__(25);
 var containsNode = __webpack_require__(26);
@@ -25170,7 +25185,7 @@ var _SomeComponent = __webpack_require__(141);
 
 var _SomeComponent2 = _interopRequireDefault(_SomeComponent);
 
-var _axios = __webpack_require__(15);
+var _axios = __webpack_require__(16);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -25200,11 +25215,12 @@ var BaseRouter = function (_React$Component) {
 		value: function render() {
 			return _react2.default.createElement(
 				_reactRouterDom.BrowserRouter,
-				null,
+				{ history: _reactRouterDom.browserHistory },
 				_react2.default.createElement(
 					_reactRouterDom.Switch,
 					null,
 					_react2.default.createElement(_reactRouterDom.Route, { path: '/login', exact: true, component: _index4.default }),
+					_react2.default.createElement(_reactRouterDom.Route, { path: '/goal/new/:recommended', component: _index10.default }),
 					_react2.default.createElement(_reactRouterDom.Route, { path: '/goal/new', component: _index10.default }),
 					_react2.default.createElement(_reactRouterDom.Route, { path: '/goal/:id', component: _index8.default }),
 					_react2.default.createElement(_reactRouterDom.Route, { path: '/donate/:id', component: _DonatePage2.default }),
@@ -26442,7 +26458,7 @@ var _GoalUnit = __webpack_require__(99);
 
 var _GoalUnit2 = _interopRequireDefault(_GoalUnit);
 
-var _axios = __webpack_require__(15);
+var _axios = __webpack_require__(16);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -26454,7 +26470,7 @@ var _CongratModal = __webpack_require__(119);
 
 var _CongratModal2 = _interopRequireDefault(_CongratModal);
 
-var _jsVariables = __webpack_require__(16);
+var _jsVariables = __webpack_require__(13);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26553,7 +26569,6 @@ var MainPage = function (_React$Component) {
       return this.state.auth && !this.state.pending ? _react2.default.createElement(
         'div',
         { className: 'MainPage' },
-        _react2.default.createElement(_CongratModal2.default, null),
         this.sortGoals(),
         _react2.default.createElement(_Header2.default, null),
         _react2.default.createElement(
@@ -26607,8 +26622,8 @@ var MainPage = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'MainPage__goal-list' },
-              _react2.default.createElement(_GoalRecommended2.default, null),
-              _react2.default.createElement(_GoalRecommended2.default, null)
+              _react2.default.createElement(_GoalRecommended2.default, { id: 'no_sugar' }),
+              _react2.default.createElement(_GoalRecommended2.default, { id: 'no_smoking' })
             )
           ),
           _react2.default.createElement(
@@ -26627,16 +26642,6 @@ var MainPage = function (_React$Component) {
               })
             )
           ),
-          _react2.default.createElement('br', null),
-          'MainPage',
-          _react2.default.createElement('br', null),
-          _react2.default.createElement('br', null),
-          _react2.default.createElement(
-            'div',
-            { className: 'Wrapper' },
-            _react2.default.createElement(_GoalsList2.default, null)
-          ),
-          _react2.default.createElement('br', null),
           _react2.default.createElement(
             'div',
             { onClick: this.logOut },
@@ -28091,11 +28096,11 @@ var _Header = __webpack_require__(12);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _axios = __webpack_require__(15);
+var _axios = __webpack_require__(16);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _jsVariables = __webpack_require__(16);
+var _jsVariables = __webpack_require__(13);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28224,7 +28229,7 @@ var _react2 = _interopRequireDefault(_react);
 
 __webpack_require__(125);
 
-var _jsVariables = __webpack_require__(16);
+var _jsVariables = __webpack_require__(13);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28247,15 +28252,11 @@ var VKButton = function (_React$Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        'div',
-        { className: 'VKButton' },
-        _react2.default.createElement(
-          'a',
-          { href: _jsVariables.axios_url + '/auth/vkontakte' },
-          '\u0412\u043E\u0439\u0442\u0438',
-          _react2.default.createElement('br', null),
-          '\u0447\u0435\u0440\u0435\u0437 \u0412\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u0435'
-        )
+        'a',
+        { href: _jsVariables.axios_url + '/auth/vkontakte', className: 'VKButton' },
+        '\u0412\u043E\u0439\u0442\u0438',
+        _react2.default.createElement('br', null),
+        '\u0447\u0435\u0440\u0435\u0437 \u0412\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u0435'
       );
     }
   }]);
@@ -28305,7 +28306,7 @@ exports = module.exports = __webpack_require__(3)(undefined);
 
 
 // module
-exports.push([module.i, ".VKButton {\n  padding: 10px 40px;\n  text-align: center;\n  background-color: #5181b8;\n  color: #fff;\n  border-radius: 4px;\n  box-sizing: border-box;\n  font-size: 17px;\n  font-family: -apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Geneva,Noto Sans Armenian,Noto Sans Bengali,Noto Sans Cherokee,Noto Sans Devanagari,Noto Sans Ethiopic,Noto Sans Georgian,Noto Sans Hebrew,Noto Sans Kannada,Noto Sans Khmer,Noto Sans Lao,Noto Sans Osmanya,Noto Sans Tamil,Noto Sans Telugu,Noto Sans Thai,sans-serif; }\n", ""]);
+exports.push([module.i, ".VKButton {\n  padding: 10px 40px;\n  text-align: center;\n  background-color: #5181b8;\n  color: #fff;\n  border-radius: 4px;\n  box-sizing: border-box;\n  font-size: 17px;\n  display: block;\n  font-family: -apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Geneva,Noto Sans Armenian,Noto Sans Bengali,Noto Sans Cherokee,Noto Sans Devanagari,Noto Sans Ethiopic,Noto Sans Georgian,Noto Sans Hebrew,Noto Sans Kannada,Noto Sans Khmer,Noto Sans Lao,Noto Sans Osmanya,Noto Sans Tamil,Noto Sans Telugu,Noto Sans Thai,sans-serif; }\n", ""]);
 
 // exports
 
@@ -28417,8 +28418,8 @@ var WelcomePage = function WelcomePage(props) {
       _react2.default.createElement(
         'div',
         { className: 'WelcomePage__suggestion-list' },
-        _react2.default.createElement(_GoalRecommended2.default, null),
-        _react2.default.createElement(_GoalRecommended2.default, null)
+        _react2.default.createElement(_GoalRecommended2.default, { id: 'no_sugar' }),
+        _react2.default.createElement(_GoalRecommended2.default, { id: 'no_smoking' })
       )
     )
   );
@@ -28603,11 +28604,11 @@ var _FieldWithHelpers = __webpack_require__(44);
 
 var _FieldWithHelpers2 = _interopRequireDefault(_FieldWithHelpers);
 
-var _axios = __webpack_require__(15);
+var _axios = __webpack_require__(16);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _jsVariables = __webpack_require__(16);
+var _jsVariables = __webpack_require__(13);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28623,15 +28624,27 @@ var GoalPageNew = function (_React$Component) {
   function GoalPageNew(props) {
     _classCallCheck(this, GoalPageNew);
 
+    console.log(_jsVariables.recommended_goals[props.match.params.recommended]);
+
     var _this = _possibleConstructorReturn(this, (GoalPageNew.__proto__ || Object.getPrototypeOf(GoalPageNew)).call(this, props));
 
-    _this.state = {
-      name: null,
-      period: null,
-      days: [],
-      daysNames: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
-      auth: false
-    };
+    if (props.match.params.recommended && _jsVariables.recommended_goals[props.match.params.recommended]) {
+      _this.state = {
+        name: _jsVariables.recommended_goals[props.match.params.recommended].title,
+        period: _jsVariables.recommended_goals[props.match.params.recommended].period,
+        days: [],
+        daysNames: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+        auth: false
+      };
+    } else {
+      _this.state = {
+        name: null,
+        period: null,
+        days: [],
+        daysNames: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+        auth: false
+      };
+    }
     _this.handlePeriodChange = _this.handlePeriodChange.bind(_this);
     _this.createGoal = _this.createGoal.bind(_this);
     return _this;
@@ -28744,6 +28757,7 @@ var GoalPageNew = function (_React$Component) {
               type: 'text',
               placeholder: '\u041D\u0430\u043F\u0440\u0438\u043C\u0435\u0440, 10 000 \u0448\u0430\u0433\u043E\u0432 \u0432 \u0434\u0435\u043D\u044C',
               key: 'newGoalName',
+              value: this.state.name ? this.state.name : '',
               onChange: function onChange(e) {
                 return _this4.handleNameChange(e.target.value);
               }

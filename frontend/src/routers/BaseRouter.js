@@ -15,6 +15,7 @@ class BaseRouter extends React.Component {
 			<BrowserRouter history={browserHistory}>
 				<Switch>
 					<Route path="/login" exact component={LoginPage} />
+					<Route path="/goal/new/:recommended" component={GoalPageNew} />
 					<Route path="/goal/new" component={GoalPageNew} />
 					<Route path="/goal/:id" component={GoalPage} />
 					<Route path="/donate/:id" component={DonatePage} />

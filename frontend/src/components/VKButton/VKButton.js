@@ -5,13 +5,11 @@ import {axios_url} from '../../js-variables';
 class VKButton extends React.Component {
   render() {
     return (
-      <div className="VKButton">
-        <a href={axios_url + '/auth/vkontakte'}>
+      <a href={axios_url + '/auth/vkontakte'} className="VKButton">
           Войти
           <br />
           через ВКонтакте
-        </a>
-      </div>
+      </a>
     )
   }
 }
