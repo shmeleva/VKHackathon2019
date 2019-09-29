@@ -19,7 +19,7 @@ class DonatePage extends React.Component {
 
   handleAmountChange(amount) {
     this.setState(() => ({
-      amount
+      amount: amount >= 0 ? amount : -amount
     }))
   }
 
