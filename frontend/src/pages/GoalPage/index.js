@@ -56,7 +56,7 @@ class GoalPage extends React.Component {
       <div className="GoalPage">
         <Header pageName="Страница цели" />
         <div className="GoalPage__inner page-content">
-          Цель:<br/> {this.state.goal.title}
+          Цель: {this.state.goal.title}
           <br/>
           <div className="GoalPage__delete-button" onClick={this.deleteGoal}>
             Удалить

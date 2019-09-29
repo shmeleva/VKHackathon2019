@@ -128,18 +128,22 @@ class MainPage extends React.Component {
               <GoalRecommended id='no_smoking'/>
             </div>
           </div>
-          <div className="MainPage__goal-wrapper MainPage__goal-wrapper--history">
-            <div className="MainPage__goal-wrapper-title">
-              Достигнутые 🎉
-            </div>
-            <div className="MainPage__goal-list">
-              {
-                this.goals_history.map((elem) => {
-                  return <GoalUnit key={elem.id} id={elem.id} title={elem.title} type='history' />
-                })
-              }
-            </div>
-          </div>
+          { 
+            (this.goals_history.length > 0) && (
+              <div className="MainPage__goal-wrapper MainPage__goal-wrapper--history">
+                <div className="MainPage__goal-wrapper-title">
+                  Достигнутые 🎉
+                </div>
+                <div className="MainPage__goal-list">
+                  {
+                    this.goals_history.map((elem) => {
+                      return <GoalUnit key={elem.id} id={elem.id} title={elem.title} type='history' />
+                    })
+                  }
+                </div>
+              </div>
+            )
+          }
           <div onClick={this.logOut}>
             Выйти
           </div>

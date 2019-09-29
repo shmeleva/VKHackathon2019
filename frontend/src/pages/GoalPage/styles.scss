@@ -1,6 +1,10 @@
 @import 'src/styles/style-variables.scss';
 
 .GoalPage {
+  &__inner {
+    max-width: 600px;
+    margin: 30px auto 0px;
+  }
   &__delete-button {
     display: inline-block;
     background-color: red;
@@ -9,6 +13,6 @@
     padding: 10px 20px;
     border-radius: $size-radius; 
     box-sizing: border-box;
-    margin-top: 10px;
+    margin-top: 30px;
   }  
 }
