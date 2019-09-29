@@ -83,6 +83,7 @@ app.use((req, res, next) => {
     res.locals.user = req.user;
     next();
 });
+
 /**
  * API routes.
  */
@@ -102,6 +103,7 @@ app.post("/goals/:goalId/delete", passportConfig.isAuthenticated, goalController
 /**
  * VKontakte authentication routes.
  */
+
 app.get("/auth/vkontakte", passport.authenticate("vkontakte", { scope: ["email", "public_profile"] }));
 app.get("/auth/vkontakte/callback", passport.authenticate("vkontakte", { failureRedirect: `${FRONTEND_URI}/login` }), function (req: any, res: any) {
     if (req.user || req.session.user) {
