@@ -5,6 +5,7 @@ import Header from '../../components/Header/Header';
 import image from './girl.jpg';
 import FieldWithHelpers from '../../components/FieldWithHelpers/FieldWithHelpers';
 import axios from "axios";
+import {axios_url} from '../../js-variables';
 
 class GoalPageNew extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class GoalPageNew extends React.Component {
   }
   componentWillMount() {
     let error = false;
-    axios.get('https://orbi-habits-api.herokuapp.com' + '/profile', {
+    axios.get(axios_url + '/profile', {
       withCredentials: true
     }).catch(error => {
       this.props.history.push("/login");
@@ -70,7 +71,7 @@ class GoalPageNew extends React.Component {
       startDate: new Date(new Date().setUTCHours(0, 0, 0, 0)).toISOString(),
       endDate: new Date(end_date.setUTCHours(0, 0, 0, 0)).toISOString()
     }
-    axios('https://orbi-habits-api.herokuapp.com' + '/goals/create', {
+    axios(axios_url + '/goals/create', {
       method: 'post',
       withCredentials: true,
       data: data

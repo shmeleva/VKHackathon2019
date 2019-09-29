@@ -8,6 +8,7 @@ import GoalUnit from '../../components/GoalUnit/GoalUnit';
 import axios from "axios";
 import image from './no-goals-today.jpg';
 import CongratModal from '../../components/CongratModal/CongratModal';
+import {axios_url} from '../../js-variables';
 
 Date.prototype.withoutTime = function () {
   var d = new Date(this);
@@ -29,7 +30,7 @@ class MainPage extends React.Component {
   componentWillMount() {
     this.setState({ pending: true });
     let error = false;
-    axios.get('https://orbi-habits-api.herokuapp.com' + '/profile', {
+    axios.get(axios_url + '/profile', {
       withCredentials: true
     }).catch(error => {
       error = true;
@@ -37,7 +38,7 @@ class MainPage extends React.Component {
     }).then(response => {
       if (!error) {
         this.setState({ auth: true });
-        axios.get('https://orbi-habits-api.herokuapp.com' + '/users/' + response.data.id, {
+        axios.get(axios_url + '/users/' + response.data.id, {
           withCredentials: true
         }).then(response2 => {
           this.setState({ goals: response2.data.goals });
@@ -68,7 +69,7 @@ class MainPage extends React.Component {
   }
 
   logOut() {
-    axios.get('https://orbi-habits-api.herokuapp.com' + '/profile/logout', {
+    axios.get(axios_url + '/profile/logout', {
       withCredentials: true
     }).then(response => {
       this.props.history.push("/login");

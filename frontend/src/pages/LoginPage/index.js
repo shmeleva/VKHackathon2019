@@ -4,6 +4,7 @@ import VKButton from '../../components/VKButton/VKButton';
 import './styles.scss';
 import Header from '../../components/Header/Header';
 import axios from "axios";
+import {axios_url} from '../../js-variables';
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class LoginPage extends React.Component {
   }
   componentWillMount() {
     this.error = false;
-    axios.get('https://orbi-habits-api.herokuapp.com' + '/profile', {
+    axios.get(axios_url + '/profile', {
       withCredentials: true
     }).catch(error => {
       this.error = true;
