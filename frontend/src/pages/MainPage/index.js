@@ -111,13 +111,27 @@ class MainPage extends React.Component {
             <div className="MainPage__goal-wrapper-title">
               Активные
             </div>
-            <div className="MainPage__goal-list">
-              {
-                this.goals_active.map((elem) => {
-                  return <GoalUnit key={elem.id} id={elem.id} title={elem.title} type='active' />
-                })
-              }
-            </div>
+            {
+              (this.goals_active.length > 0) && (
+                <div className="MainPage__goal-list">
+                {
+                  this.goals_active.map((elem) => {
+                    return <GoalUnit key={elem.id} id={elem.id} title={elem.title} type='active' />
+                  })
+                }
+                </div>
+              )
+            }
+            {
+              (this.goals_active.length === 0) && (
+                <div key='text' className="MainPage__no-active-goals-text">
+                У вас пока нет целей. Добавьте цели, чтобы начать жить по ЗОЖ!
+                </div>
+              )
+            }
+            <Link className="MainPage__add-goal primary-button" to={"/goal/new"}>
+              + Добавить цель
+            </Link>
           </div>
           <div className="MainPage__goal-wrapper MainPage__goal-wrapper--recommended">
             <div className="MainPage__goal-wrapper-title">
