@@ -78,7 +78,6 @@ class MainPage extends React.Component {
   render() {
     return this.state.auth && !this.state.pending ? (
       <div className="MainPage">
-        {/* <CongratModal /> */}
         {this.sortGoals()}
         <Header />
         <div className="MainPage__inner page-content">

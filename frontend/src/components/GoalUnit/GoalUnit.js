@@ -46,7 +46,7 @@ const GoalUnit = props => {
       <div className="GoalUnit__title">
         {props.title}
       </div>
-      <Link className="GoalUnit__more-link" to={`./goal/100`}>
+      <Link className="GoalUnit__more-link" to={`./goal/${props.id}`}>
         Подробнее >
       </Link>
       <div className="GoalUnit__info">
