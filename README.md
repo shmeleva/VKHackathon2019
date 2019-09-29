@@ -11,3 +11,10 @@
 
 #### Presentation
 <img src="/presentation-images/grornlosos_110.001.jpeg" style="border: 2px solid rgba(0,0,0,0.05);" />
+<img src="/presentation-images/grornlosos_110.002.jpeg" style="border: 2px solid rgba(0,0,0,0.05);" />
+<img src="/presentation-images/grornlosos_110.003.jpeg" style="border: 2px solid rgba(0,0,0,0.05);" />
+<img src="/presentation-images/grornlosos_110.004.jpeg" style="border: 2px solid rgba(0,0,0,0.05);" />
+<img src="/presentation-images/grornlosos_110.005.jpeg" style="border: 2px solid rgba(0,0,0,0.05);" />
+<img src="/presentation-images/grornlosos_110.006.jpeg" style="border: 2px solid rgba(0,0,0,0.05);" />
+<img src="/presentation-images/grornlosos_110.007.jpeg" style="border: 2px solid rgba(0,0,0,0.05);" />
+<img src="/presentation-images/grornlosos_110.008.jpeg" style="border: 2px solid rgba(0,0,0,0.05);" />
