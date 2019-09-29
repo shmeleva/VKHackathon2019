@@ -44,12 +44,6 @@ class LoginPage extends React.Component {
           </div>
           <div className="LoginPage__bottom" />
         </div>
-        <Link to={"/main"}>
-          На главную
-        </Link>
-        <Link to={"/welcome"}>
-          На онбординг
-        </Link>
       </div>
     ) : null;
   }
