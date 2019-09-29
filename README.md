@@ -7,3 +7,7 @@
 
 #### API
 [`https://orbi-habits-api.herokuapp.com`](https://orbi-habits-api.herokuapp.com)
+
+
+#### Presentation
+<img src="/presentation-images/grornlosos_110.001.jpeg" style="float: left;" />
