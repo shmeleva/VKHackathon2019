@@ -13,7 +13,7 @@
 <kbd>
 <img src="/presentation-images/grornlosos_110.001.jpeg" style="border: 2px solid rgba(0,0,0,0.05);" />
 </kbd>
-<br/>
+<br/><br/>
 <kbd>
 <img src="/presentation-images/grornlosos_110.002.jpeg" style="border: 2px solid rgba(0,0,0,0.05);" />
 </kbd>
