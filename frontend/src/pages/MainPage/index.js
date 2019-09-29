@@ -41,8 +41,12 @@ class MainPage extends React.Component {
         axios.get(axios_url + '/users/' + response.data.id, {
           withCredentials: true
         }).then(response2 => {
-          this.setState({ goals: response2.data.goals });
-          this.setState({ pending: false });
+          if (response2.data.goals.length === 0) {
+            this.props.history.push("/welcome");
+          }
+          else {
+            this.setState({ goals: response2.data.goals, pending: false });
+          }
         });
       }
     });
