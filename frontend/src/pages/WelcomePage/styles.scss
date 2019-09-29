@@ -4,6 +4,8 @@
   &__inner {
     display: flex;
     flex-direction: column;
+    max-width: 800px;
+    margin: 0 auto;
     @include MedM {
     }
   }
@@ -39,6 +41,6 @@
   &__suggestion-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
   }
 }
