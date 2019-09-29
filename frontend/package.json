@@ -5,7 +5,7 @@
   "author": "Alex",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --port $PORT --host 0.0.0.0 --disable-host-check --useLocalIp",
+    "start": "webpack-dev-server --port $PORT --host 0.0.0.0",
     "serve": "live-server public/",
     "build": "webpack",
     "dev-server": "webpack-dev-server"
