@@ -10,4 +10,4 @@
 
 
 #### Presentation
-<img src="/presentation-images/grornlosos_110.001.jpeg" style="float: left;" />
+<img src="/presentation-images/grornlosos_110.001.jpeg" style="border: 2px solid rgba(0,0,0,0.05);" />
