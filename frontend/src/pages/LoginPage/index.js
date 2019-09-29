@@ -4,6 +4,7 @@ import VKButton from '../../components/VKButton/VKButton';
 import './styles.scss';
 import Header from '../../components/Header/Header';
 import axios from "axios";
+import { axios_url } from '../../js-variables';
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -37,8 +38,7 @@ class LoginPage extends React.Component {
             <div className="LoginPage__description-title">В этом приложении можно:</div>
             <div className="LoginPage__description-list">
               <div className="LoginPage__description-unit">Создавать достижимые конкретные цели для выработки привычек</div>
-              <div className="LoginPage__description-unit">Просить друзей поддержать вас через донаты в фонд</div>
-              <div className="LoginPage__description-unit">Просить друзей поддержать вас через донаты в фонд</div>
+              <div className="LoginPage__description-unit">Просить друзей поддержать вас через пожертвования в фонд ОРБИ</div>
             </div>
             <VKButton />
           </div>
