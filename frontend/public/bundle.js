@@ -2252,6 +2252,86 @@ function createMemoryHistory(props) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(6);
+
+__webpack_require__(92);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Header = function Header(props) {
+  return _react2.default.createElement(
+    'div',
+    { className: 'Header' },
+    _react2.default.createElement(
+      'div',
+      { className: 'Header__inner' },
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { className: 'Header__logo', to: "/main" },
+        '\u041E\u0420\u0411\u0418.\u041F\u0440\u0438\u0432\u044B\u0447\u043A\u0438'
+      )
+    ),
+    props.pageName && _react2.default.createElement(
+      'div',
+      { className: 'Header__breadcrumbs' },
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { className: 'Header__back-button', to: "/main" },
+        '\u2190 \u041D\u0430\u0437\u0430\u0434'
+      ),
+      props.pageName
+    )
+  );
+};
+
+exports.default = Header;
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var axios_url_local = 'http://localhost:3000';
+var axios_url_herokuapp = 'https://orbi-habits-api.herokuapp.com';
+
+var axios_url = axios_url_herokuapp;
+
+var recommended_goals = {
+  no_sugar: {
+    title: 'День без сладкого',
+    description: 'Быстрые углеводы не приносят пользы, но способствуют увеличению веса.',
+    'period': 30
+  },
+  no_smoking: {
+    title: 'День без курения',
+    description: 'Курение негавтивно влияет на легкие и сердечно сосудистую систему.',
+    'period': 30
+  }
+};
+
+exports.axios_url = axios_url;
+exports.recommended_goals = recommended_goals;
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /*
 object-assign
 (c) Sindre Sorhus
@@ -2345,87 +2425,13 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(6);
-
-__webpack_require__(92);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Header = function Header(props) {
-  return _react2.default.createElement(
-    'div',
-    { className: 'Header' },
-    _react2.default.createElement(
-      'div',
-      { className: 'Header__inner' },
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { className: 'Header__logo', to: "/main" },
-        '\u041E\u0420\u0411\u0418.\u041F\u0440\u0438\u0432\u044B\u0447\u043A\u0438'
-      )
-    ),
-    props.pageName && _react2.default.createElement(
-      'div',
-      { className: 'Header__breadcrumbs' },
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { className: 'Header__back-button', to: "/main" },
-        '\u2190 \u041D\u0430\u0437\u0430\u0434'
-      ),
-      props.pageName
-    )
-  );
-};
-
-exports.default = Header;
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var axios_url_local = 'http://localhost:3000';
-var axios_url_herokuapp = 'https://orbi-habits-api.herokuapp.com';
-
-var axios_url = axios_url_local;
-
-var recommended_goals = {
-  no_sugar: {
-    title: 'День без сладкого',
-    description: 'Быстрые углеводы не приносят пользы, но способствуют увеличению веса.',
-    'period': 30
-  },
-  no_smoking: {
-    title: 'День без курения',
-    description: 'Курение негавтивно влияет на легкие и сердечно сосудистую систему',
-    'period': 30
-  }
-};
-
-exports.axios_url = axios_url;
-exports.recommended_goals = recommended_goals;
-
-/***/ }),
 /* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(102);
+
+/***/ }),
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2449,7 +2455,7 @@ module.exports = emptyObject;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2507,12 +2513,6 @@ function invariant(condition, format, a, b, c, d, e, f) {
 
 module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(102);
 
 /***/ }),
 /* 17 */
@@ -4021,7 +4021,7 @@ var _reactRouterDom = __webpack_require__(6);
 
 __webpack_require__(97);
 
-var _jsVariables = __webpack_require__(13);
+var _jsVariables = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4675,7 +4675,7 @@ _reactDom2.default.render(_react2.default.createElement(App, null), document.get
  This source code is licensed under the MIT license found in the
  LICENSE file in the root directory of this source tree.
 */
-var f=__webpack_require__(11),p=__webpack_require__(14);__webpack_require__(15);var r=__webpack_require__(9);
+var f=__webpack_require__(13),p=__webpack_require__(15);__webpack_require__(16);var r=__webpack_require__(9);
 function t(a){for(var b=arguments.length-1,d="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,e=0;e<b;e++)d+="\x26args[]\x3d"+encodeURIComponent(arguments[e+1]);b=Error(d+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}
 var u={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};function v(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}v.prototype.isReactComponent={};v.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?t("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};v.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};
 function w(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}function x(){}x.prototype=v.prototype;var y=w.prototype=new x;y.constructor=w;f(y,v.prototype);y.isPureReactComponent=!0;function z(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}var A=z.prototype=new x;A.constructor=z;f(A,v.prototype);A.unstable_isAsyncReactComponent=!0;A.render=function(){return this.props.children};
@@ -4712,10 +4712,10 @@ if (process.env.NODE_ENV !== "production") {
 
 'use strict';
 
-var objectAssign$1 = __webpack_require__(11);
+var objectAssign$1 = __webpack_require__(13);
 var require$$0 = __webpack_require__(23);
-var emptyObject = __webpack_require__(14);
-var invariant = __webpack_require__(15);
+var emptyObject = __webpack_require__(15);
+var invariant = __webpack_require__(16);
 var emptyFunction = __webpack_require__(9);
 var checkPropTypes = __webpack_require__(17);
 
@@ -6458,7 +6458,7 @@ if (process.env.NODE_ENV === 'production') {
  LICENSE file in the root directory of this source tree.
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(0);__webpack_require__(15);var l=__webpack_require__(19),n=__webpack_require__(11),ba=__webpack_require__(24),ca=__webpack_require__(9),da=__webpack_require__(14),ea=__webpack_require__(25),fa=__webpack_require__(26),ha=__webpack_require__(27),ia=__webpack_require__(28);
+var aa=__webpack_require__(0);__webpack_require__(16);var l=__webpack_require__(19),n=__webpack_require__(13),ba=__webpack_require__(24),ca=__webpack_require__(9),da=__webpack_require__(15),ea=__webpack_require__(25),fa=__webpack_require__(26),ha=__webpack_require__(27),ia=__webpack_require__(28);
 function w(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:w("227");
 function ja(a){switch(a){case "svg":return"http://www.w3.org/2000/svg";case "math":return"http://www.w3.org/1998/Math/MathML";default:return"http://www.w3.org/1999/xhtml"}}
 var ka={Namespaces:{html:"http://www.w3.org/1999/xhtml",mathml:"http://www.w3.org/1998/Math/MathML",svg:"http://www.w3.org/2000/svg"},getIntrinsicNamespace:ja,getChildNamespace:function(a,b){return null==a||"http://www.w3.org/1999/xhtml"===a?ja(b):"http://www.w3.org/2000/svg"===a&&"foreignObject"===b?"http://www.w3.org/1999/xhtml":a}},la=null,oa={};
@@ -6784,9 +6784,9 @@ if (process.env.NODE_ENV !== "production") {
 'use strict';
 
 var react = __webpack_require__(0);
-var invariant = __webpack_require__(15);
+var invariant = __webpack_require__(16);
 var ExecutionEnvironment = __webpack_require__(19);
-var _assign = __webpack_require__(11);
+var _assign = __webpack_require__(13);
 var EventListener = __webpack_require__(24);
 var require$$0 = __webpack_require__(23);
 var hyphenateStyleName = __webpack_require__(53);
@@ -6794,7 +6794,7 @@ var emptyFunction = __webpack_require__(9);
 var camelizeStyleName = __webpack_require__(55);
 var performanceNow = __webpack_require__(57);
 var propTypes = __webpack_require__(2);
-var emptyObject = __webpack_require__(14);
+var emptyObject = __webpack_require__(15);
 var checkPropTypes = __webpack_require__(17);
 var shallowEqual = __webpack_require__(25);
 var containsNode = __webpack_require__(26);
@@ -24487,7 +24487,7 @@ exports.isSuspense = isSuspense;
 
 
 var ReactIs = __webpack_require__(29);
-var assign = __webpack_require__(11);
+var assign = __webpack_require__(13);
 
 var ReactPropTypesSecret = __webpack_require__(18);
 var checkPropTypes = __webpack_require__(17);
@@ -25185,7 +25185,7 @@ var _SomeComponent = __webpack_require__(141);
 
 var _SomeComponent2 = _interopRequireDefault(_SomeComponent);
 
-var _axios = __webpack_require__(16);
+var _axios = __webpack_require__(14);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -26442,7 +26442,7 @@ var _reactRouterDom = __webpack_require__(6);
 
 __webpack_require__(89);
 
-var _Header = __webpack_require__(12);
+var _Header = __webpack_require__(11);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -26458,7 +26458,7 @@ var _GoalUnit = __webpack_require__(99);
 
 var _GoalUnit2 = _interopRequireDefault(_GoalUnit);
 
-var _axios = __webpack_require__(16);
+var _axios = __webpack_require__(14);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -26470,7 +26470,7 @@ var _CongratModal = __webpack_require__(119);
 
 var _CongratModal2 = _interopRequireDefault(_CongratModal);
 
-var _jsVariables = __webpack_require__(13);
+var _jsVariables = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26522,8 +26522,11 @@ var MainPage = function (_React$Component) {
           _axios2.default.get(_jsVariables.axios_url + '/users/' + response.data.id, {
             withCredentials: true
           }).then(function (response2) {
-            _this2.setState({ goals: response2.data.goals });
-            _this2.setState({ pending: false });
+            if (response2.data.goals.length === 0) {
+              _this2.props.history.push("/welcome");
+            } else {
+              _this2.setState({ goals: response2.data.goals, pending: false });
+            }
           });
         }
       });
@@ -26603,12 +26606,22 @@ var MainPage = function (_React$Component) {
               { className: 'MainPage__goal-wrapper-title' },
               '\u0410\u043A\u0442\u0438\u0432\u043D\u044B\u0435'
             ),
-            _react2.default.createElement(
+            this.goals_active.length > 0 && _react2.default.createElement(
               'div',
               { className: 'MainPage__goal-list' },
               this.goals_active.map(function (elem) {
                 return _react2.default.createElement(_GoalUnit2.default, { key: elem.id, id: elem.id, title: elem.title, type: 'active' });
               })
+            ),
+            this.goals_active.length === 0 && _react2.default.createElement(
+              'div',
+              { key: 'text', className: 'MainPage__no-active-goals-text' },
+              '\u0423 \u0432\u0430\u0441 \u043F\u043E\u043A\u0430 \u043D\u0435\u0442 \u0446\u0435\u043B\u0435\u0439. \u0414\u043E\u0431\u0430\u0432\u044C\u0442\u0435 \u0446\u0435\u043B\u0438, \u0447\u0442\u043E\u0431\u044B \u043D\u0430\u0447\u0430\u0442\u044C \u0436\u0438\u0442\u044C \u043F\u043E \u0417\u041E\u0416!'
+            ),
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { className: 'MainPage__add-goal primary-button', to: "/goal/new" },
+              '+ \u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0446\u0435\u043B\u044C'
             )
           ),
           _react2.default.createElement(
@@ -26626,7 +26639,7 @@ var MainPage = function (_React$Component) {
               _react2.default.createElement(_GoalRecommended2.default, { id: 'no_smoking' })
             )
           ),
-          _react2.default.createElement(
+          this.goals_history.length > 0 && _react2.default.createElement(
             'div',
             { className: 'MainPage__goal-wrapper MainPage__goal-wrapper--history' },
             _react2.default.createElement(
@@ -26703,7 +26716,7 @@ exports = module.exports = __webpack_require__(3)(undefined);
 
 
 // module
-exports.push([module.i, ".MainPage__inner {\n  max-width: 800px;\n  margin: 0 auto;\n  display: flex;\n  flex-direction: column; }\n\n.MainPage__goal-wrapper {\n  margin-bottom: 40px; }\n\n.MainPage__goal-list {\n  display: flex;\n  flex-wrap: wrap; }\n\n.MainPage__goal-wrapper-title {\n  font-size: 20px;\n  margin-bottom: 12px; }\n\n.MainPage__no-goals-text {\n  font-size: 16px;\n  color: rgba(0, 0, 0, 0.5);\n  text-align: center;\n  margin-top: 20px; }\n\n.MainPage__no-goals-image.image--centered {\n  max-width: 50%; }\n  @media only screen and (min-width: 1024px) {\n    .MainPage__no-goals-image.image--centered {\n      max-width: 30%; } }\n\n.MainPage .GoalRecommended {\n  margin-bottom: 10px; }\n", ""]);
+exports.push([module.i, ".MainPage__inner {\n  max-width: 800px;\n  margin: 0 auto;\n  display: flex;\n  flex-direction: column; }\n\n.MainPage__goal-wrapper {\n  margin-bottom: 40px; }\n\n.MainPage__goal-list {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-between; }\n\n.MainPage__add-goal {\n  margin-top: 10px; }\n  @media only screen and (min-width: 480px) {\n    .MainPage__add-goal {\n      max-width: 200px; } }\n\n.MainPage__goal-wrapper-title {\n  font-size: 20px;\n  margin-bottom: 12px; }\n\n.MainPage__no-goals-text {\n  font-size: 16px;\n  color: rgba(0, 0, 0, 0.5);\n  text-align: center;\n  margin-top: 20px; }\n\n.MainPage__no-active-goals-text {\n  font-size: 16px;\n  color: rgba(0, 0, 0, 0.4);\n  border: 1px solid rgba(0, 0, 0, 0.1);\n  border-radius: 5px;\n  text-align: center;\n  padding: 30px 20px;\n  margin-top: 20px;\n  margin-bottom: 20px; }\n\n.MainPage__no-goals-image.image--centered {\n  max-width: 50%; }\n  @media only screen and (min-width: 1024px) {\n    .MainPage__no-goals-image.image--centered {\n      max-width: 30%; } }\n\n.MainPage .GoalRecommended {\n  margin-bottom: 10px; }\n", ""]);
 
 // exports
 
@@ -26978,7 +26991,7 @@ exports = module.exports = __webpack_require__(3)(undefined);
 
 
 // module
-exports.push([module.i, ".GoalRecommended {\n  padding: 10px;\n  margin-bottom: 16px;\n  box-shadow: 0px 2px 10px #cccccc;\n  max-width: 350px;\n  margin: 5px;\n  border-radius: 5px; }\n  .GoalRecommended__title {\n    font-size: 18px; }\n  .GoalRecommended__description {\n    font-size: 12px;\n    color: rgba(0, 0, 0, 0.3);\n    margin: 10px 0; }\n  .GoalRecommended__button {\n    color: #051D4D;\n    border: 2px solid #051D4D;\n    border-radius: 5px;\n    text-align: center;\n    padding: 10px 0;\n    display: block; }\n", ""]);
+exports.push([module.i, ".GoalRecommended {\n  padding: 10px;\n  margin-bottom: 16px;\n  box-shadow: 0px 2px 10px #cccccc;\n  max-width: 350px;\n  margin: 5px 0px;\n  border-radius: 5px;\n  position: relative;\n  padding-bottom: 60px; }\n  .GoalRecommended__title {\n    font-size: 18px; }\n  .GoalRecommended__description {\n    font-size: 12px;\n    color: rgba(0, 0, 0, 0.3);\n    margin: 10px 0; }\n  .GoalRecommended__button {\n    position: absolute;\n    bottom: 0px;\n    left: 0px;\n    right: 0px;\n    color: #fff;\n    background-color: #F27088;\n    border-radius: 0px 0px 5px 5px;\n    text-align: center;\n    line-height: 44px;\n    display: block;\n    font-size: 12px;\n    text-transform: uppercase;\n    letter-spacing: 0.5px;\n    font-weight: 600; }\n", ""]);
 
 // exports
 
@@ -27060,8 +27073,8 @@ var GoalUnit = function GoalUnit(props) {
       props.title
     ),
     _react2.default.createElement(
-      'div',
-      { className: 'GoalUnit__more-link' },
+      _reactRouterDom.Link,
+      { className: 'GoalUnit__more-link', to: './goal/' + props.id },
       '\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435 >'
     ),
     _react2.default.createElement(
@@ -27156,7 +27169,7 @@ exports = module.exports = __webpack_require__(3)(undefined);
 
 
 // module
-exports.push([module.i, ".GoalUnit {\n  position: relative;\n  padding: 10px 10px 10px;\n  margin-bottom: 16px;\n  box-shadow: 0px 2px 10px #cccccc;\n  margin: 5px;\n  max-width: 350px;\n  width: 100%;\n  border-radius: 5px; }\n  .GoalUnit__title {\n    font-size: 18px; }\n  .GoalUnit__more-link {\n    position: absolute;\n    top: 15px;\n    right: 10px;\n    font-size: 12px;\n    color: rgba(0, 0, 0, 0.3); }\n  .GoalUnit__description {\n    font-size: 12px;\n    color: rgba(0, 0, 0, 0.3);\n    margin: 10px 0; }\n  .GoalUnit__info {\n    margin: 10px 0; }\n  .GoalUnit__info-timer {\n    font-size: 12px;\n    color: rgba(0, 0, 0, 0.3);\n    margin-right: 16px; }\n  .GoalUnit__info-donations {\n    font-size: 12px;\n    color: rgba(0, 0, 0, 0.3); }\n  .GoalUnit__links {\n    display: flex;\n    font-size: 16px;\n    justify-content: space-between;\n    align-items: center;\n    margin-top: 10px; }\n  .GoalUnit__links-share {\n    line-height: 1; }\n  .GoalUnit__heart-icon {\n    opacity: 0.5; }\n  .GoalUnit__check {\n    position: absolute;\n    width: 100%;\n    background: #6BAC8F;\n    color: #fff;\n    bottom: 0px;\n    left: 0px;\n    line-height: 44px;\n    border-radius: 0 0 5px 5px;\n    text-align: center; }\n  .GoalUnit--pending {\n    padding: 10px 10px 60px; }\n\n.Calendar {\n  display: flex;\n  flex-wrap: wrap; }\n\n.CalendarUnit {\n  width: 32px;\n  height: 32px;\n  color: #333;\n  text-align: center;\n  font-size: 16px;\n  background: rgba(0, 0, 0, 0.08);\n  border-radius: 5px;\n  margin: 2px;\n  box-sizing: border-box;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n  .CalendarUnit--checked {\n    background: #a7dccf;\n    color: #fff; }\n  .CalendarUnit--disabled {\n    color: #ccc; }\n  .CalendarUnit--missed {\n    background: #ef7088;\n    color: #fff; }\n", ""]);
+exports.push([module.i, ".GoalUnit {\n  position: relative;\n  padding: 10px 10px 10px;\n  margin-bottom: 16px;\n  box-shadow: 0px 2px 10px #cccccc;\n  margin: 5px 0px;\n  max-width: 350px;\n  width: 100%;\n  border-radius: 5px; }\n  .GoalUnit__title {\n    font-size: 18px; }\n  .GoalUnit__more-link {\n    position: absolute;\n    top: 15px;\n    right: 10px;\n    font-size: 12px;\n    color: rgba(0, 0, 0, 0.3); }\n  .GoalUnit__description {\n    font-size: 12px;\n    color: rgba(0, 0, 0, 0.3);\n    margin: 10px 0; }\n  .GoalUnit__info {\n    margin: 10px 0; }\n  .GoalUnit__info-timer {\n    font-size: 12px;\n    color: rgba(0, 0, 0, 0.3);\n    margin-right: 16px; }\n  .GoalUnit__info-donations {\n    font-size: 12px;\n    color: rgba(0, 0, 0, 0.3); }\n  .GoalUnit__links {\n    display: flex;\n    font-size: 16px;\n    justify-content: space-between;\n    align-items: center;\n    margin-top: 10px; }\n  .GoalUnit__links-share {\n    line-height: 1; }\n  .GoalUnit__heart-icon {\n    opacity: 0.5; }\n  .GoalUnit__check {\n    position: absolute;\n    width: 100%;\n    background: #6BAC8F;\n    color: #fff;\n    bottom: 0px;\n    left: 0px;\n    line-height: 44px;\n    border-radius: 0 0 5px 5px;\n    text-align: center;\n    line-height: 44px;\n    display: block;\n    font-size: 12px;\n    text-transform: uppercase;\n    letter-spacing: 0.5px; }\n  .GoalUnit--pending {\n    padding: 10px 10px 60px; }\n\n.Calendar {\n  display: flex;\n  flex-wrap: wrap; }\n\n.CalendarUnit {\n  width: 32px;\n  height: 32px;\n  color: #333;\n  text-align: center;\n  font-size: 16px;\n  background: rgba(0, 0, 0, 0.08);\n  border-radius: 5px;\n  margin: 2px;\n  box-sizing: border-box;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n  .CalendarUnit--checked {\n    background: #a7dccf;\n    color: #fff; }\n  .CalendarUnit--disabled {\n    color: #ccc; }\n  .CalendarUnit--missed {\n    background: #ef7088;\n    color: #fff; }\n", ""]);
 
 // exports
 
@@ -28092,15 +28105,15 @@ var _VKButton2 = _interopRequireDefault(_VKButton);
 
 __webpack_require__(127);
 
-var _Header = __webpack_require__(12);
+var _Header = __webpack_require__(11);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _axios = __webpack_require__(16);
+var _axios = __webpack_require__(14);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _jsVariables = __webpack_require__(13);
+var _jsVariables = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28229,7 +28242,7 @@ var _react2 = _interopRequireDefault(_react);
 
 __webpack_require__(125);
 
-var _jsVariables = __webpack_require__(13);
+var _jsVariables = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28381,7 +28394,7 @@ var _reactRouterDom = __webpack_require__(6);
 
 __webpack_require__(131);
 
-var _Header = __webpack_require__(12);
+var _Header = __webpack_require__(11);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -28489,6 +28502,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
@@ -28497,32 +28512,110 @@ var _reactRouterDom = __webpack_require__(6);
 
 __webpack_require__(135);
 
+var _Header = __webpack_require__(11);
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _axios = __webpack_require__(14);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _jsVariables = __webpack_require__(12);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var GoalPage = function GoalPage(props) {
-  console.log("-------GoalPage: ", props);
-  return _react2.default.createElement(
-    'div',
-    { className: 'GoalPage' },
-    _react2.default.createElement(
-      'div',
-      { className: 'GoalPage__inner page-content' },
-      'GoalPage',
-      _react2.default.createElement('br', null),
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: "/main" },
-        '\u041D\u0430 \u0433\u043B\u0430\u0432\u043D\u0443\u044E'
-      ),
-      _react2.default.createElement('br', null),
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: "/main" },
-        '\u0423\u0434\u0430\u043B\u0438\u0442\u044C'
-      )
-    )
-  );
-};
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var GoalPage = function (_React$Component) {
+  _inherits(GoalPage, _React$Component);
+
+  function GoalPage(props) {
+    _classCallCheck(this, GoalPage);
+
+    var _this = _possibleConstructorReturn(this, (GoalPage.__proto__ || Object.getPrototypeOf(GoalPage)).call(this, props));
+
+    _this.state = {
+      auth: false,
+      pending: true,
+      goal: {}
+    };
+    _this.deleteGoal = _this.deleteGoal.bind(_this);
+    return _this;
+  }
+
+  _createClass(GoalPage, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      var id = window.location.pathname.replace('/goal/', '');
+      this.setState({ pending: true });
+      var error = false;
+      _axios2.default.get(_jsVariables.axios_url + '/profile', {
+        withCredentials: true
+      }).catch(function (error) {
+        error = true;
+        _this2.props.history.push("/login");
+      }).then(function (response) {
+        if (!error) {
+          _this2.setState({ auth: true });
+          _axios2.default.get(_jsVariables.axios_url + '/goals/' + id, {
+            withCredentials: true
+          }).then(function (response2) {
+            _this2.setState({
+              goal: response2.data,
+              pending: false
+            });
+          });
+        }
+      });
+    }
+  }, {
+    key: 'deleteGoal',
+    value: function deleteGoal() {
+      var _this3 = this;
+
+      var error = false;
+      (0, _axios2.default)(_jsVariables.axios_url + '/goals/' + this.state.goal.id + '/delete', {
+        method: 'post',
+        withCredentials: true
+      }).catch(function (error) {
+        error = true;
+      }).then(function (response) {
+        if (!error) {
+          _this3.props.history.push("/main");
+        }
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'GoalPage' },
+        _react2.default.createElement(_Header2.default, { pageName: '\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u0446\u0435\u043B\u0438' }),
+        _react2.default.createElement(
+          'div',
+          { className: 'GoalPage__inner page-content' },
+          '\u0426\u0435\u043B\u044C: ',
+          this.state.goal.title,
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'div',
+            { className: 'GoalPage__delete-button', onClick: this.deleteGoal },
+            '\u0423\u0434\u0430\u043B\u0438\u0442\u044C'
+          )
+        )
+      );
+    }
+  }]);
+
+  return GoalPage;
+}(_react2.default.Component);
 
 exports.default = GoalPage;
 
@@ -28566,7 +28659,7 @@ exports = module.exports = __webpack_require__(3)(undefined);
 
 
 // module
-exports.push([module.i, ".GoalPage {\n  color: red; }\n", ""]);
+exports.push([module.i, ".GoalPage__inner {\n  max-width: 600px;\n  margin: 30px auto 0px; }\n\n.GoalPage__delete-button {\n  display: inline-block;\n  background-color: red;\n  color: #fff;\n  border: none;\n  padding: 10px 20px;\n  border-radius: 5px;\n  box-sizing: border-box;\n  margin-top: 30px; }\n", ""]);
 
 // exports
 
@@ -28592,7 +28685,7 @@ var _reactRouterDom = __webpack_require__(6);
 
 __webpack_require__(138);
 
-var _Header = __webpack_require__(12);
+var _Header = __webpack_require__(11);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -28604,11 +28697,11 @@ var _FieldWithHelpers = __webpack_require__(44);
 
 var _FieldWithHelpers2 = _interopRequireDefault(_FieldWithHelpers);
 
-var _axios = __webpack_require__(16);
+var _axios = __webpack_require__(14);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _jsVariables = __webpack_require__(13);
+var _jsVariables = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28953,7 +29046,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(6);
 
-var _Header = __webpack_require__(12);
+var _Header = __webpack_require__(11);
 
 var _Header2 = _interopRequireDefault(_Header);
 
