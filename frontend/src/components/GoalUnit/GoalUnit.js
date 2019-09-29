@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles.scss';
 import { VKShareButton, VKIcon } from 'react-share';
+import axios from "axios";
+import {axios_url} from '../../js-variables';
 
 const CalendarUnit = props => {
   return (
@@ -48,6 +50,20 @@ const GoalUnit = props => {
   const period = Math.floor((new Date(props.goal.endDate) - new Date(props.goal.startDate))/(1000*60*60*24));
   const progress = Math.min(Math.floor((new Date() - new Date(props.goal.startDate))/(1000*60*60*24)), period);
   var date = new Date();
+
+  const checkGoal = () => {
+    console.log('CHECK CHECK CHECK ', props.goal.id);
+    axios(axios_url + '/goals/' + props.goal.id + '/check', {
+      method: 'post',
+      withCredentials: true,
+      data: {
+        date: new Date(new Date().setUTCHours(0, 0, 0, 0)).toISOString()
+      }
+    }).then(response => {
+      document.location.reload(true);
+    });
+  }
+
   return (
     <div className={`GoalUnit GoalUnit--${props.type}`}>
       <div className="GoalUnit__title">
@@ -81,7 +97,7 @@ const GoalUnit = props => {
       </Link>
       </div>
       {
-        props.type === 'pending' && (<div className="GoalUnit__check">
+        props.type === 'pending' && (<div className="GoalUnit__check" onClick={checkGoal}>
           Отметить сегодня
           </div>)
       }
