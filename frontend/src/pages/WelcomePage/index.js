@@ -7,21 +7,21 @@ import GoalRecommended from '../../components/GoalRecommended/GoalRecommended';
 const WelcomePage = props => {
   return (
     <div className="WelcomePage">
-      <Header/>
+      <Header />
       <div className="WelcomePage__inner page-content">
         <div className="WelcomePage__title">
           Создайте свою первую цель!
         </div>
-        <div className="WelcomePage__image"/>
+        <div className="WelcomePage__image" />
         <Link to={"/goal/new"} className="WelcomePage__create">
-          + Создать цель
+          + ПОСТАВИТЬ ЦЕЛЬ
         </Link>
         <div className="WelcomePage__suggestion-title">
-          или выберите из готовых:
+          или
         </div>
         <div className="WelcomePage__suggestion-list">
-          <GoalRecommended id='no_sugar'/>
-          <GoalRecommended id='no_smoking'/>
+          <GoalRecommended id='no_sugar' />
+          <GoalRecommended id='no_smoking' />
         </div>
 
       </div>
