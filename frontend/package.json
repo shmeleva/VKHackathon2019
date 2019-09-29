@@ -5,7 +5,7 @@
   "author": "Alex",
   "license": "MIT",
   "scripts": {
-    "start": "live-server public/",
+    "start": "webpack-dev-server",
     "serve": "live-server public/",
     "build": "webpack",
     "dev-server": "webpack-dev-server"
