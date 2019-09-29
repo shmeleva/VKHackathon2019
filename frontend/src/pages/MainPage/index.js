@@ -26,8 +26,8 @@ class MainPage extends React.Component {
     }
     this.logOut = this.logOut.bind(this);
   }
-  componentWillMount(){
-    this.setState({pending: true});
+  componentWillMount() {
+    this.setState({ pending: true });
     let error = false;
     axios.get('http://localhost:3000/profile', {
       withCredentials: true
@@ -40,13 +40,13 @@ class MainPage extends React.Component {
         axios.get('http://localhost:3000/users/' + response.data.id, {
           withCredentials: true
         }).then(response2 => {
-          this.setState({goals: response2.data.goals});
-          this.setState({pending: false});
+          this.setState({ goals: response2.data.goals });
+          this.setState({ pending: false });
         });
       }
     });
   }
-  sortGoals(){
+  sortGoals() {
     this.goals_pending = [];
     this.goals_active = [];
     this.goals_history = [];
@@ -74,10 +74,10 @@ class MainPage extends React.Component {
       this.props.history.push("/login");
     });
   }
-  render(){
+  render() {
     return this.state.auth && !this.state.pending ? (
       <div className="MainPage">
-        <CongratModal/>
+        <CongratModal />
         {this.sortGoals()}
         <Header />
         <div className="MainPage__inner page-content">
@@ -90,7 +90,7 @@ class MainPage extends React.Component {
                 <div className="MainPage__goal-list">
                   {
                     this.goals_pending.map((elem) => {
-                      return <GoalUnit key={elem.id} title={elem.title} type='pending' />
+                      return <GoalUnit key={elem.id} id={elem.id} title={elem.title} type='pending' />
                     })
                   }
                 </div>)
@@ -110,7 +110,7 @@ class MainPage extends React.Component {
             <div className="MainPage__goal-list">
               {
                 this.goals_active.map((elem) => {
-                  return <GoalUnit key={elem.id} title={elem.title} type='active' />
+                  return <GoalUnit key={elem.id} id={elem.id} title={elem.title} type='active' />
                 })
               }
             </div>
@@ -131,7 +131,7 @@ class MainPage extends React.Component {
             <div className="MainPage__goal-list">
               {
                 this.goals_history.map((elem) => {
-                  return <GoalUnit key={elem.id} title={elem.title} type='history' />
+                  return <GoalUnit key={elem.id} id={elem.id} title={elem.title} type='history' />
                 })
               }
             </div>
