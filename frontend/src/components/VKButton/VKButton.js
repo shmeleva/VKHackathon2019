@@ -6,9 +6,7 @@ class VKButton extends React.Component {
   render() {
     return (
       <a href={axios_url + '/auth/vkontakte'} className="VKButton">
-          Войти
-          <br />
-          через ВКонтакте
+          Войти через ВКонтакте
       </a>
     )
   }

@@ -1,17 +1,18 @@
+@import 'src/styles/media-screen-breakpoints.scss';
 @import 'src/styles/style-variables.scss';
 
 .Header {
 
   &__inner {
-    background-color: $color-darkblue;
-    padding: 12px 20px;
-    text-align: center;
+    background-color: $color-pink;
+    padding: 12px 16px;
   }
 
   &__logo {
     text-decoration: none;
     color: $color-white;  
     font-family: $font-heading;
+    width: 100%;
   }
 
   &__breadcrumbs {

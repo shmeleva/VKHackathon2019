@@ -43,7 +43,7 @@ class DonatePage extends React.Component {
   render() {
     return (
       <div className="DonatePage">
-        <Header pageName="Пожертвование в фонд ОРБИ" />
+        <Header pageName="Пожертвование в фонд" />
         <div className="DonatePage__inner page-content page-content--form-wrapper">
           <img className="image--centered" src={image} />
 

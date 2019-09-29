@@ -53,6 +53,7 @@
   &__heart-icon {
     opacity: 0.5;
     transition: color 0.1s ease-in-out;
+    font-size: 18px; 
   }
   &__link-overlay {
     position: absolute;
@@ -84,6 +85,10 @@
   &--history &__link-overlay {
     height: 65px;
   }
+  .SocialMediaShareButton {
+    display: flex;
+    align-items: center;
+  }
 }
 
 
@@ -107,8 +112,9 @@
   justify-content: center;
   align-items: center;
   &--checked {
-    background: $color-palegreen;
-    color: $color-white;
+    // background: $color-lightblue;
+    border: 2px solid #becde4;
+    color: $color-lightblue;
   }
   &--disabled {
     color: #ccc;
