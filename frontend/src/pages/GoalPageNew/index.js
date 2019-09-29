@@ -9,7 +9,7 @@ import axios from "axios";
 class GoalPageNew extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       name: null,
       period: null,
       days: [],
@@ -19,7 +19,7 @@ class GoalPageNew extends React.Component {
     this.handlePeriodChange = this.handlePeriodChange.bind(this);
     this.createGoal = this.createGoal.bind(this);
   }
-  componentWillMount(){
+  componentWillMount() {
     let error = false;
     axios.get('http://localhost:3000/profile', {
       withCredentials: true
@@ -28,7 +28,7 @@ class GoalPageNew extends React.Component {
       error = true;
     }).then(response => {
       if (!error) {
-        this.setState({auth: true, user_id: response.data.id});
+        this.setState({ auth: true, user_id: response.data.id });
       }
     });
   }
@@ -36,7 +36,7 @@ class GoalPageNew extends React.Component {
   handleNameChange(value) {
     this.setState(() => ({
       name: value
-    }));    
+    }));
   }
 
   handlePeriodChange(value) {
@@ -66,7 +66,7 @@ class GoalPageNew extends React.Component {
     end_date.setDate(end_date.getDate() + this.state.period);
     let data = {
       title: this.state.name,
-      weekdays: this.state.days.map((elem) => ({day: +elem})),
+      weekdays: this.state.days.map((elem) => ({ day: +elem })),
       startDate: new Date(new Date().setUTCHours(0, 0, 0, 0)).toISOString(),
       endDate: new Date(end_date.setUTCHours(0, 0, 0, 0)).toISOString()
     }
@@ -86,19 +86,19 @@ class GoalPageNew extends React.Component {
   render() {
     return this.state.auth ? (
       <div className="GoalPageNew">
-        <Header pageName="Создание цели"/>
+        <Header pageName="Создание цели" />
         <div className="GoalPageNew__inner page-content page-content--form-wrapper">
-          <img className="image--centered" src={image}/>
+          <img className="image--centered" src={image} />
 
           <form className="GoalPageNew__form">
 
             <label className="field-label">Цель</label>
-            <input 
+            <input
               className="text-field"
-              type="text" 
-              placeholder="Пройти 10 000 шагов"
+              type="text"
+              placeholder="Например, 10 000 шагов в день"
               key="newGoalName"
-              onChange={(e)=> this.handleNameChange(e.target.value)}
+              onChange={(e) => this.handleNameChange(e.target.value)}
             >
             </input>
 
@@ -106,11 +106,11 @@ class GoalPageNew extends React.Component {
             <FieldWithHelpers
               value={this.state.period}
               handleChange={this.handlePeriodChange}
-              placeholder="Введите кол-во дней"
+              placeholder="Количество дней до достижения цели"
               helpers={
                 {
-                  'Неделя': 7,
-                  '2 недели': 14,
+                  '7 дней': 7,
+                  '14 дней': 14,
                   '21 день': 21,
                   '30 дней': 30,
                   '90 дней': 90
@@ -120,26 +120,26 @@ class GoalPageNew extends React.Component {
 
             <label className="field-label">Периодичность</label>
             <div className="GoalPageNew__days">
-            {this.state.daysNames.map((name, index) => (
-              <label 
-                className="GoalPageNew__day"
-                key={index}
-              >
-                <input 
-                  type="checkbox" 
-                  value={index}
-                  onChange={(e)=>{this.handleDaysChange(e.target)}}
-                />
-                <span className="text-field__helper">{name}</span>
-              </label>
-            ))}
+              {this.state.daysNames.map((name, index) => (
+                <label
+                  className="GoalPageNew__day"
+                  key={index}
+                >
+                  <input
+                    type="checkbox"
+                    value={index}
+                    onChange={(e) => { this.handleDaysChange(e.target) }}
+                  />
+                  <span className="text-field__helper">{name}</span>
+                </label>
+              ))}
             </div>
 
-            <br/>
+            <br />
 
-            <div 
+            <div
               onClick={this.createGoal}
-              className={"primary-button "+(!(this.state.name && this.state.period && this.state.days.length > 0) && "primary-button--disabled")}>
+              className={"primary-button " + (!(this.state.name && this.state.period && this.state.days.length > 0) && "primary-button--disabled")}>
               Создать
             </div>
             <Link className="primary-button primary-button--bright" to={"/main"}>
