@@ -54,6 +54,9 @@ class GoalPageNew extends React.Component {
   }
 
   handlePeriodChange(value) {
+    if (value > 90) {
+      value = 90;
+    }
     this.setState((prevState) => ({
       period: value
     }));
