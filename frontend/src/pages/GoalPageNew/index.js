@@ -10,7 +10,6 @@ import {recommended_goals} from '../../js-variables';
 
 class GoalPageNew extends React.Component {
   constructor(props) {
-    console.log(recommended_goals[props.match.params.recommended]);
     super(props);
     if (props.match.params.recommended && recommended_goals[props.match.params.recommended]){
       this.state = {

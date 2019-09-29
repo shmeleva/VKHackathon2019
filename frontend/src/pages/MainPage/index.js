@@ -75,7 +75,6 @@ class MainPage extends React.Component {
         this.goals_active.push(goal);
       }
     })
-    console.log('---GOALS: ', this.state.goals);
   }
 
   logOut() {

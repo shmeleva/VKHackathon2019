@@ -23,10 +23,11 @@ CalendarUnit.defaultProps = {
 const Calendar = props => {
   let currentDate = new Date();
   let currentDay = ((new Date()).getDay() + 6) % 7;
-  console.log('------ PROPS: ', props);
+  let start = new Date(props.start);
+  let end = new Date(props.end);
   const buildDays = () => {
     let state = 'normal';
-    let counter = new Date(props.start.getTime());
+    let counter = new Date(start.getTime());
     if (currentDate < counter) {
       state = 'disabled';
     }
@@ -61,13 +62,6 @@ const Calendar = props => {
     </div>
   )
 }
-let start = new Date();
-let end = new Date(); 
-end.setDate(end.getDate() + 14);
-Calendar.defaultProps = {
-  start: start,
-  end: end
-}
 
 
 
@@ -90,7 +84,6 @@ class GoalPage extends React.Component {
       withCredentials: true
     }).catch(error => {
       this.error = true;
-      //this.props.history.push("/login");
     }).then(response => {
       if (!this.error) {
         this.setState({ auth: true });
@@ -124,7 +117,6 @@ class GoalPage extends React.Component {
     
     return this.state.goal ? (
       <div className="GoalPage">
-        {console.log(this.state)}
         <Header pageName="Страница цели" />
         <div className="GoalPage__inner page-content">
           <div className="GoalPage__title">
@@ -151,7 +143,7 @@ class GoalPage extends React.Component {
               <span className="GoalUnit__heart-icon">🧠</span>&nbsp;Пожертвовать
             </Link>
           </div>
-          <Calendar checks={this.state.goal.checks.map((check) => check.date)} weekdays={this.state.goal.weekdays.map((elem) => elem.day)} start={new Date(this.state.goal.startDate)} end={new Date(this.state.goal.endDate)}/>
+          <Calendar checks={this.state.goal.checks.map((check) => check.date)} weekdays={this.state.goal.weekdays.map((elem) => elem.day)} start={this.state.goal.startDate} end={this.state.goal.endDate}/>
           {
             this.state.auth && (
               <div className="GoalPage__delete-button" onClick={this.deleteGoal}>

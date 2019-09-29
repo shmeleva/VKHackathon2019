@@ -20,12 +20,10 @@ class LoginPage extends React.Component {
       withCredentials: true
     }).catch(error => {
       this.error = true;
-      console.log('---error!!! ', this.error)
       this.setState({ auth: false });
     }).then(response => {
       if (!this.error) {
         this.props.history.push("/main");
-        console.log('---error: ', this.error)
       }
     });
   }
