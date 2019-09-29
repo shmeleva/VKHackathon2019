@@ -45,14 +45,11 @@ const svgIcons = props => {
 }
 
 const GoalUnit = props => {
-  console.log('--- Goal Unit: ', props);
-  console.log((new Date() - new Date(props.goal.startDate))/(1000*60*60*24));
   const period = Math.floor((new Date(props.goal.endDate) - new Date(props.goal.startDate))/(1000*60*60*24));
   const progress = Math.min(Math.floor((new Date() - new Date(props.goal.startDate))/(1000*60*60*24)), period);
   var date = new Date();
 
   const checkGoal = () => {
-    console.log('CHECK CHECK CHECK ', props.goal.id);
     axios(axios_url + '/goals/' + props.goal.id + '/check', {
       method: 'post',
       withCredentials: true,
