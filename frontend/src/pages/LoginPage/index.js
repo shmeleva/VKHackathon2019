@@ -4,8 +4,6 @@ import VKButton from '../../components/VKButton/VKButton';
 import './styles.scss';
 import Header from '../../components/Header/Header';
 import axios from "axios";
-import {axios_url} from '../../js-variables';
-import {VKShareButton} from 'react-share'; 
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -33,7 +31,6 @@ class LoginPage extends React.Component {
   render() {
     return !this.state.auth ? (
       <div className="LoginPage">
-       <VKShareButton url='google.com'/>
         <div className="LoginPage__inner page-content">
           <div className="LoginPage__group-text">
             <div className="LoginPage__title">Добро пожаловать <br />в ОРБИ.Привычки</div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles.scss';
+import { VKShareButton, VKIcon } from 'react-share';
 
 const CalendarUnit = props => {
   return (
@@ -62,8 +63,11 @@ const GoalUnit = props => {
       }
       <div className="GoalUnit__links">
         <div className="GoalUnit__links-share">
-          Поделиться с друзьями
-      </div>
+          <VKShareButton url={document.location.origin + "/goal/" + props.id} title={props.title}>
+            <VKIcon size={24} round={true} />
+          </VKShareButton>
+
+        </div>
         <Link className="GoalUnit__links-donate" to={"/donate/100"}>
           <span className="GoalUnit__heart-icon">❤</span>&nbsp;Пожертвовать
       </Link>
