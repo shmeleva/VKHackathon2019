@@ -109,17 +109,12 @@ export const postGoalUncheck = async (req: any, res: any) => {
 
 export const postGoalDonate = async (req: any, res: any) => {
     const goalId = req.params["goalId"];
+    const amount = Number(req.body.amount);
 
-    check("amount", "amount must be a positive number").isFloat({ gt: 0 });
-
-    const errors = validationResult(req);
-
-    if (!errors.isEmpty()) {
-        res.status(400).send({ errors: errors.array() });
+    if (isNaN(amount) || amount <= 0) {
+        res.status(400).send({ errors: "amount must be a positive number" });
         return;
     }
-
-    const amount = req.body.amount;
 
     try {
         const goal = await donateToUserGoal(goalId, amount);
