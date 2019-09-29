@@ -5,7 +5,7 @@ import Header from '../../components/Header/Header';
 import axios from "axios";
 import {axios_url} from '../../js-variables';
 import { VKShareButton, VKIcon } from 'react-share';
-
+import image from './goal.png';
 
 
 const CalendarUnit = props => {
@@ -119,8 +119,9 @@ class GoalPage extends React.Component {
       <div className="GoalPage">
         <Header pageName="Страница цели" />
         <div className="GoalPage__inner page-content">
+          <img className="image--centered" src={image} />
           <div className="GoalPage__title">
-            {this.state.goal.title}
+            Цель: {this.state.goal.title}
           </div>
           <div className="GoalUnit__info">
             <span className="GoalUnit__info-timer">
@@ -135,14 +136,16 @@ class GoalPage extends React.Component {
           <div className="GoalUnit__links">
             <div className="GoalUnit__links-share">
               <VKShareButton url={document.location.origin + "/goal/" + this.state.goal.id} title={this.state.goal.title}>
-                <VKIcon size={24} round={true} />
+                <VKIcon size={20} round={true} />
+                &nbsp;Поделиться
               </VKShareButton>
     
             </div>
             <Link className="GoalUnit__links-donate" to={"/donate/" + this.state.goal.id}>
-              <span className="GoalUnit__heart-icon">🧠</span>&nbsp;Пожертвовать
+              <span className="GoalUnit__heart-icon">︎︎︎︎❤︎</span>&nbsp;Пожертвовать
             </Link>
           </div>
+          <br/>
           <Calendar checks={this.state.goal.checks.map((check) => check.date)} weekdays={this.state.goal.weekdays.map((elem) => elem.day)} start={this.state.goal.startDate} end={this.state.goal.endDate}/>
           {
             this.state.auth && (
