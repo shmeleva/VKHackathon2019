@@ -19,7 +19,9 @@ const Calendar = props => {
   let currentDay = ((new Date()).getDay() + 6) % 7;
   return (
     <div className="Calendar">
-      {['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].map((day, i) => <CalendarUnit key={i} day={day} state={currentDay < i ? 'disabled' : 'normal'} />)}
+      {['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].map((day, i) => { 
+        return <CalendarUnit key={i} day={day} state={currentDay < i ? 'disabled' : ( props.weekdays.indexOf(i) === -1 ? 'normal' : 'checked')} />
+      })}
     </div>
   )
 }
@@ -41,25 +43,31 @@ const svgIcons = props => {
 }
 
 const GoalUnit = props => {
+  console.log('--- Goal Unit: ', props);
+  console.log((new Date() - new Date(props.goal.startDate))/(1000*60*60*24));
+  const period = Math.floor((new Date(props.goal.endDate) - new Date(props.goal.startDate))/(1000*60*60*24));
+  const progress = Math.min(Math.floor((new Date() - new Date(props.goal.startDate))/(1000*60*60*24)), period);
   var date = new Date();
   return (
     <div className={`GoalUnit GoalUnit--${props.type}`}>
       <div className="GoalUnit__title">
-        {props.title}
+        {props.goal.title}
       </div>
       <Link className="GoalUnit__more-link" to={`./goal/${props.id}`}>
         Подробнее >
       </Link>
       <div className="GoalUnit__info">
         <span className="GoalUnit__info-timer">
-          {props.timer}
+          {progress}/{period}
         </span>
         <span className="GoalUnit__info-donations">
-          {props.donations}
+          {props.goal.donations.reduce(function(previousValue, currentValue) {
+            return previousValue + currentValue.amount;
+          }, 0)} руб. пожертвовали
         </span>
       </div>
       {
-        props.type !== 'history' && <Calendar />
+        props.type !== 'history' && <Calendar weekdays={props.goal.weekdays.map((elem) => elem.day)}/>
       }
       <div className="GoalUnit__links">
         <div className="GoalUnit__links-share">
@@ -77,6 +85,7 @@ const GoalUnit = props => {
           Отметить сегодня
           </div>)
       }
+      <Link to={`./goal/${props.id}`} className="GoalUnit__link-overlay"/>
     </div>
   )
 }

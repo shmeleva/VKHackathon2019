@@ -8,7 +8,7 @@ const FieldWithHelpers = props => {
         type="number" 
         placeholder={props.placeholder}
         value={props.value || ''}
-        onChange={(e)=>{
+        onChange={(e) => {
           props.handleChange(e.target.value);
           e.target.focus();
         }}

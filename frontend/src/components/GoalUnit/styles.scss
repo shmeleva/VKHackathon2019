@@ -47,8 +47,20 @@
   &__links-share {
     line-height: 1;
   }
+  &__links-donate:hover &__heart-icon {
+    color: $color-pink;
+  }
   &__heart-icon {
     opacity: 0.5;
+    transition: color 0.1s ease-in-out;
+  }
+  &__link-overlay {
+    position: absolute;
+    width: 100%;
+    height: 110px;
+    top: 0px;
+    left: 0px;
+    display: block;
   }
   &__check {
     position: absolute;
@@ -69,7 +81,12 @@
   &--pending {
     padding: 10px 10px 60px;
   }
+  &--history &__link-overlay {
+    height: 65px;
+  }
 }
+
+
 
 .Calendar {
   display: flex;

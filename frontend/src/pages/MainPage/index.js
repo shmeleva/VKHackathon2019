@@ -94,7 +94,7 @@ class MainPage extends React.Component {
                 <div className="MainPage__goal-list">
                   {
                     this.goals_pending.map((elem) => {
-                      return <GoalUnit key={elem.id} id={elem.id} title={elem.title} type='pending' />
+                      return <GoalUnit goal={elem} key={elem.id} id={elem.id} title={elem.title} type='pending' />
                     })
                   }
                 </div>)
@@ -116,7 +116,7 @@ class MainPage extends React.Component {
                 <div className="MainPage__goal-list">
                 {
                   this.goals_active.map((elem) => {
-                    return <GoalUnit key={elem.id} id={elem.id} title={elem.title} type='active' />
+                    return <GoalUnit goal={elem} key={elem.id} id={elem.id} title={elem.title} type='active' />
                   })
                 }
                 </div>
@@ -151,7 +151,7 @@ class MainPage extends React.Component {
                 <div className="MainPage__goal-list">
                   {
                     this.goals_history.map((elem) => {
-                      return <GoalUnit key={elem.id} id={elem.id} title={elem.title} type='history' />
+                      return <GoalUnit goal={elem} key={elem.id} id={elem.id} title={elem.title} type='history' />
                     })
                   }
                 </div>
