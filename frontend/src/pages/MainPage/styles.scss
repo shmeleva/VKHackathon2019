@@ -18,8 +18,12 @@
     flex-wrap: wrap;
     justify-content: space-between;
   }
-  &__add-goal {
+  &__add-goal.primary-button {
     margin-top: 10px; 
+    font-weight: 400;
+    border: 2px solid #6BAC8F;
+    color: #6BAC8F;
+    background: transparent;
     @include MedS {
       max-width: 200px;
     }
@@ -37,11 +41,11 @@
   &__no-active-goals-text {
     font-size: 16px;
     color: rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    text-align: center;
-    padding: 30px 20px;
-    margin-top: 20px;  
+    // border: 1px solid rgba(0, 0, 0, 0.1);
+    // border-radius: 5px;
+    // text-align: center;
+    // padding: 30px 20px;
+    // margin-top: 20px;  
     margin-bottom: 20px;   
   }
   &__no-goals-image.image--centered {

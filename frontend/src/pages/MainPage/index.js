@@ -108,11 +108,11 @@ class MainPage extends React.Component {
             }
           </div>
           <div className="MainPage__goal-wrapper MainPage__goal-wrapper--active">
-            <div className="MainPage__goal-wrapper-title">
-              Активные
-            </div>
             {
-              (this.goals_active.length > 0) && (
+              (this.goals_active.length > 0) && [
+                <div className="MainPage__goal-wrapper-title">
+                Активные
+                </div>,
                 <div className="MainPage__goal-list">
                 {
                   this.goals_active.map((elem) => {
@@ -120,17 +120,17 @@ class MainPage extends React.Component {
                   })
                 }
                 </div>
-              )
+              ]
             }
             {
-              (this.goals_active.length === 0) && (
+              (this.goals_active.length === 0 && this.goals_pending.length > 0) && (
                 <div key='text' className="MainPage__no-active-goals-text">
-                У вас пока нет целей. Добавьте цели, чтобы начать жить по ЗОЖ!
+                Добавьте еще цели! Будьте еще больше ЗОЖ!
                 </div>
               )
             }
             <Link className="MainPage__add-goal primary-button" to={"/goal/new"}>
-              + Добавить цель
+            + Добавить цель
             </Link>
           </div>
           <div className="MainPage__goal-wrapper MainPage__goal-wrapper--recommended">
@@ -162,9 +162,6 @@ class MainPage extends React.Component {
             Выйти
           </div>
           <br />
-          <Link to={"/goal/new"}>
-            Новая цель
-          </Link>
         </div>
       </div>
     ) : null;
