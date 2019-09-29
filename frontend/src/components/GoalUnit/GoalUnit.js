@@ -88,12 +88,13 @@ const GoalUnit = props => {
       <div className="GoalUnit__links">
         <div className="GoalUnit__links-share">
           <VKShareButton url={document.location.origin + "/goal/" + props.id} title={props.title}>
-            <VKIcon size={24} round={true} />
+            <VKIcon size={20} round={true} />
+            &nbsp;Поделиться
           </VKShareButton>
 
         </div>
         <Link className="GoalUnit__links-donate" to={"/donate/" + props.id}>
-          <span className="GoalUnit__heart-icon">🧠</span>&nbsp;Пожертвовать
+          <span className="GoalUnit__heart-icon">❤︎</span>&nbsp;Пожертвовать
       </Link>
       </div>
       {
