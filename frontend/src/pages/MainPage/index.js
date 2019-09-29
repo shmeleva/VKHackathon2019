@@ -29,7 +29,7 @@ class MainPage extends React.Component {
   componentWillMount() {
     this.setState({ pending: true });
     let error = false;
-    axios.get('http://localhost:3000/profile', {
+    axios.get('https://orbi-habits-api.herokuapp.com' + '/profile', {
       withCredentials: true
     }).catch(error => {
       error = true;
@@ -37,7 +37,7 @@ class MainPage extends React.Component {
     }).then(response => {
       if (!error) {
         this.setState({ auth: true });
-        axios.get('http://localhost:3000/users/' + response.data.id, {
+        axios.get('https://orbi-habits-api.herokuapp.com' + '/users/' + response.data.id, {
           withCredentials: true
         }).then(response2 => {
           this.setState({ goals: response2.data.goals });
@@ -68,7 +68,7 @@ class MainPage extends React.Component {
   }
 
   logOut() {
-    axios.get('http://localhost:3000/profile/logout', {
+    axios.get('https://orbi-habits-api.herokuapp.com' + '/profile/logout', {
       withCredentials: true
     }).then(response => {
       this.props.history.push("/login");

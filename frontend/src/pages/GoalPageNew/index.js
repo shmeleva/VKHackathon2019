@@ -21,7 +21,7 @@ class GoalPageNew extends React.Component {
   }
   componentWillMount() {
     let error = false;
-    axios.get('http://localhost:3000/profile', {
+    axios.get('https://orbi-habits-api.herokuapp.com' + '/profile', {
       withCredentials: true
     }).catch(error => {
       this.props.history.push("/login");
@@ -70,7 +70,7 @@ class GoalPageNew extends React.Component {
       startDate: new Date(new Date().setUTCHours(0, 0, 0, 0)).toISOString(),
       endDate: new Date(end_date.setUTCHours(0, 0, 0, 0)).toISOString()
     }
-    axios('http://localhost:3000/goals/create', {
+    axios('https://orbi-habits-api.herokuapp.com' + '/goals/create', {
       method: 'post',
       withCredentials: true,
       data: data

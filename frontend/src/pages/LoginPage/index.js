@@ -13,14 +13,14 @@ class LoginPage extends React.Component {
       auth: true
     }
   }
-  componentWillMount(){
+  componentWillMount() {
     this.error = false;
-    axios.get('http://localhost:3000/profile', {
+    axios.get('https://orbi-habits-api.herokuapp.com' + '/profile', {
       withCredentials: true
     }).catch(error => {
       this.error = true;
       console.log('---error!!! ', this.error)
-      this.setState({auth: false});
+      this.setState({ auth: false });
     }).then(response => {
       if (!this.error) {
         this.props.history.push("/main");
@@ -33,16 +33,16 @@ class LoginPage extends React.Component {
       <div className="LoginPage">
         <div className="LoginPage__inner page-content">
           <div className="LoginPage__group-text">
-            <div className="LoginPage__title">Добро пожаловать <br/>в ОРБИ.Привычки</div>
+            <div className="LoginPage__title">Добро пожаловать <br />в ОРБИ.Привычки</div>
             <div className="LoginPage__description-title">В этом приложении можно:</div>
             <div className="LoginPage__description-list">
               <div className="LoginPage__description-unit">Создавать достижимые конкретные цели для выработки привычек</div>
               <div className="LoginPage__description-unit">Просить друзей поддержать вас через донаты в фонд</div>
               <div className="LoginPage__description-unit">Просить друзей поддержать вас через донаты в фонд</div>
             </div>
-            <VKButton/>
+            <VKButton />
           </div>
-          <div className="LoginPage__bottom"/>
+          <div className="LoginPage__bottom" />
         </div>
         <Link to={"/main"}>
           На главную
