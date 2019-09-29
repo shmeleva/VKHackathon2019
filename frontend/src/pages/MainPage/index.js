@@ -56,6 +56,7 @@ class MainPage extends React.Component {
     this.goals_active = [];
     this.goals_history = [];
     const current_date = new Date();
+    const current_dateABS = new Date(new Date().setUTCHours(0, 0, 0, 0)).toISOString();
     const current_day = ((new Date()).getDay() + 6) % 7;
     this.state.goals.forEach((goal) => {
       let goal_date = new Date(goal.endDate);
@@ -63,7 +64,12 @@ class MainPage extends React.Component {
         this.goals_history.push(goal);
       }
       else if (goal.weekdays.map((weekday) => +weekday.day).indexOf(current_day) !== -1) {
-        this.goals_pending.push(goal);
+        if (goal.checks.map((check) => check.date).indexOf(current_dateABS) !== -1){
+          this.goals_active.push(goal);
+        }
+        else {
+          this.goals_pending.push(goal);
+        }
       }
       else {
         this.goals_active.push(goal);
