@@ -3,13 +3,16 @@
 #### SPA
 [`https://orbi-habits.herokuapp.com`](https://orbi-habits.herokuapp.com)
 
-*Please note that it takes some time for the API dyno to wake up and serve users and goals when it's accessed for the first time.*
-
 #### API
 [`https://orbi-habits-api.herokuapp.com`](https://orbi-habits-api.herokuapp.com)
 
+#### Team
 
-#### Presentation
+* Backend — Rina [@Shmeleva](https://github.com/shmeleva)
+* Frontend — [@AlexandraTarikova](https://github.com/AlexandraTarikova)
+* Frontend & Design — [@MaryHaak](https://github.com/maryhaak)
+
+#### About
 <kbd>
 <img src="/presentation-images/grornlosos_110.001.jpeg" style="border: 2px solid rgba(0,0,0,0.05);" />
 </kbd>
