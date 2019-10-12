@@ -1,11 +1,5 @@
 # VKHackathon2019
 
-#### SPA
-[`https://orbi-habits.herokuapp.com`](https://orbi-habits.herokuapp.com)
-
-#### API
-[`https://orbi-habits-api.herokuapp.com`](https://orbi-habits-api.herokuapp.com)
-
 #### Team
 
 * Backend — Rina [@Shmeleva](https://github.com/shmeleva)
@@ -44,3 +38,9 @@
 <kbd>
 <img src="/presentation-images/grornlosos_110.008.jpeg" style="border: 2px solid rgba(0,0,0,0.05);" />
 </kbd>
+
+#### SPA
+[`https://orbi-habits.herokuapp.com`](https://orbi-habits.herokuapp.com)
+
+#### API
+[`https://orbi-habits-api.herokuapp.com`](https://orbi-habits-api.herokuapp.com)
